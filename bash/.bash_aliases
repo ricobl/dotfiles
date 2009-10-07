@@ -5,3 +5,5 @@ alias seek='~/bin/seek.sh'
 alias seeknot='~/bin/seeknot.sh'
 # Shortcut to gnome-open (opens files and dirs)
 alias go='gnome-open'
+# Git bootstrap
+alias git-boot='~/bin/git-boot.sh'
