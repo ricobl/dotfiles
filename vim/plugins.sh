@@ -8,7 +8,7 @@ git clone git://github.com/msanders/snipmate.vim.git snipmate
 rm -rf snipmate/.git
 rm -f snipmate/convertSnip.py
 # Remove snipmate's snippets so they don't overwrite existent ones
-rm -rf snipmate/.git
+rm -rf snipmate/snippets
 
 # Copies new files recursively
 cp -rfu snipmate/* ./
