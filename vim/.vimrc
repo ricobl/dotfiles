@@ -1,8 +1,11 @@
 " Change Leader key
 let mapleader=','
 
-" Syntax highlight scheme
-colorscheme desert
+" Change syntax highlight scheme only for GUI
+if has('gui_running')
+	colorscheme desert
+endif
+
 " Turn on filetype plugin
 filetype on
 filetype plugin on
