@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Shows the current machine IP address
+
+# Gets the line containing the IP address on interface eth0,
+# something like this:
+#	inet 192.168.2.10/24 brd 192.168.2.255 scope global eth0
+
+# And then removes the extra information to show only the IP address
+ip addr show | grep eth0 | grep inet | sed -e 's/inet //' -e 's/\/.*//' -e 's/[[:space:]]*//'
