@@ -1,0 +1,161 @@
+# UTILITIES
+# Definitions
+snippet {
+	{
+		${1}
+	}
+# Comment line
+snippet com
+	/* ${1:comment} */${2}
+# Comment block
+snippet comb
+	/* ${1:comment} */
+	${2}
+	/* end $1 */
+# DIMENSIONS
+snippet w
+	width: ${1:100px};${2}
+snippet h
+	height: ${1:100px};${2}
+# PADDING
+snippet p
+	padding: ${1:10px};${2}
+snippet pt
+	padding-top: ${1:10px};${2}
+snippet pr
+	padding-right: ${1:10px};${2}
+snippet pb
+	padding-bottom: ${1:10px};${2}
+snippet pl
+	padding-left: ${1:10px};${2}
+# MARGIN
+snippet m
+	margin: ${1:10px};${2}
+snippet mt
+	margin-top: ${1:10px};${2}
+snippet mr
+	margin-right: ${1:10px};${2}
+snippet mb
+	margin-bottom: ${1:10px};${2}
+snippet ml
+	margin-left: ${1:10px};${2}
+# BORDER
+snippet b
+	border: ${1:1px} ${2:solid} ${3:red};${4}
+snippet bt
+	border-top: ${1:1px} ${2:solid} ${3:red};${4}
+snippet br
+	border-right: ${1:1px} ${2:solid} ${3:red};${4}
+snippet bb
+	border-bottom: ${1:1px} ${2:solid} ${3:red};${4}
+snippet bl
+	border-left: ${1:1px} ${2:solid} ${3:red};${4}
+snippet bn
+	border: none;${1}
+# BACKGROUND
+snippet ba
+	background: ${1:red};${2}
+snippet bau
+	background: url(${1});${2}
+snippet bai
+	background-image: url(${1});${2}
+snippet bac
+	background-color: ${1:red};${2}
+snippet bar
+	background-repeat: ${1:no-repeat};
+snippet nor
+	no-repeat
+# FLOATS
+snippet f
+	float: ${1:left};${2}
+snippet fl
+	float: ${1:left};${2}
+snippet fr
+	float: ${1:right};${2}
+snippet fn
+	float: ${1:none};${2}
+snippet c
+	clear: ${1:both};${2}
+snippet cl
+	clear: ${1:left};${2}
+# TEXT
+snippet ta
+	text-align: ${1:center};${2}
+snippet ti
+	text-indent: ${1:-9999em};${2}
+snippet td
+	text-decoration: ${1:none};${2}
+snippet fs
+	font-size: ${1:10px};${2}
+snippet fw
+	font-weight: ${1:bold};${2}
+snippet co
+	color: ${1:red};${2}
+snippet lh
+	line-height: ${1:20px};${2}
+# DISPLAY
+snippet d
+	display: ${1:block};${2}
+snippet db
+	display: ${1:block};${2}
+snippet di
+	display: ${1:inline};${2}
+snippet dib
+	display: ${1:inline-block};${2}
+snippet o
+	overflow: ${1:hidden};${2}
+# TAGS / SNIPPETS
+snippet globalreset
+	body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
+		margin: 0;
+		padding: 0;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	h1,h2,h3,h4,h5,h6 {
+		font-size: 100%;
+	}
+	ol,ul {
+		list-style: none;
+	}
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+	a img {
+		border: 0;
+	}
+snippet bodycenter
+	body {
+		text-align: center:
+	}
+	${1:#container} {
+		text-align: left;
+		width: ${2:100px};
+		margin: 0 auto;
+	}${3}
+# Text image replacement
+snippet imgr
+	text-indent: -9999em;
+	background: url(${1:logo.gif}) no-repeat;
+	width: ${2:100px};
+	height: ${3:100px};
+	overflow: hidden;
+# Text image replacement for inputs
+snippet btimgr
+	background: url(${1:bt.gif}) no-repeat;
+	width: ${2:100px};
+	height: ${3:20px};
+	content: "";
+	display: inline-block;
+	line-height: 0;
+	text-indent: -9999px;
+	border: none;
+# Link list (menu)
+snippet ulia
+	${1:ul.product_list} {
+	}
+		$1 li {
+		}
+			$1 li a {
+			}
+
