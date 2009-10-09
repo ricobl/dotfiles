@@ -1,9 +1,12 @@
 " Change Leader key
 let mapleader=','
 
-" Change syntax highlight scheme only for GUI
+" Change syntax highlight scheme for GUI
+" and set a dark background for console
 if has('gui_running')
 	colorscheme desert
+else
+	set background=dark
 endif
 
 " Turn on filetype plugin
