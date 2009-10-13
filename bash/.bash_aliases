@@ -7,3 +7,5 @@ alias seeknot='~/bin/seeknot.sh'
 alias go='gnome-open'
 # Git bootstrap
 alias git-boot='~/bin/git-boot.sh'
+# Django script to run dev server on local IP
+alias runserver='~/bin/django-runserver.sh'
