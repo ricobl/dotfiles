@@ -61,3 +61,7 @@ map <Leader>v "+gP
 vnoremap <Leader>x "+ygvd
 vnoremap <Leader>c "+ygv
 
+" Set permissions for bash scripts
+au BufWritePost *.sh :!chmod a+x <afile>
+" Automatically give executable permission to scripts starting with #!/bin/sh
+au BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | silent execute "!chmod a+x <afile>" | endif
