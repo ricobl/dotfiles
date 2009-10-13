@@ -10,3 +10,15 @@
 
 # Set git to use meld for diff
 git config --global diff.external ~/bin/git-meld.py
+
+# Automatically track new branches
+git config --global branch.autosetupmerge true
+
+# Colored output
+git config --global color.ui auto
+
+# Git aliases
+git config --global alias.st status
+git config --global alias.ci commit
+git config --global alias.co checkout
+git config --global alias.br branch
