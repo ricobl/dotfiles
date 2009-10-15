@@ -49,8 +49,8 @@ cab wQ wq
 " From: http://vim.wikia.com/wiki/Moving_lines_up_or_down_in_a_file
 nnoremap <M-j> mz:m+<CR>`z==
 nnoremap <M-k> mz:m-2<CR>`z==
-inoremap <M-j> <Esc>:m+<CR>==gi
-inoremap <M-k> <Esc>:m-2<CR>==gi
+"inoremap <M-j> <Esc>:m+<CR>==gi
+"inoremap <M-k> <Esc>:m-2<CR>==gi
 vnoremap <M-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
 vnoremap <M-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
 
