@@ -110,7 +110,6 @@ snippet body
 snippet head
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8"`Close()`>
-
 		<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>
 		${2}
 	</head>
@@ -196,16 +195,7 @@ snippet li
 	<li>${1}</li>
 snippet a
 	<a href="${1:#}">${2}</a>
-##############################################
-snippet mnu
-	<li><a href="#$1">${1:nome}</a></li>
-	${2}
-snippet sec
-	<div id="section_${1:name}" class="section">
-		<h2><span>$1</span><a name="$1"></a></h2>
-		<div class="section_content">
-			<p>$1</p>
-		</div>
-	</div>
-
-	${2}
+snippet ulia
+	<ul>
+		<li><a href="${1:#}">${2}</a></li>${3}
+	</ul>
