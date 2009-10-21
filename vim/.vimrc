@@ -13,6 +13,10 @@ endif
 filetype on
 filetype plugin on
 filetype indent on
+" Enable django python snippets
+" (HTML templates will be activated on a ftdetect script)
+autocmd FileType python set ft=python.django
+au BufRead,BufNewFile *.html set filetype=html.django_template
 
 " Enable modelines
 set modeline

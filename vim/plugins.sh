@@ -19,3 +19,10 @@ rm -rf snipmate
 # Updates vim help tags
 vim "+helptags ~/.vim/doc" "+q"
 
+# Install snipmate_for_django
+git clone git://github.com/ricobl/snipmate_for_django.git
+# Copy snippets
+cp -rfu snipmate_for_django/snippets/*.snippets ~/.vim/snippets
+# Cleanup
+rm -rf snipmate_for_django
+
