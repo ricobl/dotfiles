@@ -35,6 +35,14 @@ set lbr
 " Highlight the current line
 set cursorline
 
+" Scroll to the middle of the screen when searching
+map n nzz
+nmap N Nzz
+nmap * *zz
+nmap # #zz
+nmap g* g*zz
+nmap g# g#zz
+
 " Buffer navigation (Ctrl+Tab / Ctrl+Shift+Tab)
 nnoremap <C-Tab> :bnext<CR>
 nnoremap <C-S-Tab> :bprevious<CR>
