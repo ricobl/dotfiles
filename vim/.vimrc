@@ -47,6 +47,10 @@ nmap g# g#zz
 nnoremap <C-Tab> :bnext<CR>
 nnoremap <C-S-Tab> :bprevious<CR>
 
+" Use bufkill.vim plugin to close buffers and keep windows
+cab bd BD
+cab bu BU
+
 " Setup whitespace
 set listchars=tab:»·,trail:·,eol:¶
 
