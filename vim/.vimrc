@@ -85,3 +85,7 @@ vnoremap <Leader>c "+ygv
 au BufWritePost *.sh silent execute "!chmod a+x <afile>"
 " Automatically give executable permission to scripts starting with #!/bin/sh
 au BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | silent execute "!chmod a+x <afile>" | endif
+
+" Highlight tabs on python scripts
+au FileType python syn match pythonTAB '\t\+'
+au FileType python hi pythonTAB ctermbg=red
