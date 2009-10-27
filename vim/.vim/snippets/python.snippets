@@ -48,6 +48,12 @@ snippet deff
 snippet defs
 	def ${1:mname}(self, ${2:arg}):
 		${3:pass}
+snippet *
+	*args
+snippet **
+	**kwargs
+snippet ***
+	*args, **kwargs
 # New Property
 snippet property
 	def ${1:foo}():
@@ -96,3 +102,7 @@ snippet ifmain
 # __magic__
 snippet _
 	__${1:init}__${2}
+# Debugging
+snippet pdb
+	import pdb
+	pdb.set_trace()
