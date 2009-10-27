@@ -43,6 +43,10 @@ nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
 
+" Insert lines
+nmap <Leader>o o<ESC>
+nmap <Leader>O O<ESC>
+
 " Buffer navigation (Ctrl+Tab / Ctrl+Shift+Tab)
 nnoremap <C-Tab> :bnext<CR>
 nnoremap <C-S-Tab> :bprevious<CR>
