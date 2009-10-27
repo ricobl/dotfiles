@@ -63,12 +63,12 @@ cab wQ wq
 
 " Move lines up and down with Alt+J and Alt+k
 " From: http://vim.wikia.com/wiki/Moving_lines_up_or_down_in_a_file
-nnoremap <M-j> mz:m+<CR>`z==
-nnoremap <M-k> mz:m-2<CR>`z==
-"inoremap <M-j> <Esc>:m+<CR>==gi
-"inoremap <M-k> <Esc>:m-2<CR>==gi
-vnoremap <M-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
-vnoremap <M-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
+nnoremap <C-j> mz:m+<CR>`z==
+nnoremap <C-k> mz:m-2<CR>`z==
+inoremap <C-j> <Esc>:m+<CR>==gi
+inoremap <C-k> <Esc>:m-2<CR>==gi
+vnoremap <C-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
+vnoremap <C-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
 
 " Map system clipboard cut, copy and paste to leader-based shortcuts
 map <Leader>x V"+x
