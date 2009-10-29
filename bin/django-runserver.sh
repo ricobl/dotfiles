@@ -8,5 +8,10 @@
 
 # Get host ip and add port
 host="`~/bin/myip`:8000"
+
+# If found the "go" argument
+# Wait 1 second to open the browser
+[ "$1" == "--go" ] && sleep 1 && gnome-open "http://$host" &
+
 # Run the dev server
 ./manage.py runserver "$host"
