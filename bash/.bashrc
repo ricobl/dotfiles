@@ -113,6 +113,8 @@ alias l='ls -CF'
 # Enable programmable completion features
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
+	# Load fabfile completion
+    . ~/bin/fab_bash_completion
 fi
 
 if [ -f ~/.bashprofile ]; then
