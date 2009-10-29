@@ -27,7 +27,7 @@ _fab_completion()
 	prev="${COMP_WORDS[COMP_CWORD-1]}"
 
 	# Get the list of available tasks, ignoring errors (missing or invalid fabfile)
-	# Removing the "Available commands header an any empty line or spaces
+	# Removing the "Available commands" header and any empty line or spaces
 	opts="`fab --list 2> /dev/null | grep -v -e "Available commands" -e "^$" | sed -e 's/ \+\(\w\+\).*/\1/g'`"
 
 	COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
