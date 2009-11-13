@@ -11,7 +11,7 @@ snippet fun
 	}
 # Anonymous Function
 snippet f
-	function(${1}) {${2}};
+	function(${1}){${2}};
 # if
 snippet if
 	if (${1:true}) {${2}};
@@ -72,3 +72,16 @@ snippet get
 # Get Element
 snippet gett
 	getElementBy${1:Id}('${2}')${3}
+# JQuery
+snippet $
+	$('${1}')${2}
+snippet $f
+	$(function(){
+		var ${1:name} = $('${2:selector}');
+	});
+snippet $v
+	var ${1:name} = $('${2:selector}');${3}
+snippet $e
+	${1:$(item)}.each(function(){
+		var self = ${2:$(this)};${3}
+	});
