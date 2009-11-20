@@ -52,6 +52,8 @@ snippet bl
 	border-left: ${1:1px} ${2:solid} ${3:red};${4}
 snippet bn
 	border: none;${1}
+snippet bw
+	border-width: ${1:1px};${2}
 # BACKGROUND
 snippet ba
 	background: ${1:red};${2}
@@ -114,12 +116,18 @@ snippet ttl
 	text-transform: ${1:lowercase};${2}
 snippet fs
 	font-size: ${1:10px};${2}
+snippet ff
+	font-family: ${1:Arial, Helvetica, sans-serif};${2}
 snippet fw
 	font-weight: ${1:bold};${2}
 snippet co
 	color: ${1:red};${2}
 snippet lh
 	line-height: ${1:20px};${2}
+snippet fst
+	font-style: ${1:normal};${2}
+snippet ls
+	letter-spacing: ${1:-1px};${2}
 # DISPLAY
 snippet d
 	display: ${1:block};${2}
@@ -129,8 +137,16 @@ snippet di
 	display: ${1:inline};${2}
 snippet dib
 	display: ${1:inline-block};${2}
+snippet dn
+	display: ${1:none};${2}
 snippet o
 	overflow: ${1:hidden};${2}
+snippet oh
+	overflow: ${1:hidden};${2}
+snippet ov
+	overflow: ${1:visible};${2}
+snippet oa
+	overflow: ${1:auto};${2}
 # TAGS / SNIPPETS
 snippet globalreset
 	body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {
@@ -157,7 +173,7 @@ snippet bodycenter
 	}
 	${1:#container} {
 		text-align: left;
-		width: ${2:100px};
+		width: ${2:1000px};
 		margin: 0 auto;
 	}${3}
 # Text image replacement
@@ -175,7 +191,7 @@ snippet btimgr
 	content: "";
 	display: inline-block;
 	line-height: 0;
-	text-indent: -9999px;
+	text-indent: -9999em;
 	border: none;
 # Link list (menu)
 snippet ulia
