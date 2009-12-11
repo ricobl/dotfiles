@@ -26,3 +26,5 @@ cp -rfu snipmate_for_django/snippets/*.snippets ~/.vim/snippets
 # Cleanup
 rm -rf snipmate_for_django
 
+# Copy bufkill plugin to vim directory
+cp .vim/plugin/bufkill.vim ~/.vim/plugin
