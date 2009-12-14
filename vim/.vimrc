@@ -70,6 +70,12 @@ inoremap <C-k> <Esc>:m-2<CR>==gi
 vnoremap <C-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
 vnoremap <C-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
 
+" Indent with tabs
+nmap <tab> v>
+nmap <s-tab> v<
+vmap <tab> >gv
+vmap <s-tab> <gv
+
 " Map system clipboard cut, copy and paste to leader-based shortcuts
 map <Leader>x V"+x
 map <Leader>c V"+y
