@@ -11,6 +11,9 @@ DOTFILES=`dirname $0 | xargs readlink -f`
 [ ! -f ~/.vimrc ] && ln -s "$DOTFILES/vim/.vimrc" ~/.vimrc
 [ ! -d ~/.vim ] && ln -s "$DOTFILES/vim/.vim" ~/.vim
 
+# Updates vim help tags
+vim "+helptags ~/.vim/doc" "+q"
+
 # Set git to use meld for diff
 git config --global diff.external ~/bin/git-meld.py
 

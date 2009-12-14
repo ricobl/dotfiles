@@ -16,7 +16,7 @@ filetype indent on
 " Enable Django python snippets
 autocmd FileType python set ft=python.django
 " Enable snippets for Django HTML templates
-au BufRead,BufNewFile *.html set filetype=html.django_template
+au BufRead,BufNewFile *.html set filetype=html.htmldjango
 
 " Enable modelines
 set modeline
