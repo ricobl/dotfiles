@@ -36,7 +36,7 @@ set lbr
 set cursorline
 
 " Scroll to the middle of the screen when searching
-map n nzz
+nmap n nzz
 nmap N Nzz
 nmap * *zz
 nmap # #zz
