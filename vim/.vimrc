@@ -43,6 +43,9 @@ nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
 
+" Disable the keyword help and emit a warning about Caps Lock
+map K :echo "WARNING: CAPS ON"<CR>
+
 " Insert lines
 nmap <Leader>o o<ESC>
 nmap <Leader>O O<ESC>
