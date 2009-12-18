@@ -130,13 +130,13 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . ~/bin/fab_bash_completion
 fi
 
-if [ -f ~/.bashprofile ]; then
-    . ~/.bashprofile
-fi
-
 # Add user bin to the path
 [ -d  "$HOME/bin" ] && PATH="$PATH:$HOME/bin"
 
 export WORKON_HOME="$HOME/.virtualenvs"
 source "/usr/local/bin/virtualenvwrapper_bashrc"
+
+if [ -f ~/.bashprofile ]; then
+    . ~/.bashprofile
+fi
 
