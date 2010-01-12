@@ -1,5 +1,13 @@
+# Tags / escape
+snippet {{
+	{{ ${1:item.name} }}${2}
+snippet {
+	{{ ${1:item.name} }}${2}
+snippet {%
+	{% ${1:tag} %}${2}
+snippet %
+	{% ${1:tag} %}${2}
 # Template Tags
-
 snippet autoescape
 	{% autoescape ${1:off} %}
 	${2}
@@ -72,6 +80,7 @@ snippet widthratio
 	{% widthratio ${1:this_value} ${2:max_value} ${3:100} %}
 snippet with
 	{% with ${1:item} as ${2:var} %}
+	{% endwith %}
 
 # Template Filters
 
