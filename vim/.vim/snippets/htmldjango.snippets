@@ -8,6 +8,14 @@ snippet block
 	{% block ${1} %}
 		${2}
 	{% endblock %}
+snippet {
+	{{ ${1:item.name} }}${2}
+snippet {{
+	{{ ${1:item.name} }}${2}
+snippet %
+	{% ${1:tag} %}${2}
+snippet {%
+	{% ${1:tag} %}${2}
 snippet #
 	{# ${1:comment} #}
 snippet comment
@@ -51,7 +59,7 @@ snippet ifnotequal
 		${3}
 	{% endifnotequal %}
 snippet include
-	{% include "${1}" %}
+	{% include "${1:include.html}" %}
 snippet load
 	{% load ${1} %}
 snippet now
@@ -72,6 +80,8 @@ snippet widthratio
 	{% widthratio ${1:this_value} ${2:max_value} ${3:100} %}
 snippet with
 	{% with ${1:item} as ${2:var} %}
+		${3}
+	{% endwith %}
 
 # Template Filters
 
