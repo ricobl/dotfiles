@@ -1,5 +1,13 @@
+# Tags / escape
+snippet {{
+	{{ ${1:item.name} }}${2}
+snippet {
+	{{ ${1:item.name} }}${2}
+snippet {%
+	{% ${1:tag} %}${2}
+snippet %
+	{% ${1:tag} %}${2}
 # Template Tags
-
 snippet autoescape
 	{% autoescape ${1:off} %}
 	${2}
@@ -8,14 +16,6 @@ snippet block
 	{% block ${1} %}
 		${2}
 	{% endblock %}
-snippet {
-	{{ ${1:item.name} }}${2}
-snippet {{
-	{{ ${1:item.name} }}${2}
-snippet %
-	{% ${1:tag} %}${2}
-snippet {%
-	{% ${1:tag} %}${2}
 snippet #
 	{# ${1:comment} #}
 snippet comment
