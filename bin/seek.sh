@@ -23,5 +23,4 @@ else
 fi
 
 # Search for files
-find $path -iname "$file_pattern" | xargs grep -sl "$text_pattern"
-
+grep -lr --include="$file_pattern" "$text_pattern" $path
