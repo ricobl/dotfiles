@@ -9,3 +9,5 @@ alias go='gnome-open'
 alias git-boot='~/bin/git-boot.sh'
 # Django script to run dev server on local IP
 alias runserver='~/bin/django-runserver.sh'
+# Supress gvim errors
+alias gvim='gvim 2> /dev/null'
