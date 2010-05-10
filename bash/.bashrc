@@ -134,7 +134,7 @@ fi
 [ -d  "$HOME/bin" ] && PATH="$PATH:$HOME/bin"
 
 export WORKON_HOME="$HOME/.virtualenvs"
-source "/usr/local/bin/virtualenvwrapper_bashrc"
+source "/usr/local/bin/virtualenvwrapper.sh"
 
 if [ -f ~/.bashprofile ]; then
     . ~/.bashprofile
