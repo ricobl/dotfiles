@@ -5,6 +5,7 @@ let mapleader=','
 " and set a dark background for console
 if has('gui_running')
 	colorscheme desert
+	set guioptions-=T  "remove toolbar
 else
 	set background=dark
 endif
@@ -72,12 +73,6 @@ inoremap <C-j> <Esc>:m+<CR>==gi
 inoremap <C-k> <Esc>:m-2<CR>==gi
 vnoremap <C-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
 vnoremap <C-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
-
-" Indent with tabs
-nmap <tab> v>
-nmap <s-tab> v<
-vmap <tab> >gv
-vmap <s-tab> <gv
 
 " Map system clipboard cut, copy and paste to leader-based shortcuts
 map <Leader>x V"+x
