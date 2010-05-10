@@ -4,7 +4,7 @@ alias svnmod='svn status -u --ignore-externals | grep -v ?'
 alias seek='~/bin/seek.sh'
 alias seeknot='~/bin/seeknot.sh'
 # Shortcut to gnome-open (opens files and dirs)
-alias go='gnome-open'
+alias go='gnome-open 2> /dev/null'
 # Git bootstrap
 alias git-boot='~/bin/git-boot.sh'
 # Django script to run dev server on local IP
