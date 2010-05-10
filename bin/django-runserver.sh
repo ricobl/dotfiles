@@ -7,7 +7,7 @@
 [ ! -f "./manage.py" ] && echo '	"manage.py" not found' && exit
 
 # Get host ip and add port
-host="`~/bin/myip`:8000"
+host="0.0.0.0:8000"
 
 # If found the "go" argument
 # Wait 1 second to open the browser
