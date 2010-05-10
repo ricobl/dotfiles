@@ -28,6 +28,6 @@ git config --global alias.st status
 git config --global alias.ci commit
 git config --global alias.co checkout
 git config --global alias.br branch
-git config --global alias.lg "log --pretty=oneline -n 10"
+git config --global alias.lg "log --format='%Cgreen%h %Cred%cr %Creset%s %Cblue%cn'"
 git config --global push.default tracking
 git config --global merge.tool meld
