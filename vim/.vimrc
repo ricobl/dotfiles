@@ -10,6 +10,13 @@ else
 	set background=dark
 endif
 
+" Enable bash-like completion
+" 1 tab: complete
+" 2 tabs: show list
+" 3 tabs: cycle
+set wildmode=longest,list,full
+set wildmenu
+
 " Turn on filetype plugin
 filetype on
 filetype plugin on
@@ -89,3 +96,7 @@ au BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | silent execute "!chmod a
 " Highlight tabs on python scripts
 au FileType python syn match pythonTAB '\t\+'
 au FileType python hi pythonTAB ctermbg=red
+
+" Enable pysmell plugin
+au FileType python setlocal omnifunc=pysmell#Complete
+
