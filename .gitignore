@@ -1,3 +1,4 @@
 *.swp
 *~
 vim/snipmate
+vim/.vim/.netrwhist
