@@ -88,15 +88,3 @@ map <Leader>v "+gP
 vnoremap <Leader>x "+ygvd
 vnoremap <Leader>c "+ygv
 
-" Set permissions for bash scripts
-au BufWritePost *.sh silent execute "!chmod a+x <afile>"
-" Automatically give executable permission to scripts starting with #!/bin/sh
-au BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | silent execute "!chmod a+x <afile>" | endif
-
-" Highlight tabs on python scripts
-au FileType python syn match pythonTAB '\t\+'
-au FileType python hi pythonTAB ctermbg=red
-
-" Enable pysmell plugin
-au FileType python setlocal omnifunc=pysmell#Complete
-
