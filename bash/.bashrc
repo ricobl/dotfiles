@@ -75,12 +75,20 @@ c_path=$cl_yellow
 c_git=$cl_green
 
 function git_branch {
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+	branch=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+    if [ -n "$branch" ]; then
+        tag=`git describe --exact-match --tags HEAD 2> /dev/null`
+        if [ -n "$tag" ]; then
+            echo "TAG $tag"
+            return
+        fi
+    fi
+    echo "$branch"
 }
 
 if [ "$color_prompt" = yes ]; then
     #PS1='\[\033[0;33m\][\u@\h \[\033[1;33m\]\W\[\033[0;33m\]] \[\033[0;00m\]'
-    PS1="${c_prompt}[${c_prompt}\u@\h ${c_path}\W${c_prompt}${c_git}\$(git_branch)${c_prompt}]${c_off} "
+    PS1="${c_prompt}[${c_prompt}\u@\h ${c_path}\W${c_prompt}${c_git} \$(git_branch)${c_prompt}]${c_off} "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
