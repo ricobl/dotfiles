@@ -11,6 +11,10 @@ au BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | silent execute "!chmod a
 " Enable pysmell plugin
 au FileType python setlocal omnifunc=pysmell#Complete
 
+" Set ruby filetype for lettuce/cucumber features and pyccuracy actions
+au! BufRead,BufNewFile *.feature setfiletype ruby
+au! BufRead,BufNewFile *acc setfiletype ruby
+
 " Markdown syntax
 augroup markdown
 	au! BufRead,BufNewFile *.mkd   setfiletype mkd
