@@ -32,8 +32,8 @@ set modeline
 " Hide pyc files and hidden files in file explorer
 let g:netrw_list_hide='^\.[^\.],\.pyc$'
 
-" Default indenting: hard-tabs, 4 spaces
-set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab autoindent
+" Default indenting: soft-tabs, 4 spaces
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent
 " Line numbering
 set nu
 " Incremental search
