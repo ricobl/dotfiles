@@ -16,8 +16,10 @@ vim "+helptags ~/.vim/doc" "+q"
 
 # Set git to use meld for diff
 git config --global diff.external ~/bin/git-meld.py
+git config --global merge.tool meld
 
 # Automatically track new branches
+git config --global push.default tracking
 git config --global branch.autosetupmerge true
 
 # Colored output
@@ -29,5 +31,3 @@ git config --global alias.ci commit
 git config --global alias.co checkout
 git config --global alias.br branch
 git config --global alias.lg "log --format='%Cgreen%h %Cred%cr %Creset%s %Cblue%cn'"
-git config --global push.default tracking
-git config --global merge.tool meld
