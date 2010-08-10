@@ -23,5 +23,5 @@ else
 fi
 
 # Search for files
-grep -Lr --include="$file_pattern" "$text_pattern" $path
+grep -iLr --include="$file_pattern" "$text_pattern" $path
 
