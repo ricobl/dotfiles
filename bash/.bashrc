@@ -129,6 +129,9 @@ fi
 export WORKON_HOME="$HOME/.virtualenvs"
 source "/usr/local/bin/virtualenvwrapper.sh"
 
+# Enable nose rednose plugin for colored output
+export NOSE_REDNOSE=1
+
 # Alias definitions.
 [ -f ~/.bash_aliases ] && . ~/.bash_aliases
 
