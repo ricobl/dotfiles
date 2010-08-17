@@ -13,3 +13,5 @@ alias git-boot='~/bin/git-boot.sh'
 alias runserver='~/bin/django-runserver.sh'
 # Supress gvim errors
 alias gvim='gvim 2> /dev/null'
+# Remove pyc
+alias rmpyc='find -iname "*.pyc" -delete'
