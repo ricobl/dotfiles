@@ -16,6 +16,8 @@ endif
 " 3 tabs: cycle
 set wildmode=longest,list,full
 set wildmenu
+" Disable file formats from wild-list
+set wildignore=*.pyc,*.gif,*.png,*.jpg,*.jpeg
 
 " Turn on filetype plugin
 filetype on
@@ -43,6 +45,8 @@ set lbr
 " Highlight the current line
 set cursorline
 
+" Keep some visible lines when scrolling
+set scrolloff=5
 " Scroll to the middle of the screen when searching
 nmap n nzz
 nmap N Nzz
