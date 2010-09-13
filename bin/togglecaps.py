@@ -6,19 +6,20 @@ from virtkey import virtkey
 
 CAPS = 66
 
+vk = virtkey()
 state_toggles = {
-    'on': 'lock_mod',
-    'off': 'unlock_mod',
+    'on': vk.lock_mod,
+    'off': vk.unlock_mod,
 }
 
 if len(sys.argv) <= 1:
     raise SystemExit
 
 state = sys.argv[1]
+
 if state not in state_toggles.keys():
     raise SystemExit
 
-vk = virtkey()
-toggle = getattr(vk, state_toggles[state])
+toggle = state_toggles[state]
 toggle(CAPS)
 
