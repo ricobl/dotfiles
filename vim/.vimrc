@@ -1,13 +1,17 @@
 " Change Leader key
 let mapleader=','
 
-" Change syntax highlight scheme for GUI
-" and set a dark background for console
+" Vim / Gvim settings
 if has('gui_running')
+    " Change syntax highlight scheme for GUI
 	colorscheme desert
 	set guioptions-=T  "remove toolbar
 else
+    " Set a dark background for console
 	set background=dark
+    " Set a low timeout for commands to
+    " avoid vim's lag on console
+	set ttimeoutlen=100
 endif
 
 " Enable bash-like completion
@@ -91,4 +95,10 @@ map <Leader>c V"+y
 map <Leader>v "+gP
 vnoremap <Leader>x "+ygvd
 vnoremap <Leader>c "+ygv
+
+" Disable caps when exiting insert-mode
+function! CapsOff()
+    :silent execute "!~/bin/togglecaps.py off > /dev/null 2>&1 &"
+endfunction
+autocmd InsertLeave * call CapsOff()
 
