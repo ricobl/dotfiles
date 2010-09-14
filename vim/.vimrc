@@ -1,5 +1,7 @@
 " Change Leader key
 let mapleader=','
+" Commands with ";"
+nnoremap ; :
 
 " Vim / Gvim settings
 if has('gui_running')
@@ -13,6 +15,10 @@ else
     " avoid vim's lag on console
 	set ttimeoutlen=100
 endif
+
+" Disable backup and swap files
+set nobackup
+set noswapfile
 
 " Enable bash-like completion
 " 1 tab: complete
