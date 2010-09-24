@@ -125,6 +125,8 @@ fi
 
 # Add user bin to the path
 [ -d  "$HOME/bin" ] && PATH="$PATH:$HOME/bin"
+# Add user opt bin to the path
+[ -d  "$HOME/opt/bin" ] && PATH="$PATH:$HOME/opt/bin"
 
 export WORKON_HOME="$HOME/.virtualenvs"
 source "/usr/local/bin/virtualenvwrapper.sh"
