@@ -14,8 +14,8 @@ do
     file_dir=`dirname $file`
     basename=`basename $file`
     # Enter the directory, rename and return
-    pushd "$file_dir"
+    pushd "$file_dir" > /dev/null
     mv "$basename" "$dt.$basename"
-    popd
+    popd > /dev/null
 done
 
