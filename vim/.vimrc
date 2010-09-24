@@ -3,6 +3,8 @@ let mapleader=','
 " Commands with ";"
 nnoremap ; :
 
+set nocompatible
+
 " Vim / Gvim settings
 if has('gui_running')
     " Change syntax highlight scheme for GUI
@@ -65,9 +67,6 @@ nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
 
-" Disable the keyword help and emit a warning about Caps Lock
-map K :echo "WARNING: CAPS ON"<CR>
-
 " Insert lines
 nmap <Leader>o o<ESC>
 nmap <Leader>O O<ESC>
@@ -102,9 +101,13 @@ map <Leader>v "+gP
 vnoremap <Leader>x "+ygvd
 vnoremap <Leader>c "+ygv
 
-" Disable caps when exiting insert-mode
+" Disable caps when leaving insert-mode
 function! CapsOff()
     :silent execute "!~/bin/togglecaps.py off > /dev/null 2>&1 &"
 endfunction
 autocmd InsertLeave * call CapsOff()
 
+" Use Esc instead of opening the help
+nnoremap <F1> <Esc>
+inoremap <F1> <Esc>
+vnoremap <F1> <Esc>
