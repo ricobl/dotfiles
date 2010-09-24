@@ -6,7 +6,7 @@
 DOTFILES=`dirname $0 | xargs readlink -f`
 
 [ ! -d ~/bin ] && ln -s "$DOTFILES/bin" ~/bin
-[ ! -f ~/.bash_aliases ] && ln -s "$DOTFILES/bash/.bash_aliases" ~/.bash_aliases
+[ ! -f ~/.bashaliases ] && ln -s "$DOTFILES/bash/.bashaliases" ~/.bashaliases
 [ ! -f ~/.bashrc ] && ln -s "$DOTFILES/bash/.bashrc" ~/.bashrc
 [ ! -f ~/.vimrc ] && ln -s "$DOTFILES/vim/.vimrc" ~/.vimrc
 [ ! -d ~/.vim ] && ln -s "$DOTFILES/vim/.vim" ~/.vim
@@ -15,8 +15,8 @@ DOTFILES=`dirname $0 | xargs readlink -f`
 vim "+helptags ~/.vim/doc" "+q"
 
 # Set git to use meld for diff
-git config --global diff.external ~/bin/git-meld.py
 git config --global merge.tool meld
+git config --global diff.tool meld
 
 # Automatically track new branches
 git config --global push.default tracking
