@@ -3,6 +3,9 @@ let mapleader=','
 " Commands with ";"
 nnoremap ; :
 
+" Set yankring dir
+let g:yankring_history_dir = expand('$HOME/.vim')
+
 set nocompatible
 
 " Vim / Gvim settings
@@ -66,6 +69,8 @@ nmap * *zz
 nmap # #zz
 nmap g* g*zz
 nmap g# g#zz
+" Leave cursor where it was
+set nostartofline
 
 " Insert lines
 nmap <Leader>o o<ESC>
