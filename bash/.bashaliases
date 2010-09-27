@@ -12,5 +12,7 @@ alias gvim='gvim 2> /dev/null'
 alias rmpyc='find -iname "*.pyc" -delete'
 # CD Django
 alias cddjango='cd `python -c "import django; print django.__file__.rsplit(\"/\", 1)[0]"`'
+# Go to last dir
+alias cdd='cd - '
 # xargs gvim
 alias xvim='xargs gvim'
