@@ -10,7 +10,12 @@ HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 # Append to the history file, don't overwrite it
 shopt -s histappend
 
-# Update the values of LINES and COLUMNS after commands
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
