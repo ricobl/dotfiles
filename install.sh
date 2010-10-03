@@ -14,6 +14,10 @@ DOTFILES=`dirname $0 | xargs readlink -f`
 # Updates vim help tags
 vim "+helptags ~/.vim/doc" "+q"
 
+# Set git user
+git config --global user.name "Enrico"
+git config --global user.email "rico.bl@gmail.com"
+
 # Set git to use meld for diff
 git config --global merge.tool meld
 git config --global diff.tool meld
