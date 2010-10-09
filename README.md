@@ -8,6 +8,6 @@
 
 ## Installation
 
-git clone git://github.com/ricobl/dotfiles.git
-dotfiles/install.sh
+    git clone git://github.com/ricobl/dotfiles.git
+    dotfiles/install.sh
 
