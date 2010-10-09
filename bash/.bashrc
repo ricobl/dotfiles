@@ -115,4 +115,3 @@ export NOSE_REDNOSE=1
 [ -f ~/.bashprofile ] && . ~/.bashprofile
 
 export PATH=~/opt/bin:${PATH}
-export PATH=~/opt/bin:${PATH}
