@@ -90,6 +90,9 @@ cab WQ wq
 cab Wq wq
 cab wQ wq
 
+" Make 'e' work like 'n' to open multiple files
+cab e n
+
 " Move lines up and down with Alt+J and Alt+k
 " From: http://vim.wikia.com/wiki/Moving_lines_up_or_down_in_a_file
 nnoremap <C-j> mz:m+<CR>`z==
