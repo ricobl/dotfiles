@@ -4,15 +4,13 @@
 # Usage:
 # prepend-date file1 [file2 ...]
 
-FILES="$@"
-
-for file in $FILES
+for file in "$@"
 do
     # Get file modification date
     dt=`date -r "$file" +%F`
     # Split file directory and basename
-    file_dir=`dirname $file`
-    basename=`basename $file`
+    file_dir=`dirname "$file"`
+    basename=`basename "$file"`
     # Enter the directory, rename and return
     pushd "$file_dir" > /dev/null
     mv "$basename" "$dt.$basename"
