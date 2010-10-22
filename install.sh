@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# Installs the dotfiles and helpers
+# Installs dotfiles and helpers
 
 # Get root
 DOTFILES=`dirname $0 | xargs readlink -f`
 
-[ ! -d ~/bin ] && ln -s "$DOTFILES/bin" ~/bin
-[ ! -f ~/.bashaliases ] && ln -s "$DOTFILES/bash/.bashaliases" ~/.bashaliases
-[ ! -f ~/.bashrc ] && ln -s "$DOTFILES/bash/.bashrc" ~/.bashrc
-[ ! -f ~/.vimrc ] && ln -s "$DOTFILES/vim/.vimrc" ~/.vimrc
-[ ! -d ~/.vim ] && ln -s "$DOTFILES/vim/.vim" ~/.vim
+[ ! -d ~/bin ] && ln -s "$DOTFILES/dotfiles/bin" ~/bin
+[ ! -f ~/.bashaliases ] && ln -s "$DOTFILES/dotfiles/.bashaliases" ~/.bashaliases
+[ ! -f ~/.bashrc ] && ln -s "$DOTFILES/dotfiles/.bashrc" ~/.bashrc
+[ ! -f ~/.vimrc ] && ln -s "$DOTFILES/dotfiles/.vimrc" ~/.vimrc
+[ ! -d ~/.vim ] && ln -s "$DOTFILES/dotfiles/.vim" ~/.vim
 
 # Updates vim help tags
 vim "+helptags ~/.vim/doc" "+q"
