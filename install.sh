@@ -5,7 +5,7 @@
 # Get root
 DOTFILES=`dirname $0 | xargs readlink -f`
 
-[ ! -d ~/bin ] && ln -s "$DOTFILES/dotfiles/bin" ~/bin
+[ ! -d ~/bin ] && ln -s "$DOTFILES/bin" ~/bin
 [ ! -f ~/.bashaliases ] && ln -s "$DOTFILES/dotfiles/.bashaliases" ~/.bashaliases
 [ ! -f ~/.bashrc ] && ln -s "$DOTFILES/dotfiles/.bashrc" ~/.bashrc
 [ ! -f ~/.vimrc ] && ln -s "$DOTFILES/dotfiles/.vimrc" ~/.vimrc
