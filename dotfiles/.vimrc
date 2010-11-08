@@ -21,6 +21,10 @@ else
 	set ttimeoutlen=100
 endif
 
+" Make status-line fade on inactive windows
+highlight StatusLine ctermfg=black ctermbg=green cterm=NONE
+highlight StatusLineNC ctermfg=black ctermbg=lightblue cterm=NONE
+
 " Disable backup and swap files
 set nobackup
 set noswapfile
@@ -71,6 +75,8 @@ nmap g* g*zz
 nmap g# g#zz
 " Leave cursor where it was
 set nostartofline
+" Make 0 work like ^, for US Keyboards
+map 0 ^
 
 " Insert lines
 nmap <Leader>o o<ESC>
