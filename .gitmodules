@@ -1,0 +1,36 @@
+[submodule "dotfiles/.vim/bundle/vim-javascript"]
+	path = dotfiles/.vim/bundle/vim-javascript
+	url = git://github.com/pangloss/vim-javascript.git
+[submodule "dotfiles/.vim/bundle/tcomment"]
+	path = dotfiles/.vim/bundle/tcomment
+	url = git://github.com/tomtom/tcomment_vim.git
+[submodule "dotfiles/.vim/bundle/L9"]
+	path = dotfiles/.vim/bundle/L9
+	url = git://github.com/vim-scripts/L9.git
+[submodule "dotfiles/.vim/bundle/snipmate"]
+	path = dotfiles/.vim/bundle/snipmate
+	url = git://github.com/msanders/snipmate.vim.git
+[submodule "dotfiles/.vim/bundle/surround"]
+	path = dotfiles/.vim/bundle/surround
+	url = git://github.com/vim-scripts/surround.vim.git
+[submodule "dotfiles/.vim/bundle/mru"]
+	path = dotfiles/.vim/bundle/mru
+	url = git://github.com/vim-scripts/mru.vim.git
+[submodule "dotfiles/.vim/bundle/LiteTabPage"]
+	path = dotfiles/.vim/bundle/LiteTabPage
+	url = git://github.com/vim-scripts/LiteTabPage.git
+[submodule "dotfiles/.vim/bundle/Markdown"]
+	path = dotfiles/.vim/bundle/Markdown
+	url = git://github.com/vim-scripts/Markdown.git
+[submodule "dotfiles/.vim/bundle/python-syntax"]
+	path = dotfiles/.vim/bundle/python-syntax
+	url = git://github.com/vim-scripts/python.vim--Vasiliev.git
+[submodule "dotfiles/.vim/bundle/pyflakes"]
+	path = dotfiles/.vim/bundle/pyflakes
+	url = git://github.com/mitechie/pyflakes-pathogen.git
+[submodule "dotfiles/.vim/bundle/FuzzyFinder"]
+	path = dotfiles/.vim/bundle/FuzzyFinder
+	url = git://github.com/vim-scripts/FuzzyFinder.git
+[submodule "dotfiles/.vim/bundle/repeat"]
+	path = dotfiles/.vim/bundle/repeat
+	url = git://github.com/vim-scripts/repeat.vim.git
