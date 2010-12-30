@@ -13,6 +13,10 @@ DOTFILES=`dirname $0 | xargs readlink -f`
 # Updates vim help tags
 vim "+helptags ~/.vim/doc" "+q"
 
+# Initialize and update submodules (for vim plugins)
+git submodule init
+git submodule update
+
 # Set git user
 git config --global user.name "Enrico"
 git config --global user.email "rico.bl@gmail.com"
