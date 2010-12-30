@@ -104,7 +104,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 	# Load fabfile completion
     . ~/bin/fab_bash_completion
+
+    # Enable pip completion
+    eval "`pip completion --bash`"
 fi
+
 
 # Add user bin to the path
 [ -d  "$HOME/bin" ] && PATH="$PATH:$HOME/bin"
@@ -113,6 +117,10 @@ fi
 
 export WORKON_HOME="$HOME/.virtualenvs"
 source "/usr/local/bin/virtualenvwrapper.sh"
+
+# Pip options for virtualenv
+export PIP_RESPECT_VIRTUALENV=true
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
 
 # Enable nose rednose plugin for colored output
 export NOSE_REDNOSE=1
@@ -124,3 +132,4 @@ export NOSE_REDNOSE=1
 [ -f ~/.bashprofile ] && . ~/.bashprofile
 
 export PATH=~/opt/bin:${PATH}
+
