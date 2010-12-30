@@ -28,6 +28,6 @@
 [submodule "dotfiles/.vim/bundle/repeat"]
 	path = dotfiles/.vim/bundle/repeat
 	url = git://github.com/vim-scripts/repeat.vim.git
-[submodule "dotfiles/.vim/bundle/pyflakes"]
-	path = dotfiles/.vim/bundle/pyflakes
+[submodule "dotfiles/.vim/bundle/pyflakes-pathogen"]
+	path = dotfiles/.vim/bundle/pyflakes-pathogen
 	url = git://github.com/mitechie/pyflakes-pathogen.git
