@@ -16,21 +16,18 @@
 [submodule "dotfiles/.vim/bundle/mru"]
 	path = dotfiles/.vim/bundle/mru
 	url = git://github.com/vim-scripts/mru.vim.git
-[submodule "dotfiles/.vim/bundle/LiteTabPage"]
-	path = dotfiles/.vim/bundle/LiteTabPage
-	url = git://github.com/vim-scripts/LiteTabPage.git
 [submodule "dotfiles/.vim/bundle/Markdown"]
 	path = dotfiles/.vim/bundle/Markdown
 	url = git://github.com/vim-scripts/Markdown.git
 [submodule "dotfiles/.vim/bundle/python-syntax"]
 	path = dotfiles/.vim/bundle/python-syntax
 	url = git://github.com/vim-scripts/python.vim--Vasiliev.git
-[submodule "dotfiles/.vim/bundle/pyflakes"]
-	path = dotfiles/.vim/bundle/pyflakes
-	url = git://github.com/mitechie/pyflakes-pathogen.git
 [submodule "dotfiles/.vim/bundle/FuzzyFinder"]
 	path = dotfiles/.vim/bundle/FuzzyFinder
 	url = git://github.com/vim-scripts/FuzzyFinder.git
 [submodule "dotfiles/.vim/bundle/repeat"]
 	path = dotfiles/.vim/bundle/repeat
 	url = git://github.com/vim-scripts/repeat.vim.git
+[submodule "dotfiles/.vim/bundle/pyflakes"]
+	path = dotfiles/.vim/bundle/pyflakes
+	url = git://github.com/mitechie/pyflakes-pathogen.git
