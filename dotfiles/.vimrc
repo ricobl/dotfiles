@@ -1,68 +1,95 @@
-" Change Leader key
-let mapleader=','
-" Commands with ";"
-nnoremap ; :
+" PLUGINS
 
-" Set yankring dir
-let g:yankring_history_dir = expand('$HOME/.vim')
+" Use custom snippets dir
+let snippets_dir = substitute(globpath(&rtp, 'snippets/'), "\n", ',', 'g')
 
-set nocompatible
+" Disable filetype before enabling pathogen to allow ftplugins to work
+" https://github.com/tpope/vim-pathogen/issues/closed/#issue/2
+filetype off
+
+" Enable pathogen
+call pathogen#runtime_append_all_bundles()
+
+
+" FILETYPES
+
+" Turn on filetype plugin
+filetype plugin on
+filetype indent on
+
+" Make all HTML files behave like Django templates
+" (vim's auto-detection fails sometimes)
+autocmd BufRead,BufNewFile *.html set filetype=html.htmldjango
+
+" Enable python+django snippets
+autocmd FileType python set ft=python.django
+
+" Automatically give executable permission to scripts starting with #!/bin/sh
+au BufWritePost *.sh silent execute "!chmod a+x <afile>"
+au BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | silent execute "!chmod a+x <afile>" | endif
+
+" Set ruby filetype for lettuce/cucumber features and pyccuracy actions
+au! BufRead,BufNewFile *.feature setfiletype ruby
+au! BufRead,BufNewFile *acc setfiletype ruby
+
+" Disable caps when leaving insert-mode
+function! CapsOff()
+    :silent execute "!~/bin/togglecaps.py off > /dev/null 2>&1 &"
+endfunction
+autocmd InsertLeave * call CapsOff()
+
+
+" COLORS / UI
+
+" Make status-line fade on inactive windows
+highlight StatusLine ctermfg=black ctermbg=green cterm=NONE
+highlight StatusLineNC ctermfg=black ctermbg=lightblue cterm=NONE
 
 " Vim / Gvim settings
 if has('gui_running')
     " Change syntax highlight scheme for GUI
 	colorscheme desert
 	set guioptions-=T  "remove toolbar
+    " Show lines with errors using pyflakes
+    highlight SpellBad term=underline gui=undercurl guisp=Orange 
 else
     " Set a dark background for console
 	set background=dark
     " Set a low timeout for commands to
-    " avoid vim's lag on console
+    " avoid lag on console
 	set ttimeoutlen=100
 endif
 
-" Make status-line fade on inactive windows
-highlight StatusLine ctermfg=black ctermbg=green cterm=NONE
-highlight StatusLineNC ctermfg=black ctermbg=lightblue cterm=NONE
+
+" OPTIONS
 
 " Disable backup and swap files
-set nobackup
-set noswapfile
-
-" Enable bash-like completion
-" 1 tab: complete
-" 2 tabs: show list
-" 3 tabs: cycle
-set wildmode=longest,list,full
-set wildmenu
-" Disable file formats from wild-list
-set wildignore=*.pyc,*.gif,*.png,*.jpg,*.jpeg
-
-" Turn on filetype plugin
-filetype on
-filetype plugin on
-filetype indent on
-" Enable Django python snippets
-autocmd FileType python set ft=python.django
-" Enable snippets for Django HTML templates
-au BufRead,BufNewFile *.html set filetype=html.htmldjango
-
+set nobackup noswapfile
 " Enable modelines
 set modeline
 
+" Enable bash-like completion: complete, show list, cycle
+set wildmenu wildmode=longest,list,full 
+" Disable file formats from wild-list
+set wildignore=*.pyc,*.gif,*.png,*.jpg,*.jpeg
 " Hide pyc files and hidden files in file explorer
 let g:netrw_list_hide='^\.[^\.],\.pyc$'
 
 " Default indenting: soft-tabs, 4 spaces
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent
-" Line numbering
-set nu
-" Incremental search
-set incsearch
-" Wrap at words
-set lbr
-" Highlight the current line
-set cursorline
+" Line numbers, incremental search, highlight current line, word-wrap
+set number incsearch cursorline linebreak
+
+" Setup whitespace
+set listchars=tab:»·,trail:·,eol:¶
+
+
+" Shortcuts
+
+" Change Leader key
+let mapleader=','
+" Commands with ";"
+nnoremap ; :
 
 " Keep some visible lines when scrolling
 set scrolloff=5
@@ -75,10 +102,10 @@ nmap g* g*zz
 nmap g# g#zz
 " Leave cursor where it was
 set nostartofline
-" Make 0 work like ^, for US Keyboards
+" Make 0 work like ^, easier on US Keyboards
 map 0 ^
 
-" Insert lines
+" Insert lines and go back to normal mode
 nmap <Leader>o o<ESC>
 nmap <Leader>O O<ESC>
 
@@ -86,18 +113,12 @@ nmap <Leader>O O<ESC>
 nnoremap <C-Tab> :bnext<CR>
 nnoremap <C-S-Tab> :bprevious<CR>
 
-" Setup whitespace
-set listchars=tab:»·,trail:·,eol:¶
-
-" Uppercase commands shortcuts
+" Uppercase common commands
 cab W w
 cab Q q
 cab WQ wq
 cab Wq wq
 cab wQ wq
-
-" Make 'e' work like 'n' to open multiple files
-cab e n
 
 " Move lines up and down with Alt+J and Alt+k
 " From: http://vim.wikia.com/wiki/Moving_lines_up_or_down_in_a_file
@@ -115,13 +136,8 @@ map <Leader>v "+gP
 vnoremap <Leader>x "+ygvd
 vnoremap <Leader>c "+ygv
 
-" Disable caps when leaving insert-mode
-function! CapsOff()
-    :silent execute "!~/bin/togglecaps.py off > /dev/null 2>&1 &"
-endfunction
-autocmd InsertLeave * call CapsOff()
-
 " Use Esc instead of opening the help
 nnoremap <F1> <Esc>
 inoremap <F1> <Esc>
 vnoremap <F1> <Esc>
+
