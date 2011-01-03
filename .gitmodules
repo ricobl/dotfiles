@@ -31,3 +31,6 @@
 [submodule "dotfiles/.vim/bundle/pyflakes"]
 	path = dotfiles/.vim/bundle/pyflakes
 	url = git://github.com/mitechie/pyflakes-pathogen.git
+[submodule "dotfiles/.vim/bundle/xmledit"]
+	path = dotfiles/.vim/bundle/xmledit
+	url = git://github.com/sukima/xmledit.git
