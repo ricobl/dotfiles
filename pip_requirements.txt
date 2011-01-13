@@ -6,9 +6,6 @@ ipython
 lxml
 nose
 rednose
-numpy
-paramiko
 pep8
-pexpect
 virtualenv
 virtualenvwrapper
