@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Git, vim, meld, pidgin, easy_install, etc...
-sudo apt-get install -y git git-core vim-gnome meld python-pip gnome-gmail-notifier
-sudo apt-get install -y cython python-dev libxml2-dev libxslt1-dev
+sudo apt-get install -y git-core git-gui vim-gnome meld python-setuptools gnome-gmail-notifier compiz-gnome
+sudo apt-get install -y cython python-dev libxml2-dev libxslt1-dev libmysqlclient-dev
 
 # Install MS Fonts and reload
 sudo apt-get install -y msttcorefonts 
@@ -28,6 +28,7 @@ if [ ! -d ~/projects/dotfiles ]; then
 fi
 
 # Pip / Virtualenv / Fabric / ...
+sudo easy_install pip
 sudo pip install -r projects/dotfiles/pip_requirements.txt
 mkdir -p ~/.virtualenvs
 
