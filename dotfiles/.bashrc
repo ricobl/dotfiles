@@ -106,7 +106,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . ~/bin/fab_bash_completion
 
     # Enable pip completion
-    eval "`pip completion --bash`"
+    [[ -n `which pip` ]] && eval "`pip completion --bash`"
 fi
 
 
@@ -116,11 +116,13 @@ fi
 [ -d  "$HOME/opt/bin" ] && PATH="$PATH:$HOME/opt/bin"
 
 # Virtualenvs
-export WORKON_HOME="$HOME/.virtualenvs"
-source "/usr/local/bin/virtualenvwrapper.sh"
-# Pip options for virtualenv
-export PIP_RESPECT_VIRTUALENV=true
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
+if [[ -f '/usr/local/bin/virtualenvwrapper.sh' ]]; then
+    export WORKON_HOME="$HOME/.virtualenvs"
+    source "/usr/local/bin/virtualenvwrapper.sh"
+    # Pip options for virtualenv
+    export PIP_RESPECT_VIRTUALENV=true
+    export PIP_VIRTUALENV_BASE=$WORKON_HOME
+fi
 
 # Enable nose rednose plugin for colored output
 export NOSE_REDNOSE=1

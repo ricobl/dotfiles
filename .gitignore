@@ -1,6 +1,6 @@
 *.pyc
 *.swp
 *~
-.vim/.netrwhist
+dotfiles/.vim/.netrwhist
 vim/snipmate
 yankring_history_v2.txt
