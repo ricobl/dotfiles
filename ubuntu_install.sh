@@ -13,9 +13,11 @@ sudo apt-get install -y nautilus-open-terminal
 nautilus -q
 
 # Google Chrome
-wget https://dl-ssl.google.com/linux/direct/google-chrome-stable_current_i386.deb
-sudo dpkg -i google-chrome-stable_current_i386.deb
-rm google-chrome-stable_current_i386.deb
+if [[ -z `which google-chrome` ]]; then
+    wget https://dl-ssl.google.com/linux/direct/google-chrome-stable_current_i386.deb
+    sudo dpkg -i google-chrome-stable_current_i386.deb
+    rm google-chrome-stable_current_i386.deb
+fi
 
 # Install dotfiles
 if [ ! -d ~/projects/dotfiles ]; then
@@ -32,12 +34,12 @@ sudo easy_install pip
 sudo pip install -r projects/dotfiles/pip_requirements.txt
 mkdir -p ~/.virtualenvs
 
-# Codecs
-sudo wget --output-document=/etc/apt/sources.list.d/medibuntu.list http://www.medibuntu.org/sources.list.d/$(lsb_release -cs).list && sudo apt-get --quiet update && sudo apt-get --yes --quiet --allow-unauthenticated install medibuntu-keyring && sudo apt-get --quiet update
-sudo apt-get install -y w32codecs libdvdcss2 ubuntu-restricted-extras
-
-# JDownloader
+# Codecs and JDownloader repositories
 sudo add-apt-repository ppa:jd-team/jdownloader
+sudo wget --output-document=/etc/apt/sources.list.d/medibuntu.list http://www.medibuntu.org/sources.list.d/$(lsb_release -cs).list && sudo apt-get --quiet update && sudo apt-get --yes --quiet --allow-unauthenticated install medibuntu-keyring && sudo apt-get --quiet update
+# Codecs
+sudo apt-get install -y w32codecs libdvdcss2 ubuntu-restricted-extras
+# JDownloader
 sudo apt-get install jdownloader
 
 # Fix sound not playing (repeat after every kernel update, unless it's fixed...)
