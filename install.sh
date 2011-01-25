@@ -38,3 +38,18 @@ git config --global alias.ci commit
 git config --global alias.co checkout
 git config --global alias.br branch
 git config --global alias.lg "log --format='%Cgreen%h %Cred%cr %Creset%s %Cblue%cn'"
+
+# Gnome Keyboard Shortcuts
+set_command_shortcut(){
+    gconftool-2 -t string -s "/apps/metacity/global_keybindings/run_command_$1" "$2"
+    gconftool-2 -t string -s "/apps/metacity/keybinding_commands/command_$1" "$3"
+}
+set_gnome_shortcut(){
+    gconftool-2 -t string -s "/apps/metacity/global_keybindings/$1" "$2"
+}
+
+set_command_shortcut '1' '<Mod4>v' "gvim '+cd ~'"
+set_command_shortcut '2' '<Mod4>p' "gnome-terminal -e 'ipython'"
+
+set_gnome_shortcut 'show_desktop' '<Mod4>m'
+
