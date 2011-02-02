@@ -8,6 +8,7 @@ DOTFILES=`dirname $0 | xargs readlink -f`
 [ ! -d ~/bin ] && ln -s "$DOTFILES/bin" ~/bin
 [ ! -f ~/.bashrc ] && ln -s "$DOTFILES/dotfiles/.bashrc" ~/.bashrc
 [ ! -f ~/.vimrc ] && ln -s "$DOTFILES/dotfiles/.vimrc" ~/.vimrc
+[ ! -f ~/.ipython ] && ln -s "$DOTFILES/dotfiles/.ipython" ~/.ipython
 [ ! -d ~/.vim ] && ln -s "$DOTFILES/dotfiles/.vim" ~/.vim
 
 # Updates vim help tags
@@ -45,11 +46,11 @@ set_command_shortcut(){
     gconftool-2 -t string -s "/apps/metacity/keybinding_commands/command_$1" "$3"
 }
 set_gnome_shortcut(){
-    gconftool-2 -t string -s "/apps/metacity/global_keybindings/$1" "$2"
+    gconftool-2 -t string -s "/apps/metacity/$1" "$2"
 }
 
 set_command_shortcut '1' '<Mod4>v' "gvim '+cd ~'"
 set_command_shortcut '2' '<Mod4>p' "gnome-terminal -e 'ipython'"
 
-set_gnome_shortcut 'show_desktop' '<Mod4>m'
+set_gnome_shortcut 'global_keybindings/show_desktop' '<Mod4>m'
 
