@@ -4,3 +4,5 @@
 dotfiles/.vim/.netrwhist
 vim/snipmate
 yankring_history_v2.txt
+dotfiles/.ipython/db
+dotfiles/.ipython/history
