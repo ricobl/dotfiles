@@ -104,6 +104,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 	# Load fabfile completion
     . ~/bin/fab_bash_completion
+    . ~/bin/vagrant_bash_completion
 
     # Enable pip completion
     [[ -n `which pip` ]] && eval "`pip completion --bash`"
