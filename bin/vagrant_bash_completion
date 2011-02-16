@@ -18,6 +18,9 @@
 #	http://www.debian-administration.org/article/An_introduction_to_bash_completion_part_2
 # 
 
+# Get the list of available tasks, ignoring errors (missing or invalid vagrantfile)
+VAGRANT_OPTIONS=`vagrant help 2> /dev/null | grep '^ *vagrant' | sed 's/\(^ \+vagrant \)\(\w\+\).\+/\2/'`
+
 _vagrant_completion()
 {
 	local cur prev opts
@@ -26,11 +29,8 @@ _vagrant_completion()
 	cur="${COMP_WORDS[COMP_CWORD]}"
 	prev="${COMP_WORDS[COMP_CWORD-1]}"
 
-	# Get the list of available tasks, ignoring errors (missing or invalid vagrantfile)
-	# Removing the "Available commands" header and any empty line or spaces
-	opts=`vagrant help 2> /dev/null | grep '^ *vagrant' | sed 's/\(^ \+vagrant \)\(\w\+\).\+/\2/'`
-
-	COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+	COMPREPLY=( $(compgen -W "${VAGRANT_OPTIONS}" -- ${cur}) )
 	return 0
 }
+
 complete -F _vagrant_completion -o default vagrant
