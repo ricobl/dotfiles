@@ -104,6 +104,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 	# Load fabfile completion
     . ~/bin/fab_bash_completion
+    . ~/bin/vagrant_bash_completion
 
     # Enable pip completion
     [[ -n `which pip` ]] && eval "`pip completion --bash`"
@@ -136,8 +137,6 @@ alias go='gnome-open 2> /dev/null'
 alias git-boot='~/bin/git-boot.sh'
 # Django script to run dev server on local IP
 alias runserver='~/bin/django-runserver.sh'
-# Supress gvim errors
-alias gvim='gvim 2> /dev/null'
 # Remove pyc
 alias rmpyc='find -iname "*.pyc" -delete'
 # CD Django

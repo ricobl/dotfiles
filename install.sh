@@ -8,6 +8,7 @@ DOTFILES=`dirname $0 | xargs readlink -f`
 [ ! -d ~/bin ] && ln -s "$DOTFILES/bin" ~/bin
 [ ! -f ~/.bashrc ] && ln -s "$DOTFILES/dotfiles/.bashrc" ~/.bashrc
 [ ! -f ~/.vimrc ] && ln -s "$DOTFILES/dotfiles/.vimrc" ~/.vimrc
+[ ! -d ~/.ipython ] && ln -s "$DOTFILES/dotfiles/.ipython" ~/.ipython
 [ ! -d ~/.vim ] && ln -s "$DOTFILES/dotfiles/.vim" ~/.vim
 
 # Updates vim help tags
@@ -53,6 +54,7 @@ set_gnome_shortcut(){
 
 set_command_shortcut '1' '<Mod4>v' "gvim '+cd ~'"
 set_command_shortcut '2' '<Mod4>p' "gnome-terminal -e 'ipython'"
+set_command_shortcut '3' '<Mod4>b' "gnome-www-browser"
 
 set_gnome_shortcut 'show_desktop' '<Mod4>m'
 set_gnome_shortcut 'run_command_terminal' '<Mod4>t'
