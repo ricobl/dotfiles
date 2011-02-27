@@ -59,6 +59,13 @@ else
 	set ttimeoutlen=100
 endif
 
+" Setup whitespace
+"set listchars=tab:»·,trail:·,eol:¶
+set list
+set listchars=tab:▸\ ,eol:¬,trail:·
+hi NonText ctermfg=7 guifg=gray50 guibg=gray20
+hi SpecialKey ctermfg=7 guifg=gray50 guibg=gray20
+
 
 " OPTIONS
 
@@ -78,10 +85,6 @@ let g:netrw_list_hide='^\.[^\.],\.pyc$'
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent
 " Line numbers, incremental search, highlight current line, word-wrap
 set number incsearch cursorline linebreak
-
-" Setup whitespace
-set listchars=tab:»·,trail:·,eol:¶
-
 
 " Shortcuts
 
