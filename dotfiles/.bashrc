@@ -54,7 +54,7 @@ c_tag=`color 1 34`
 c_off=`color 0 00`
 
 function git_branch {
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
+    __git_ps1 " %s"
 }
 
 function git_tag {
