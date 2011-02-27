@@ -34,6 +34,9 @@ function! CapsOff()
 endfunction
 autocmd InsertLeave * call CapsOff()
 
+" Jump to last edited position
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
 
 " COLORS / UI
 
