@@ -24,10 +24,6 @@ autocmd BufRead,BufNewFile *.html set filetype=html.htmldjango
 " Enable python+django snippets
 autocmd FileType python set ft=python.django
 
-" Automatically give executable permission to scripts starting with #!/bin/sh
-au BufWritePost *.sh silent execute "!chmod a+x <afile>"
-au BufWritePost * if getline(1) =~ "^#!/bin/[a-z]*sh" | silent execute "!chmod a+x <afile>" | endif
-
 " Set ruby filetype for lettuce/cucumber features and pyccuracy actions
 au! BufRead,BufNewFile *.feature setfiletype ruby
 au! BufRead,BufNewFile *acc setfiletype ruby
