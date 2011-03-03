@@ -61,7 +61,6 @@ endif
 
 " Setup whitespace
 "set listchars=tab:»·,trail:·,eol:¶
-set list
 set listchars=tab:▸\ ,eol:¬,trail:·
 hi NonText ctermfg=7 guifg=gray50 guibg=gray20
 hi SpecialKey ctermfg=7 guifg=gray50 guibg=gray20
