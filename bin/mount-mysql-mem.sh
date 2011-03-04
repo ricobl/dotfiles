@@ -7,7 +7,7 @@ MOUNT_SIZE="100m"
 
 MYSQL_DIR="/var/lib/mysql"
 
-sudo /etc/init.d/mysql stop
+sudo service mysql stop
 
 # Cria mount em memória
 [ ! -d $MEM_DIR ] && sudo mkdir $MEM_DIR
@@ -25,5 +25,5 @@ sudo chown -R mysql:mysql $MEM_MYSQL_DIR
 
 # Atualiza apparmor e inicia mysql
 #sudo /etc/init.d/apparmor restart
-sudo /etc/init.d/mysql start
+sudo service mysql start
 
