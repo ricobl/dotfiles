@@ -34,3 +34,6 @@
 [submodule "dotfiles/.vim/bundle/xmledit"]
 	path = dotfiles/.vim/bundle/xmledit
 	url = git://github.com/sukima/xmledit.git
+[submodule "dotfiles/.vim/bundle/rope-omni"]
+	path = dotfiles/.vim/bundle/rope-omni
+	url = git://github.com/rygwdn/rope-omni.git
