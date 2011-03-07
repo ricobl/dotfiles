@@ -37,3 +37,6 @@
 [submodule "dotfiles/.vim/bundle/rope-omni"]
 	path = dotfiles/.vim/bundle/rope-omni
 	url = git://github.com/rygwdn/rope-omni.git
+[submodule "dotfiles/.vim/bundle/indent-object"]
+	path = dotfiles/.vim/bundle/indent-object
+	url = git://github.com/michaeljsmith/vim-indent-object.git
