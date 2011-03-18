@@ -40,3 +40,6 @@
 [submodule "dotfiles/.vim/bundle/indent-object"]
 	path = dotfiles/.vim/bundle/indent-object
 	url = git://github.com/michaeljsmith/vim-indent-object.git
+[submodule "dotfiles/.vim/bundle/bufkill"]
+	path = dotfiles/.vim/bundle/bufkill
+	url = git://github.com/vim-scripts/bufkill.vim.git
