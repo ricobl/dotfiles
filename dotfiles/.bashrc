@@ -139,8 +139,8 @@ alias git-boot='~/bin/git-boot.sh'
 alias runserver='~/bin/django-runserver.sh'
 # Remove pyc
 alias rmpyc='find -iname "*.pyc" -delete'
-# CD Django
-alias cddjango='cd `python -c "import django; print django.__file__.rsplit(\"/\", 1)[0]"`'
+# CD to python module path
+alias pycd='. ~/bin/pycd.sh'
 # xargs gvim
 alias xvim='xargs gvim'
 
