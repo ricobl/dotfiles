@@ -45,26 +45,27 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 highlight StatusLine ctermfg=black ctermbg=green cterm=NONE
 highlight StatusLineNC ctermfg=black ctermbg=lightblue cterm=NONE
 
+" Set a dark background
+set background=dark
+" Show lines with errors using pyflakes
+highlight SpellBad term=underline gui=undercurl guisp=Orange 
+    
 " Vim / Gvim settings
 if has('gui_running')
-    " Change syntax highlight scheme for GUI
-	colorscheme desert
-	set guioptions-=T  "remove toolbar
-    " Show lines with errors using pyflakes
-    highlight SpellBad term=underline gui=undercurl guisp=Orange 
+    " Change syntax highlight scheme
+    colorscheme solarized
+    " Remove toolbar
+	set guioptions-=T
 else
-    " Set a dark background for console
-	set background=dark
     " Set a low timeout for commands to
     " avoid lag on console
 	set ttimeoutlen=100
 endif
 
 " Setup whitespace
-"set listchars=tab:»·,trail:·,eol:¶
 set listchars=tab:▸\ ,eol:¬,trail:·
-hi NonText ctermfg=7 guifg=gray50 guibg=gray20
-hi SpecialKey ctermfg=7 guifg=gray50 guibg=gray20
+hi NonText ctermfg=7 guifg=gray50
+hi SpecialKey ctermfg=7 guifg=gray50
 
 
 " OPTIONS
