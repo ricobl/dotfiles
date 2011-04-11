@@ -25,7 +25,7 @@ for repo in `find -type d -name ".git"`
 do
     pushd "$repo/.." > /dev/null
         echo -e "${c_dir}`pwd`${c_off}"
-        git pull
+        git $*
     popd > /dev/null
 done
 
