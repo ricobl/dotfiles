@@ -2,7 +2,7 @@
 
 MEM_DIR="/mnt/ramfs"
 MEM_MYSQL_DIR="$MEM_DIR/mysql"
-FS_TYPE="ramfs"
+FS_TYPE="tmpfs"
 MOUNT_SIZE="100m"
 
 MYSQL_DIR="/var/lib/mysql"
