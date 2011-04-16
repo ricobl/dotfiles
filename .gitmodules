@@ -46,3 +46,6 @@
 [submodule "dotfiles/.vim/bundle/colors-solarized"]
 	path = dotfiles/.vim/bundle/colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "dotfiles/.vim/bundle/ReplaceWithRegister"]
+	path = dotfiles/.vim/bundle/ReplaceWithRegister
+	url = git://github.com/vim-scripts/ReplaceWithRegister.git
