@@ -1,3 +1,17 @@
+" VIM 7.3 FIXES AND SETUP
+
+if version >= 703
+    " Stop vim from complaining about split lines using \
+    set nocp
+    " Fixes backspace not working to dedent a line
+    set backspace=indent,eol,start
+    " Enable persistent undo
+    set undofile
+    set undodir=/tmp
+    " Color columns
+    set colorcolumn=80
+endif
+
 " PLUGINS
 
 " Use custom snippets dir
