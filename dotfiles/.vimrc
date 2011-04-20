@@ -21,6 +21,10 @@ let snippets_dir = substitute(globpath(&rtp, 'snippets/'), "\n", ',', 'g')
 " https://github.com/tpope/vim-pathogen/issues/closed/#issue/2
 filetype off
 
+" Ropevim auto-guess project
+let ropevim_guess_project=1
+let ropevim_vim_completion=1
+
 " Enable pathogen
 call pathogen#runtime_append_all_bundles()
 
