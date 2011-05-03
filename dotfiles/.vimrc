@@ -161,3 +161,6 @@ nnoremap <F1> <Esc>
 inoremap <F1> <Esc>
 vnoremap <F1> <Esc>
 
+" Rope shortcuts
+map <Leader>d :RopeGotoDefinition<CR>
+
