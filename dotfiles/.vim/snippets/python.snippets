@@ -28,7 +28,6 @@ snippet cl
 			${6}
 snippet class
 	class ${1:ClassName}(${2:object}):
-		"""${3:docstring for $1}"""
 		def __init__(self, ${4:arg}):
 			${5:super($1, self).__init__()}
 			self.$4 = $4
@@ -36,7 +35,6 @@ snippet class
 # New Function
 snippet def
 	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
-		"""${3:docstring for $1}"""
 		${4:pass}
 snippet deff
 	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
@@ -104,3 +102,12 @@ snippet pdb
 	import pdb; pdb.set_trace()
 snippet ipdb
 	import ipdb; ipdb.set_trace()
+# pymox
+snippet mox
+	mox = Mox()
+	try:
+		mox.ReplayAll()
+		${1:# code here}
+		mox.VerifyAll()
+	finally:
+		mox.UnsetStubs()
