@@ -41,6 +41,7 @@ autocmd BufRead,BufNewFile *.html set filetype=html.htmldjango
 
 " Enable python+django snippets
 autocmd FileType python set ft=python.django
+autocmd FileType python setlocal omnifunc=RopeCompleteFunc
 
 " Set ruby filetype for lettuce/cucumber features and pyccuracy actions
 au! BufRead,BufNewFile *.feature setfiletype ruby
