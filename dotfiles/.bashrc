@@ -64,7 +64,7 @@ function git_tag {
     echo " $tag"
 }
 
-PS1="${c_prompt}[\u@\h ${c_path}\W$c_branch\$(git_branch)$c_tag\$(git_tag)${c_prompt}]${c_off} "
+PS1="${c_prompt}[${c_path}\W$c_branch\$(git_branch)$c_tag\$(git_tag)${c_prompt}]${c_off} "
 
 unset color_prompt force_color_prompt
 unset c_prompt c_path c_branch c_tag c_off
