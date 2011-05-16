@@ -141,6 +141,8 @@ alias runserver='~/bin/django-runserver.sh'
 alias rmpyc='find -iname "*.pyc" -delete'
 # xargs gvim
 alias xvim='xargs gvim'
+# Simple HTTP Server
+alias simple-server='python -m SimpleHTTPServer'
 
 # Extra setup
 [ -f ~/.bashprofile ] && . ~/.bashprofile
