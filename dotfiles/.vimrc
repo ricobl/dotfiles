@@ -7,7 +7,7 @@ if version >= 703
     set backspace=indent,eol,start
     " Enable persistent undo
     set undofile
-    set undodir=/tmp
+    set undodir=~/.vim/undo
     " Color columns
     set colorcolumn=80
 endif
