@@ -31,6 +31,8 @@ call pathogen#runtime_append_all_bundles()
 
 " FILETYPES
 
+syntax on
+
 " Turn on filetype plugin
 filetype plugin on
 filetype indent on

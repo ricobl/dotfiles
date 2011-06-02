@@ -12,7 +12,7 @@
 # Setup
 glob="$1"
 path="$2"
-[ -z $path ] && path="./"
+[ -z $path ] && path="."
 
 if [ $# -eq 0 ]; then
 	echo "Usage: $0 glob_pattern [path]"
