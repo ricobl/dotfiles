@@ -104,6 +104,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 
+# Change paths as required for homebrew
+if [ `uname` == "Darwin" ]; then
+    PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+fi
+
 # Add user bin to the path
 [ -d  "$HOME/bin" ] && PATH="$PATH:$HOME/bin"
 # Add user opt bin to the path
@@ -113,6 +118,10 @@ fi
 if [[ -f '/usr/local/bin/virtualenvwrapper.sh' ]]; then
     export WORKON_HOME="$HOME/.virtualenvs"
     source "/usr/local/bin/virtualenvwrapper.sh"
+
+    if [ -n "$DEFAULT_VIRTUAL_ENV" ]; then
+        workon "$DEFAULT_VIRTUAL_ENV"
+    fi
     # Pip options for virtualenv
     export PIP_RESPECT_VIRTUALENV=true
     export PIP_VIRTUALENV_BASE=$WORKON_HOME
