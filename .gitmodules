@@ -43,3 +43,9 @@
 [submodule "dotfiles/.vim/bundle/ReplaceWithRegister"]
 	path = dotfiles/.vim/bundle/ReplaceWithRegister
 	url = git://github.com/vim-scripts/ReplaceWithRegister.git
+[submodule "dotfiles/.vim/bundle/text-object-left-and-right"]
+	path = dotfiles/.vim/bundle/text-object-left-and-right
+	url = git://github.com/vim-scripts/text-object-left-and-right.git
+[submodule "dotfiles/.vim/bundle/Auto-Pairs"]
+	path = dotfiles/.vim/bundle/Auto-Pairs
+	url = git://github.com/vim-scripts/Auto-Pairs.git
