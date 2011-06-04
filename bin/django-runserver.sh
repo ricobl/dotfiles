@@ -14,5 +14,5 @@ host="0.0.0.0:8000"
 [ "$1" == "--go" ] && sleep 1 && gnome-open "http://$host" &
 
 # Run the dev server
-find -iname "*.pyc" -delete
+find . -iname "*.pyc" -delete
 ./manage.py runserver "$host"

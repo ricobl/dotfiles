@@ -78,15 +78,8 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-
-    alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
+alias ls='ls -G'
+alias grep='grep --color=auto'
 
 # Colors for Man Pages
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
@@ -111,6 +104,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 
+# Change paths as required for homebrew
+if [ `uname` == "Darwin" ]; then
+    PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+fi
+
 # Add user bin to the path
 [ -d  "$HOME/bin" ] && PATH="$PATH:$HOME/bin"
 # Add user opt bin to the path
@@ -120,6 +118,10 @@ fi
 if [[ -f '/usr/local/bin/virtualenvwrapper.sh' ]]; then
     export WORKON_HOME="$HOME/.virtualenvs"
     source "/usr/local/bin/virtualenvwrapper.sh"
+
+    if [ -n "$DEFAULT_VIRTUAL_ENV" ]; then
+        workon "$DEFAULT_VIRTUAL_ENV"
+    fi
     # Pip options for virtualenv
     export PIP_RESPECT_VIRTUALENV=true
     export PIP_VIRTUALENV_BASE=$WORKON_HOME
@@ -138,7 +140,7 @@ alias git-boot='~/bin/git-boot.sh'
 # Django script to run dev server on local IP
 alias runserver='~/bin/django-runserver.sh'
 # Remove pyc
-alias rmpyc='find -iname "*.pyc" -delete'
+alias rmpyc='find . -iname "*.pyc" -delete'
 # xargs gvim
 alias xvim='xargs gvim'
 # Simple HTTP Server
