@@ -43,3 +43,6 @@
 [submodule "dotfiles/.vim/bundle/ReplaceWithRegister"]
 	path = dotfiles/.vim/bundle/ReplaceWithRegister
 	url = git://github.com/vim-scripts/ReplaceWithRegister.git
+[submodule "dotfiles/.vim/bundle/tagbar"]
+	path = dotfiles/.vim/bundle/tagbar
+	url = git://github.com/majutsushi/tagbar.git

@@ -141,10 +141,14 @@ alias git-boot='~/bin/git-boot.sh'
 alias runserver='~/bin/django-runserver.sh'
 # Remove pyc
 alias rmpyc='find . -iname "*.pyc" -delete'
-# xargs gvim
-alias xvim='xargs gvim'
 # Simple HTTP Server
 alias simple-server='python -m SimpleHTTPServer'
+# xargs gvim
+if [ `uname` == "Darwin" ]; then
+    alias xvim='xargs mvim'
+else
+    alias xvim='xargs gvim'
+fi
 
 # Extra setup
 [ -f ~/.bashprofile ] && . ~/.bashprofile

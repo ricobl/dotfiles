@@ -17,6 +17,9 @@ endif
 " Use custom snippets dir
 let snippets_dir = substitute(globpath(&rtp, 'snippets/'), "\n", ',', 'g')
 
+" Tagbar setup
+let g:tagbar_compact=1
+
 " Disable filetype before enabling pathogen to allow ftplugins to work
 " https://github.com/tpope/vim-pathogen/issues/closed/#issue/2
 filetype off
