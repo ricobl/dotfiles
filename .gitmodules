@@ -46,3 +46,9 @@
 [submodule "dotfiles/.vim/bundle/tagbar"]
 	path = dotfiles/.vim/bundle/tagbar
 	url = git://github.com/majutsushi/tagbar.git
+[submodule "dotfiles/.vim/bundle/text-object-left-and-right"]
+	path = dotfiles/.vim/bundle/text-object-left-and-right
+	url = git://github.com/vim-scripts/text-object-left-and-right.git
+[submodule "dotfiles/.vim/bundle/Auto-Pairs"]
+	path = dotfiles/.vim/bundle/Auto-Pairs
+	url = git://github.com/vim-scripts/Auto-Pairs.git

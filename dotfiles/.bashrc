@@ -78,7 +78,11 @@ xterm*|rxvt*)
     ;;
 esac
 
-alias ls='ls -G'
+if [ `uname` == "Darwin" ]; then
+    alias ls='ls -G'
+else
+    alias ls='ls --color=auto'
+fi
 alias grep='grep --color=auto'
 
 # Colors for Man Pages
@@ -102,7 +106,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     # Enable pip completion
     [[ -n `which pip` ]] && eval "`pip completion --bash`"
 fi
-
 
 # Change paths as required for homebrew
 if [ `uname` == "Darwin" ]; then
