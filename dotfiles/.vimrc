@@ -170,3 +170,5 @@ vnoremap <F1> <Esc>
 " Rope shortcuts
 map <Leader>d :RopeGotoDefinition<CR>
 
+map <Leader>f :e **/<C-r><C-f><CR>
+
