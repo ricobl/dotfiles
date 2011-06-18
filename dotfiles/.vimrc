@@ -12,6 +12,8 @@ if version >= 703
     set colorcolumn=80
 endif
 
+set nocompatible
+
 " PLUGINS
 
 " Use custom snippets dir
@@ -72,7 +74,13 @@ highlight StatusLineNC ctermfg=black ctermbg=lightblue cterm=NONE
 set background=dark
 " Show lines with errors using pyflakes
 highlight SpellBad term=underline gui=undercurl guisp=Orange 
-    
+
+" Increase font size
+let os = substitute(system('uname'), "\n", "", "")
+if os == "Darwin"
+    set guifont=Menlo\ Regular:h14
+endif
+
 " Vim / Gvim settings
 if has('gui_running')
     " Change syntax highlight scheme
