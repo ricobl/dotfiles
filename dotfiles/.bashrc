@@ -136,10 +136,6 @@ export NOSE_REDNOSE=1
 # ALIASES
 # Easy file search
 alias ff='~/bin/find-file.sh'
-# Shortcut to gnome-open (opens files and dirs)
-alias go='gnome-open 2> /dev/null'
-# Same for Mac
-alias open='gnome-open 2> /dev/null'
 # Git bootstrap
 alias git-boot='~/bin/git-boot.sh'
 # Django script to run dev server on local IP
@@ -155,6 +151,8 @@ if [ `uname` == "Darwin" ]; then
 else
     alias vim='gvim'
     alias xvim='xargs gvim'
+    # Same as Mac's open
+    alias open='gnome-open 2> /dev/null'
 fi
 
 # Extra setup
