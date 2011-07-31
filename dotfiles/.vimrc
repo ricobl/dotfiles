@@ -146,6 +146,12 @@ nmap <Leader>O O<ESC>
 " Buffer navigation (Ctrl+Tab / Ctrl+Shift+Tab)
 nnoremap <C-Tab> :bnext<CR>
 nnoremap <C-S-Tab> :bprevious<CR>
+nmap <SwipeLeft> :bprevious<CR>
+nmap <SwipeRight> :bnext<CR>
+
+" Use swipe to jump to BOF / EOF
+nmap <SwipeUp> gg
+nmap <SwipeDown> G
 
 " Uppercase common commands
 cab W w
