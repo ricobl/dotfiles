@@ -24,8 +24,8 @@ git submodule init
 git submodule update
 
 # Set git user
-git config --global user.name "Enrico"
-git config --global user.email "rico.bl@gmail.com"
+[ -z `git config --global user.name` ] && git config --global user.name "Enrico"
+[ -z `git config --global user.email` ] && git config --global user.email "rico.bl@gmail.com"
 
 # Configure diff / merge tool
 if [ `uname` == "Darwin" ]; then
