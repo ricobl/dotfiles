@@ -117,6 +117,9 @@ fi
 # Add user opt bin to the path
 [ -d  "$HOME/opt/bin" ] && PATH="$PATH:$HOME/opt/bin"
 
+# Enable django on the current dir
+export DJANGO_SETTINGS_MODULE=settings
+
 # Virtualenvs
 if [[ -f '/usr/local/bin/virtualenvwrapper.sh' ]]; then
     export WORKON_HOME="$HOME/.virtualenvs"
