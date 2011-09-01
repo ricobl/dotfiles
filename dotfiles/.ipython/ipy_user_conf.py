@@ -113,4 +113,6 @@ def execf(fname):
     """ Execute a file in user namespace """
     ip.ex('execfile("%s")' % os.path.expanduser(fname))
 
+execf('~/.ipython/activate_virtualenv.py')
+
 main()
