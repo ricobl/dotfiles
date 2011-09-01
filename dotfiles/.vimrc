@@ -33,6 +33,8 @@ let ropevim_vim_completion=1
 " Enable pathogen
 call pathogen#runtime_append_all_bundles()
 
+" Enable built-in matchit plugin
+source $VIMRUNTIME/macros/matchit.vim
 
 " FILETYPES
 
@@ -183,6 +185,7 @@ vnoremap <F1> <Esc>
 
 " Rope shortcuts
 map <Leader>d :RopeGotoDefinition<CR>
+map <Leader>g :RopeGenerateFunction<CR>
 
 map <Leader>f :e **/<C-r><C-f><CR>
 
