@@ -103,6 +103,9 @@ hi SpecialKey ctermfg=7 guifg=gray50
 
 " OPTIONS
 
+" Improve block selection by allowing selection of empty spaces
+set virtualedit+=block
+
 " Disable backup and swap files
 set nobackup noswapfile
 " Enable modelines
@@ -117,6 +120,8 @@ let g:netrw_list_hide='^\.[^\.],\.pyc$'
 
 " Default indenting: soft-tabs, 4 spaces
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent
+" Round indentation to be multiple of shiftwidth
+set shiftround
 " Line numbers, incremental search, highlight current line, word-wrap
 set number incsearch cursorline linebreak
 
