@@ -125,9 +125,14 @@ if [[ -f '/usr/local/bin/virtualenvwrapper.sh' ]]; then
     export WORKON_HOME="$HOME/.virtualenvs"
     source "/usr/local/bin/virtualenvwrapper.sh"
 
-    if [ -n "$DEFAULT_VIRTUAL_ENV" ]; then
+    # Activate latest virtualenv or a default one
+    # Based on: http://unfoldthat.com/2011/08/18/virtualenv-in-new-terminal-windows.html
+    if [ -e "$WORKON_HOME/last_venv" ]; then
+        workon `cat "$WORKON_HOME/last_venv"`
+    elif [ -n "$DEFAULT_VIRTUAL_ENV" ]; then
         workon "$DEFAULT_VIRTUAL_ENV"
     fi
+
     # Pip options for virtualenv
     export PIP_RESPECT_VIRTUALENV=true
     export PIP_VIRTUALENV_BASE=$WORKON_HOME
