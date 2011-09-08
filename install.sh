@@ -35,6 +35,8 @@ else
     git config --global merge.tool meld
     git config --global diff.tool meld
 fi
+# Disable ".orig" backups
+git config --global mergetool.keepBackup false
 
 # Automatically track new branches
 git config --global push.default tracking
