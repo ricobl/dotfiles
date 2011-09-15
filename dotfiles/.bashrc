@@ -94,19 +94,6 @@ export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-	# Load fabfile completion
-    . ~/bin/fab_bash_completion
-    . ~/bin/vagrant_bash_completion
-
-    # Enable pip completion
-    [[ -n `which pip` ]] && eval "`pip completion --bash`"
-fi
-
 # Change paths as required for homebrew
 if [ `uname` == "Darwin" ]; then
     PATH="/usr/local/bin:/usr/local/sbin:$PATH"
@@ -137,6 +124,13 @@ if [[ -f '/usr/local/bin/virtualenvwrapper.sh' ]]; then
     export PIP_RESPECT_VIRTUALENV=true
     export PIP_VIRTUALENV_BASE=$WORKON_HOME
 fi
+
+# Fabric, vagrant, django and pip completion
+. ~/bin/fab_bash_completion
+. ~/bin/vagrant_bash_completion
+. ~/bin/django_bash_completion
+[[ -n `which pip` ]] && eval "`pip completion --bash`"
+
 
 # Enable nose rednose plugin for colored output
 export NOSE_REDNOSE=1
