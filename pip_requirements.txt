@@ -9,3 +9,4 @@ rednose
 pep8
 virtualenv
 virtualenvwrapper
+ropevim
