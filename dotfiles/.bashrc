@@ -125,6 +125,11 @@ if [[ -f '/usr/local/bin/virtualenvwrapper.sh' ]]; then
     export PIP_VIRTUALENV_BASE=$WORKON_HOME
 fi
 
+# Enable bash completion
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
+
 # Fabric, vagrant, django and pip completion
 . ~/bin/fab_bash_completion
 . ~/bin/vagrant_bash_completion
