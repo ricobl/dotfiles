@@ -51,6 +51,12 @@ autocmd BufRead,BufNewFile *.html set filetype=html.htmldjango
 " Enable python+django snippets
 autocmd FileType python set ft=python.django
 autocmd FileType python setlocal omnifunc=RopeCompleteFunc
+" Disable preview window on auto-complete
+set cot-=preview
+" Close auto-complete preview window after exiting insert mode
+" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+
 
 " Set ruby filetype for lettuce/cucumber features and pyccuracy actions
 au! BufRead,BufNewFile *.feature setfiletype ruby
