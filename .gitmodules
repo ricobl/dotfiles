@@ -55,3 +55,6 @@
 [submodule "dotfiles/.vim/bundle/vim-fugitive"]
 	path = dotfiles/.vim/bundle/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
+[submodule "dotfiles/.vim/bundle/argtextobj.vim"]
+	path = dotfiles/.vim/bundle/argtextobj.vim
+	url = git://github.com/vim-scripts/argtextobj.vim.git
