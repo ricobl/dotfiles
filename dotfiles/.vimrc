@@ -30,11 +30,21 @@ filetype off
 let ropevim_guess_project=1
 let ropevim_vim_completion=1
 
+" Customize NERDTree
+let NERDTreeHijackNetrw=1
+
 " Enable pathogen
 call pathogen#runtime_append_all_bundles()
 
+" Customize NERDTree
+let NERDChristmasTree=1
+let NERDTreeHijackNetrw=1
+let NERDTreeMinimalUI=1
+let NERDTreeDirArrows=1
+
 " Enable built-in matchit plugin
 source $VIMRUNTIME/macros/matchit.vim
+
 
 " FILETYPES
 
@@ -198,5 +208,8 @@ vnoremap <F1> <Esc>
 map <Leader>d :RopeGotoDefinition<CR>
 map <Leader>g :RopeGenerateFunction<CR>
 
+" Open file under cursor (better than gf)
 map <Leader>f :e **/<C-r><C-f><CR>
 
+" Open NERDTree
+map <Leader>e :NERDTreeToggle<CR>

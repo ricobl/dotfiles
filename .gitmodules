@@ -58,3 +58,6 @@
 [submodule "dotfiles/.vim/bundle/argtextobj.vim"]
 	path = dotfiles/.vim/bundle/argtextobj.vim
 	url = git://github.com/vim-scripts/argtextobj.vim.git
+[submodule "dotfiles/.vim/bundle/nerdtree"]
+	path = dotfiles/.vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
