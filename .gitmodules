@@ -49,9 +49,6 @@
 [submodule "dotfiles/.vim/bundle/text-object-left-and-right"]
 	path = dotfiles/.vim/bundle/text-object-left-and-right
 	url = git://github.com/vim-scripts/text-object-left-and-right.git
-[submodule "dotfiles/.vim/bundle/Auto-Pairs"]
-	path = dotfiles/.vim/bundle/Auto-Pairs
-	url = git://github.com/vim-scripts/Auto-Pairs.git
 [submodule "dotfiles/.vim/bundle/vim-fugitive"]
 	path = dotfiles/.vim/bundle/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
