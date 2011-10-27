@@ -133,7 +133,6 @@ fi
 # Fabric, vagrant, django and pip completion
 . ~/bin/fab_bash_completion
 . ~/bin/vagrant_bash_completion
-. ~/bin/django_bash_completion
 [[ -n `which pip` ]] && eval "`pip completion --bash`"
 
 
