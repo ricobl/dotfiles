@@ -94,19 +94,6 @@ export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-	# Load fabfile completion
-    . ~/bin/fab_bash_completion
-    . ~/bin/vagrant_bash_completion
-
-    # Enable pip completion
-    [[ -n `which pip` ]] && eval "`pip completion --bash`"
-fi
-
 # Change paths as required for homebrew
 if [ `uname` == "Darwin" ]; then
     PATH="/usr/local/bin:/usr/local/sbin:$PATH"
@@ -117,19 +104,39 @@ fi
 # Add user opt bin to the path
 [ -d  "$HOME/opt/bin" ] && PATH="$PATH:$HOME/opt/bin"
 
+# Enable django on the current dir
+export DJANGO_SETTINGS_MODULE=settings
+
 # Virtualenvs
 if [[ -f '/usr/local/bin/virtualenvwrapper.sh' ]]; then
     export WORKON_HOME="$HOME/.virtualenvs"
     source "/usr/local/bin/virtualenvwrapper.sh"
 
-    if [ -n "$DEFAULT_VIRTUAL_ENV" ]; then
+    # Activate latest virtualenv or a default one
+    # Based on: http://unfoldthat.com/2011/08/18/virtualenv-in-new-terminal-windows.html
+    if [ -e "$WORKON_HOME/last_venv" ]; then
+        workon `cat "$WORKON_HOME/last_venv"`
+    elif [ -n "$DEFAULT_VIRTUAL_ENV" ]; then
         workon "$DEFAULT_VIRTUAL_ENV"
     fi
+
     # Pip options for virtualenv
     export PIP_RESPECT_VIRTUALENV=true
     export PIP_VIRTUALENV_BASE=$WORKON_HOME
 fi
 
+# Enable bash completion
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
+
+# Fabric, vagrant, django and pip completion
+. ~/bin/fab_bash_completion
+. ~/bin/vagrant_bash_completion
+[[ -n `which pip` ]] && eval "`pip completion --bash`"
+
+
+export IPYTHON_DIR="~/.ipython"
 # Enable nose rednose plugin for colored output
 export NOSE_REDNOSE=1
 

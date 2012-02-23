@@ -30,8 +30,20 @@ filetype off
 let ropevim_guess_project=1
 let ropevim_vim_completion=1
 
+" Customize NERDTree
+let NERDTreeHijackNetrw=1
+
 " Enable pathogen
 call pathogen#runtime_append_all_bundles()
+
+" Customize NERDTree
+let NERDChristmasTree=1
+let NERDTreeHijackNetrw=1
+let NERDTreeMinimalUI=1
+let NERDTreeDirArrows=1
+
+" Enable built-in matchit plugin
+source $VIMRUNTIME/macros/matchit.vim
 
 
 " FILETYPES
@@ -49,6 +61,12 @@ autocmd BufRead,BufNewFile *.html set filetype=html.htmldjango
 " Enable python+django snippets
 autocmd FileType python set ft=python.django
 autocmd FileType python setlocal omnifunc=RopeCompleteFunc
+" Disable preview window on auto-complete
+set cot-=preview
+" Close auto-complete preview window after exiting insert mode
+" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+
 
 " Set ruby filetype for lettuce/cucumber features and pyccuracy actions
 au! BufRead,BufNewFile *.feature setfiletype ruby
@@ -101,6 +119,9 @@ hi SpecialKey ctermfg=7 guifg=gray50
 
 " OPTIONS
 
+" Improve block selection by allowing selection of empty spaces
+set virtualedit+=block
+
 " Disable backup and swap files
 set nobackup noswapfile
 " Enable modelines
@@ -115,6 +136,8 @@ let g:netrw_list_hide='^\.[^\.],\.pyc$'
 
 " Default indenting: soft-tabs, 4 spaces
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent
+" Round indentation to be multiple of shiftwidth
+set shiftround
 " Line numbers, incremental search, highlight current line, word-wrap
 set number incsearch cursorline linebreak
 
@@ -183,6 +206,10 @@ vnoremap <F1> <Esc>
 
 " Rope shortcuts
 map <Leader>d :RopeGotoDefinition<CR>
+map <Leader>g :RopeGenerateFunction<CR>
 
+" Open file under cursor (better than gf)
 map <Leader>f :e **/<C-r><C-f><CR>
 
+" Open NERDTree
+map <Leader>e :NERDTreeToggle<CR>
