@@ -28,10 +28,11 @@ filetype off
 
 " Ropevim auto-guess project
 let ropevim_guess_project=1
+" Rope AutoComplete
 let ropevim_vim_completion=1
-
-" Customize NERDTree
-let NERDTreeHijackNetrw=1
+let ropevim_extended_complete = 1
+let g:ropevim_autoimport_modules = ["globocore.*", "os.*", "traceback", "django.*"]
+imap <c-space> <C-R>=RopeCodeAssistInsertMode()<CR>
 
 " Enable pathogen
 call pathogen#runtime_append_all_bundles()
@@ -41,6 +42,11 @@ let NERDChristmasTree=1
 let NERDTreeHijackNetrw=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
+
+" CtrlP plugin
+" Don't handle working dir to ignore navigation with NERDTree
+let g:ctrlp_working_path_mode = 0
+
 
 " Enable built-in matchit plugin
 source $VIMRUNTIME/macros/matchit.vim
@@ -160,17 +166,19 @@ nmap g# g#zz
 " Leave cursor where it was
 set nostartofline
 " Make 0 work like ^, easier on US Keyboards
-map 0 ^
+nmap 0 ^
+" Make D erase the rest of the line
+nnoremap D d$
 
 " Insert lines and go back to normal mode
 nmap <Leader>o o<ESC>
 nmap <Leader>O O<ESC>
 
 " Buffer navigation (Ctrl+Tab / Ctrl+Shift+Tab)
-nnoremap <C-Tab> :bnext<CR>
-nnoremap <C-S-Tab> :bprevious<CR>
-nmap <SwipeLeft> :bprevious<CR>
-nmap <SwipeRight> :bnext<CR>
+nnoremap <C-Tab> :tabnext<CR>
+nnoremap <C-S-Tab> :tabprevious<CR>
+nmap <SwipeLeft> :tabprevious<CR>
+nmap <SwipeRight> :tabnext<CR>
 
 " Use swipe to jump to BOF / EOF
 nmap <SwipeUp> gg
@@ -182,6 +190,10 @@ cab Q q
 cab WQ wq
 cab Wq wq
 cab wQ wq
+
+" Tabs
+cab t tabedit
+
 
 " Move lines up and down with Alt+J and Alt+k
 " From: http://vim.wikia.com/wiki/Moving_lines_up_or_down_in_a_file
