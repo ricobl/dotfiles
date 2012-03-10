@@ -146,6 +146,12 @@ set tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent
 set shiftround
 " Line numbers, incremental search, highlight current line, word-wrap
 set number incsearch cursorline linebreak
+" Smart case search
+set ignorecase
+set smartcase
+" Keep some visible lines when scrolling
+set scrolloff=5
+
 
 " Shortcuts
 
@@ -154,8 +160,6 @@ let mapleader=','
 " Commands with ";"
 nnoremap ; :
 
-" Keep some visible lines when scrolling
-set scrolloff=5
 " Scroll to the middle of the screen when searching
 nmap n nzz
 nmap N Nzz
