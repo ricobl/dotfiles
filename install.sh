@@ -23,9 +23,9 @@ vim "+helptags ~/.vim/doc" "+q"
 git submodule init
 git submodule update
 
-# Set git user
-[ -z `git config --global user.name` ] && git config --global user.name "Marcos Daniel Petry"
-[ -z `git config --global user.email` ] && git config --global user.email "marcospetry@gmail.com"
+
+[ -z 'git config --global user.name' ] && git config --global user.name "Petry"
+[ -z 'git config --global user.email' ] && git config --global user.email "marcospetry@gmail.com"
 
 # Configure diff / merge tool
 if [ `uname` == "Darwin" ]; then
