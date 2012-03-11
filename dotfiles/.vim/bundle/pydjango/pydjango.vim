@@ -1,7 +1,7 @@
 
 " Add the virtualenv's site-packages to vim path
 py << EOF
-import os.pat
+import os.path
 import sys
 import vim
 if os.environ['VIRTUAL_ENV']:
