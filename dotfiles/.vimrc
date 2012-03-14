@@ -197,6 +197,7 @@ cab wQ wq
 
 " Tabs
 cab t tabedit
+nmap <Leader>t :TagbarToggle<CR>
 
 
 " Move lines up and down with Alt+J and Alt+k
