@@ -43,6 +43,9 @@ let NERDTreeHijackNetrw=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 
+" Abbreviation for mru
+cab mru Mru
+
 
 " Enable built-in matchit plugin
 source $VIMRUNTIME/macros/matchit.vim
