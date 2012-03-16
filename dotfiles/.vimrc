@@ -43,10 +43,6 @@ let NERDTreeHijackNetrw=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 
-" CtrlP plugin
-" Don't handle working dir to ignore navigation with NERDTree
-let g:ctrlp_working_path_mode = 0
-
 
 " Enable built-in matchit plugin
 source $VIMRUNTIME/macros/matchit.vim
