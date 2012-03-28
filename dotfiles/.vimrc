@@ -21,6 +21,11 @@ let snippets_dir = substitute(globpath(&rtp, 'snippets/'), "\n", ',', 'g')
 
 " Tagbar setup
 let g:tagbar_compact=1
+" Tagbar uses the CursorHold event to update active tag
+" The event is triggered after 'updatetime' milliseconds
+" of user inactivity.
+" Decreasing the default to force quicker updates.
+set updatetime=300
 
 " Disable filetype before enabling pathogen to allow ftplugins to work
 " https://github.com/tpope/vim-pathogen/issues/closed/#issue/2
