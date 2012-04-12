@@ -126,6 +126,9 @@ set listchars=tab:▸\ ,eol:¬,trail:·
 hi NonText ctermfg=7 guifg=gray50
 hi SpecialKey ctermfg=7 guifg=gray50
 
+" Font
+let &guifont = substitute(&guifont,':h\zs\d\+', '\=eval(submatch(0)+2)', '')
+
 
 " OPTIONS
 
