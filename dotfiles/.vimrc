@@ -156,6 +156,10 @@ set number incsearch cursorline linebreak
 " Smart case search
 set ignorecase
 set smartcase
+" Disable smartcase for auto-completion
+" and enable for searching
+autocmd InsertEnter * set noic
+autocmd InsertLeave * set ic
 " Keep some visible lines when scrolling
 set scrolloff=5
 
