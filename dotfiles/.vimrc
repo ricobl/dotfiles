@@ -107,6 +107,8 @@ highlight SpellBad term=underline gui=undercurl guisp=Orange
 let os = substitute(system('uname'), "\n", "", "")
 if os == "Darwin"
     set guifont=Menlo\ Regular:h14
+else
+    set guifont=Ubuntu\ Mono\ Bold\ 14
 endif
 
 " Vim / Gvim settings
