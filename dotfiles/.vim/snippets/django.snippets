@@ -60,6 +60,18 @@ snippet form
 
 snippet model
 	class ${1:ModelName}(models.Model):
+		${2:name} = models.CharField('$2', max_length=${3:32})
+		slug = models.SlugField('slug', max_length=$3, unique=True)
+		${4}
+		class Meta:
+			verbose_name = '$1'
+			verbose_name_plural = '$1s'
+		
+		def __unicode__(self):
+			return '%s' % self.$2
+		
+snippet model_
+	class ${1:ModelName}(models.Model):
 		${2:name} = models.CharField(_('$2'), max_length=${3:32})
 		slug = models.SlugField(_('slug'), max_length=$3, unique=True)
 		${4}
