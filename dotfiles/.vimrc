@@ -237,7 +237,7 @@ map <Leader>d :RopeGotoDefinition<CR>
 map <Leader>g :RopeGenerateFunction<CR>
 
 " Open file under cursor (better than gf)
-map <Leader>f :e **/<C-r><C-f><CR>
+map <Leader>f :n **/<C-r><C-f><CR>:tab sball<CR>
 
 " Open NERDTree
 map <Leader>e :NERDTreeToggle<CR>
