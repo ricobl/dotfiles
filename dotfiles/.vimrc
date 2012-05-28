@@ -233,11 +233,16 @@ inoremap <F1> <Esc>
 vnoremap <F1> <Esc>
 
 " Rope shortcuts
-map <Leader>d :RopeGotoDefinition<CR>
+map <Leader>d :RopeGotoDefinition<CR>:tab sball<CR>:tabprev<CR>
 map <Leader>g :RopeGenerateFunction<CR>
 
 " Open file under cursor (better than gf)
-map <Leader>f :n **/<C-r><C-f><CR>:tab sball<CR>
+map <Leader>f :n **/<C-r><C-f><CR>:tab sball<CR>:tabprev<CR>
 
 " Open NERDTree
 map <Leader>e :NERDTreeToggle<CR>
+
+" Easy replace current word / selection
+nnoremap <Leader>/ :%s/<C-r><C-w>//g<Left><Left>
+vnoremap <Leader>/ y:%s/<C-r><C-">//g<Left><Left>
+
