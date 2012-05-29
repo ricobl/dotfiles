@@ -61,3 +61,6 @@
 [submodule "dotfiles/.vim/bundle/indentpython.vim"]
 	path = dotfiles/.vim/bundle/indentpython.vim
 	url = git://github.com/vim-scripts/indentpython.vim.git
+[submodule "dotfiles/.vim/bundle/vim-supertab"]
+	path = dotfiles/.vim/bundle/vim-supertab
+	url = git://github.com/tsaleh/vim-supertab.git
