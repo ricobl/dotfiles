@@ -36,8 +36,7 @@ let ropevim_guess_project=1
 " Rope AutoComplete
 let ropevim_vim_completion=1
 let ropevim_extended_complete = 1
-let g:ropevim_autoimport_modules = ["globocore.*", "os.*", "traceback", "django.*"]
-imap <c-space> <C-R>=RopeCodeAssistInsertMode()<CR>
+let g:ropevim_autoimport_modules = ["os.*", "django.*"]
 
 " Enable pathogen
 call pathogen#runtime_append_all_bundles()
@@ -192,6 +191,8 @@ nmap <Leader>O O<ESC>
 " Buffer navigation (Ctrl+Tab / Ctrl+Shift+Tab)
 nnoremap <C-Tab> :tabnext<CR>
 nnoremap <C-S-Tab> :tabprevious<CR>
+inoremap <C-Tab> :tabnext<CR>
+inoremap <C-S-Tab> :tabprevious<CR>
 nmap <SwipeLeft> :tabprevious<CR>
 nmap <SwipeRight> :tabnext<CR>
 
@@ -232,9 +233,13 @@ nnoremap <F1> <Esc>
 inoremap <F1> <Esc>
 vnoremap <F1> <Esc>
 
+" Easier auto-completion
+imap <c-space> <C-X><C-O>
+
 " Rope shortcuts
 map <Leader>d :RopeGotoDefinition<CR>:tab sball<CR>:tabprev<CR>
 map <Leader>g :RopeGenerateFunction<CR>
+map <Leader>a :RopeAutoImport<CR>
 
 " Open file under cursor (better than gf)
 map <Leader>f :n **/<C-r><C-f><CR>:tab sball<CR>:tabprev<CR>
