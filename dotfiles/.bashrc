@@ -120,6 +120,7 @@ if [[ -f '/usr/local/bin/virtualenvwrapper.sh' ]]; then
     # Pip options for virtualenv
     export PIP_RESPECT_VIRTUALENV=true
     export PIP_VIRTUALENV_BASE=$WORKON_HOME
+    export PIP_DOWNLOAD_CACHE="$HOME/.pip/cache"
 fi
 
 # Enable bash completion
