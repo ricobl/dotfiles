@@ -151,11 +151,11 @@ alias rmpyc='find . -iname "*.pyc" -delete'
 alias simple-server='python -m SimpleHTTPServer'
 # vim / xargs gvim
 if [ `uname` == "Darwin" ]; then
-    alias vim='mvim -p --remote-tab-silent'
-    alias xvim='xargs mvim -p --remote-tab-silent > /dev/null'
+    alias vim='mvim --remote-tab-silent'
+    alias xvim='xargs mvim --remote-tab-silent > /dev/null'
 else
-    alias vim='gvim -p --remote-tab-silent'
-    alias xvim='xargs gvim -p --remote-tab-silent > /dev/null'
+    alias vim='gvim --remote-tab-silent'
+    alias xvim='xargs gvim --remote-tab-silent > /dev/null'
     # Same as Mac's open
     alias open='gnome-open 2> /dev/null'
 fi
