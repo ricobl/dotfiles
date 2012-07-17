@@ -139,8 +139,6 @@ export IPYTHON_DIR="~/.ipython"
 export NOSE_REDNOSE=1
 
 # ALIASES
-# Easy file search
-alias ff='~/bin/find-file.sh'
 # Git bootstrap
 alias git-boot='~/bin/git-boot.sh'
 # Django script to run dev server on local IP
@@ -159,6 +157,12 @@ else
     # Same as Mac's open
     alias open='gnome-open 2> /dev/null'
 fi
+
+# EASY FILE SEARCH
+# Disable glob expansion for find-file (ff)
+# http://blog.edwards-research.com/2011/05/preventing-globbing/ 
+__ff(){ ~/bin/find-file.sh "$@"; set +f; }
+alias ff='set -f; __ff'
 
 # Extra setup
 [ -f ~/.bashprofile ] && . ~/.bashprofile

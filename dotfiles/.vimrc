@@ -237,6 +237,7 @@ vnoremap <F1> <Esc>
 " Rope shortcuts
 map <Leader>d :RopeGotoDefinition<CR>:tab sball<CR>:tabprev<CR>
 map <Leader>g :RopeGenerateFunction<CR>
+map <Leader>r :RopeRename<CR>
 
 " Open file under cursor (better than gf)
 map <Leader>f :n **/<C-r><C-f><CR>:tab sball<CR>:tabprev<CR>
