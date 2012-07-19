@@ -120,6 +120,7 @@ if [[ -f '/usr/local/bin/virtualenvwrapper.sh' ]]; then
     # Pip options for virtualenv
     export PIP_RESPECT_VIRTUALENV=true
     export PIP_VIRTUALENV_BASE=$WORKON_HOME
+    export PIP_DOWNLOAD_CACHE="$HOME/.pip/cache"
 fi
 
 # Enable bash completion
@@ -138,8 +139,6 @@ export IPYTHON_DIR="~/.ipython"
 export NOSE_REDNOSE=1
 
 # ALIASES
-# Easy file search
-alias ff='~/bin/find-file.sh'
 # Git bootstrap
 alias git-boot='~/bin/git-boot.sh'
 # Django script to run dev server on local IP
@@ -150,14 +149,20 @@ alias rmpyc='find . -iname "*.pyc" -delete'
 alias simple-server='python -m SimpleHTTPServer'
 # vim / xargs gvim
 if [ `uname` == "Darwin" ]; then
-    alias vim='mvim -p --remote-tab-silent'
-    alias xvim='xargs mvim -p --remote-tab-silent > /dev/null'
+    alias vim='mvim --remote-tab-silent'
+    alias xvim='xargs mvim --remote-tab-silent > /dev/null'
 else
-    alias vim='gvim -p --remote-tab-silent'
-    alias xvim='xargs gvim -p --remote-tab-silent > /dev/null'
+    alias vim='gvim --remote-tab-silent'
+    alias xvim='xargs gvim --remote-tab-silent > /dev/null'
     # Same as Mac's open
     alias open='gnome-open 2> /dev/null'
 fi
+
+# EASY FILE SEARCH
+# Disable glob expansion for find-file (ff)
+# http://blog.edwards-research.com/2011/05/preventing-globbing/ 
+__ff(){ ~/bin/find-file.sh "$@"; set +f; }
+alias ff='set -f; __ff'
 
 # Extra setup
 [ -f ~/.bashprofile ] && . ~/.bashprofile

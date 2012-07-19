@@ -1,4 +1,3 @@
-
 " VIM 7.3 FIXES AND SETUP
 
 if version >= 703
@@ -117,6 +116,8 @@ highlight SpellBad term=underline gui=undercurl guisp=Orange
 let os = substitute(system('uname'), "\n", "", "")
 if os == "Darwin"
     set guifont=Menlo\ Regular:h14
+else
+    set guifont=Ubuntu\ Mono\ Bold\ 14
 endif
 
 " Vim / Gvim settings
@@ -251,6 +252,7 @@ imap <c-space> <C-X><C-O>
 map <Leader>d :RopeGotoDefinition<CR>
 map <Leader>g :RopeGenerateFunction<CR>
 map <Leader>a :RopeAutoImport<CR>
+map <Leader>r :RopeRename<CR>
 imap <c-space> <C-R>=RopeCodeAssistInsertMode()<CR>
 
 " Open file under cursor (better than gf)
