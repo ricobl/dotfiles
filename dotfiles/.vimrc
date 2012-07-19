@@ -1,3 +1,4 @@
+
 " VIM 7.3 FIXES AND SETUP
 
 if version >= 703
@@ -33,6 +34,8 @@ filetype off
 
 " Ropevim auto-guess project
 let ropevim_guess_project=1
+" Open files in tabs with RopeGotoDefinition
+let g:ropevim_open_files_in_tabs=1
 " Rope AutoComplete
 let ropevim_vim_completion=1
 let ropevim_extended_complete = 1
@@ -68,7 +71,8 @@ filetype indent on
 autocmd BufRead,BufNewFile *.html set filetype=html.htmldjango
 
 " Enable python+django snippets
-autocmd FileType python set ft=python.django
+" autocmd FileType python set ft=python.django
+autocmd BufRead,BufNewFile *.py set filetype=python.django
 autocmd FileType python setlocal omnifunc=RopeCompleteFunc
 " Disable preview window on auto-complete
 set cot-=preview
@@ -96,6 +100,13 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " Make status-line fade on inactive windows
 highlight StatusLine ctermfg=black ctermbg=green cterm=NONE
 highlight StatusLineNC ctermfg=black ctermbg=lightblue cterm=NONE
+" Always show statusline
+set laststatus=2
+" Format status line (tagbar | line,col)
+set statusline=
+set statusline+=%{tagbar#currenttag('%s','','fs')}
+set statusline+=%=
+set statusline+=%l,%c
 
 " Set a dark background
 set background=dark
@@ -237,9 +248,10 @@ vnoremap <F1> <Esc>
 imap <c-space> <C-X><C-O>
 
 " Rope shortcuts
-map <Leader>d :RopeGotoDefinition<CR>:tab sball<CR>:tabprev<CR>
+map <Leader>d :RopeGotoDefinition<CR>
 map <Leader>g :RopeGenerateFunction<CR>
 map <Leader>a :RopeAutoImport<CR>
+imap <c-space> <C-R>=RopeCodeAssistInsertMode()<CR>
 
 " Open file under cursor (better than gf)
 map <Leader>f :n **/<C-r><C-f><CR>:tab sball<CR>:tabprev<CR>
