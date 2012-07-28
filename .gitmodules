@@ -64,3 +64,6 @@
 [submodule "dotfiles/.vim/bundle/vim-supertab"]
 	path = dotfiles/.vim/bundle/vim-supertab
 	url = git://github.com/tsaleh/vim-supertab.git
+[submodule "dotfiles/.vim/bundle/nginx.vim"]
+	path = dotfiles/.vim/bundle/nginx.vim
+	url = git://github.com/vim-scripts/nginx.vim.git
