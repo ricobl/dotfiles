@@ -20,4 +20,4 @@ if [ $# -eq 0 ]; then
 fi
 
 # Search for files
-ack -fg $glob "$path"
+ack -afg $glob "$path"
