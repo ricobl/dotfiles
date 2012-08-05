@@ -21,6 +21,7 @@ let snippets_dir = substitute(globpath(&rtp, 'snippets/'), "\n", ',', 'g')
 
 " Tagbar setup
 let g:tagbar_compact=1
+let g:tagbar_sort=0
 " Tagbar uses the CursorHold event to update active tag
 " The event is triggered after 'updatetime' milliseconds
 " of user inactivity.
