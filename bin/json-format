@@ -1,0 +1,15 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from __future__ import with_statement
+
+import sys
+import json
+
+with open(sys.argv[1]) as f:
+    original = f.read()
+
+data = json.loads(original)
+sys.stdout.write(json.dumps(data, indent=4))
+sys.stdout.write('\n')
+
