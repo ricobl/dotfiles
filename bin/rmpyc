@@ -1,0 +1,3 @@
+#!/bin/sh
+# vim: filetype=sh :
+find . -iname "*.pyc" -delete

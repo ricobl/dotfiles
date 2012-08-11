@@ -1,30 +1,14 @@
-# Based on Ubuntu's /etc/skel/.bashrc
-
-# If not running interactively, don't do anything
-[ -z "$PS1" ] && return
-
-# don't put duplicate lines in the history
-HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
-HISTCONTROL=ignoreboth
-
-# Append to the history file, don't overwrite it
-shopt -s histappend
+OS=`uname`
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
+HISTCONTROL=ignoredups
 
+# Append to the history file, don't overwrite it
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm|xterm-color) color_prompt=yes;;
-esac
+shopt -s histappend checkwinsize
 
 ##################
 # Code # Color   #
@@ -65,25 +49,9 @@ function git_tag {
 }
 
 PS1="${c_prompt}[${c_path}\W$c_branch\$(git_branch)$c_tag\$(git_tag)${c_prompt}]${c_off} "
+PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
 
-unset color_prompt force_color_prompt
 unset c_prompt c_path c_branch c_tag c_off
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
-
-if [ `uname` == "Darwin" ]; then
-    alias ls='ls -G'
-else
-    alias ls='ls --color=auto'
-fi
-alias grep='grep --color=auto'
 
 # Colors for Man Pages
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
@@ -93,20 +61,33 @@ export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
 export LESS_TERMCAP_so=$'\E[38;5;246m'    # begin standout-mode - info box
 export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
+# Pip + virtualenv
+export WORKON_HOME="$HOME/.virtualenvs"
+export PIP_RESPECT_VIRTUALENV=true
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+export PIP_DOWNLOAD_CACHE="$HOME/.pip/cache"
 
-# Change paths as required for homebrew
-if [ `uname` == "Darwin" ]; then
+if [ $OS == "Darwin" ]; then
+    VIM='mvim'
+    alias ls='ls -G'
+    # Change paths as required for homebrew
     PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+else
+    VIM='gvim'
+    alias ls='ls --color=auto'
+    # Same as Mac's open
+    alias open='gnome-open 2> /dev/null'
 fi
+
+alias grep='grep --color=auto'
+alias vim="$VIM --remote-tab-silent"
+alias xvim="xargs $VIM --remote-tab-silent > /dev/null"
 
 # Add user bin to the path
 [ -d  "$HOME/bin" ] && PATH="$PATH:$HOME/bin"
-# Add user opt bin to the path
-[ -d  "$HOME/opt/bin" ] && PATH="$PATH:$HOME/opt/bin"
 
 # Virtualenvs
 if [[ -f '/usr/local/bin/virtualenvwrapper.sh' ]]; then
-    export WORKON_HOME="$HOME/.virtualenvs"
     source "/usr/local/bin/virtualenvwrapper.sh"
 
     # Activate latest virtualenv or a default one
@@ -116,49 +97,20 @@ if [[ -f '/usr/local/bin/virtualenvwrapper.sh' ]]; then
     elif [ -n "$DEFAULT_VIRTUAL_ENV" ]; then
         workon "$DEFAULT_VIRTUAL_ENV"
     fi
-
-    # Pip options for virtualenv
-    export PIP_RESPECT_VIRTUALENV=true
-    export PIP_VIRTUALENV_BASE=$WORKON_HOME
-    export PIP_DOWNLOAD_CACHE="$HOME/.pip/cache"
 fi
 
 # Enable bash completion
-if [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-fi
+# . /etc/bash_completion
 
 # Fabric, vagrant, django and pip completion
 . ~/bin/fab_bash_completion
-. ~/bin/vagrant_bash_completion
 [[ -n `which pip` ]] && eval "`pip completion --bash`"
-
 
 export IPYTHON_DIR="~/.ipython"
 # Enable nose rednose plugin for colored output
 export NOSE_REDNOSE=1
 
-# ALIASES
-# Git bootstrap
-alias git-boot='~/bin/git-boot.sh'
-# Django script to run dev server on local IP
-alias runserver='~/bin/django-runserver.sh'
-# Remove pyc
-alias rmpyc='find . -iname "*.pyc" -delete'
-# Simple HTTP Server
-alias simple-server='python -m SimpleHTTPServer'
-# vim / xargs gvim
-if [ `uname` == "Darwin" ]; then
-    alias vim='mvim --remote-tab-silent'
-    alias xvim='xargs mvim --remote-tab-silent > /dev/null'
-else
-    alias vim='gvim --remote-tab-silent'
-    alias xvim='xargs gvim --remote-tab-silent > /dev/null'
-    # Same as Mac's open
-    alias open='gnome-open 2> /dev/null'
-fi
-
-# EASY FILE SEARCH
+# EASY FILE FIND
 # Disable glob expansion for find-file (ff)
 # http://blog.edwards-research.com/2011/05/preventing-globbing/ 
 __ff(){ ~/bin/find-file.sh "$@"; set +f; }

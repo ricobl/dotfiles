@@ -1,10 +1,6 @@
 #!/bin/sh
 
-# Program: find-file.sh
-# Version: 0.1
-# Date: 2010-08-02
-# Author: Enrico <rico.bl@gmail.com>
-# Notes: Recursivelly search for files following pattern.
+# Notes: Recursively search for files following pattern.
 # Usage:
 # find-file.sh "glob pattern"
 # find-file.sh "glob pattern" /path
