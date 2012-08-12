@@ -1,15 +1,13 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+#!/bin/sh
 
-from __future__ import with_statement
+# Adapted from:
+# https://github.com/mathiasbynens/dotfiles/blob/master/.functions
 
-import sys
-import json
+args="$*"
+[ $# -eq 0 ] && args='/dev/stdin'
 
-with open(sys.argv[1]) as f:
-    original = f.read()
-
-data = json.loads(original)
-sys.stdout.write(json.dumps(data, indent=4))
-sys.stdout.write('\n')
-
+if [ -t 1 ]; then
+    python -mjson.tool $args | pygmentize -l javascript
+else
+    python -mjson.tool $args
+fi
