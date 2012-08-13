@@ -1,5 +1,7 @@
 " VIM 7.3 FIXES AND SETUP
 
+let os = substitute(system('uname'), "\n", "", "")
+
 if version >= 703
     " Stop vim from complaining about split lines using \
     set nocp
@@ -28,6 +30,9 @@ let g:tagbar_sort=0
 " Decreasing the default to force quicker updates.
 set updatetime=300
 
+" Disable some patterns on MRU list
+let MRU_Exclude_Files='^COMMIT_EDITMSG$'
+
 " Disable filetype before enabling pathogen to allow ftplugins to work
 " https://github.com/tpope/vim-pathogen/issues/closed/#issue/2
 filetype off
@@ -42,7 +47,8 @@ let ropevim_extended_complete = 1
 let g:ropevim_autoimport_modules = ["os.*", "django.*"]
 
 " Enable pathogen
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
+call pathogen#helptags()
 
 " Customize NERDTree
 let NERDChristmasTree=1
@@ -53,6 +59,10 @@ let NERDTreeDirArrows=1
 " Abbreviation for mru
 cab mru Mru
 
+call Pl#Theme#RemoveSegment('fileformat')
+call Pl#Theme#RemoveSegment('fileencoding')
+call Pl#Theme#RemoveSegment('filetype')
+call Pl#Theme#RemoveSegment('scrollpercent')
 
 " Enable built-in matchit plugin
 source $VIMRUNTIME/macros/matchit.vim
@@ -89,7 +99,10 @@ au! BufRead,BufNewFile *acc setfiletype ruby
 function! CapsOff()
     :silent execute "!~/bin/togglecaps.py off > /dev/null 2>&1 &"
 endfunction
-autocmd InsertLeave * call CapsOff()
+
+if os != "Darwin"
+    autocmd InsertLeave * call CapsOff()
+endif
 
 " Jump to last edited position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -103,10 +116,10 @@ highlight StatusLineNC ctermfg=black ctermbg=lightblue cterm=NONE
 " Always show statusline
 set laststatus=2
 " Format status line (tagbar | line,col)
-set statusline=
-set statusline+=%{tagbar#currenttag('%s','','fs')}
-set statusline+=%=
-set statusline+=%l,%c
+" set statusline=
+" set statusline+=%{tagbar#currenttag('%s','','fs')}
+" set statusline+=%=
+" set statusline+=%l,%c
 
 " Set a dark background
 set background=dark
@@ -114,7 +127,6 @@ set background=dark
 highlight SpellBad term=underline gui=undercurl guisp=Orange 
 
 " Increase font size
-let os = substitute(system('uname'), "\n", "", "")
 if os == "Darwin"
     set guifont=Menlo\ Regular:h14
 else
@@ -266,3 +278,22 @@ map <Leader>e :NERDTreeToggle<CR>
 nnoremap <Leader>/ :%s/<C-r><C-w>//g<Left><Left>
 vnoremap <Leader>/ y:%s/<C-r><C-">//g<Left><Left>
 
+" Toggles the quickfix window. Adapted from:
+" http://vim.wikia.com/wiki/Toggle_to_open_or_close_the_quickfix_window
+command -bang -nargs=? QFix call QFixToggle(<bang>0)
+function! QFixToggle(forced)
+    if exists("g:qfix_win") && a:forced == 0
+        cclose
+    else
+        copen
+    endif
+endfunction
+
+" used to track the quickfix window
+augroup QFixToggle
+    autocmd!
+    autocmd BufWinEnter quickfix let g:qfix_win = bufnr("$")
+    autocmd BufWinLeave * if exists("g:qfix_win") && expand("<abuf>") == g:qfix_win | unlet! g:qfix_win | endif
+augroup END
+
+nmap <Leader>q :QFix<CR>

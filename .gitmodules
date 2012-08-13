@@ -67,3 +67,9 @@
 [submodule "dotfiles/.vim/bundle/nginx.vim"]
 	path = dotfiles/.vim/bundle/nginx.vim
 	url = git://github.com/vim-scripts/nginx.vim.git
+[submodule "dotfiles/.vim/bundle/template.vim"]
+	path = dotfiles/.vim/bundle/template.vim
+	url = git://github.com/vim-scripts/template.vim.git
+[submodule "dotfiles/.vim/bundle/vim-powerline"]
+	path = dotfiles/.vim/bundle/vim-powerline
+	url = git://github.com/Lokaltog/vim-powerline.git
