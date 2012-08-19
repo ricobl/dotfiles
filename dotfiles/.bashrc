@@ -102,7 +102,7 @@ if [[ -f '/usr/local/bin/virtualenvwrapper.sh' ]]; then
 fi
 
 # Enable bash completion
-# . /etc/bash_completion
+. /etc/bash_completion
 
 # Fabric, vagrant, django and pip completion
 . ~/bin/fab_bash_completion
