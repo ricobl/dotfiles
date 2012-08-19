@@ -1,9 +1,11 @@
 OS=`uname`
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
 HISTCONTROL=ignoredups
+# Make some commands not show up in history
+HISTIGNORE="ls:cd:cd -:pwd:exit"
+
 
 # Append to the history file, don't overwrite it
 # check the window size after each command and, if necessary,
@@ -115,6 +117,11 @@ export NOSE_REDNOSE=1
 # http://blog.edwards-research.com/2011/05/preventing-globbing/ 
 __ff(){ ~/bin/find-file.sh "$@"; set +f; }
 alias ff='set -f; __ff'
+
+function pycd {
+    module_dir="`python -c "import $1; print $1.__file__" | xargs dirname`"
+    \cd "$module_dir"
+}
 
 # Extra setup
 [ -f ~/.bashprofile ] && . ~/.bashprofile
