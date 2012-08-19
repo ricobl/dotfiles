@@ -59,11 +59,9 @@ let NERDTreeDirArrows=1
 " Abbreviation for mru
 cab mru Mru
 
-call Pl#Theme#RemoveSegment('fileformat')
-call Pl#Theme#RemoveSegment('fileencoding')
-call Pl#Theme#RemoveSegment('filetype')
-call Pl#Theme#RemoveSegment('scrollpercent')
 let g:Powerline_symbols = 'fancy'
+let g:Powerline_theme='custom'
+
 
 " Enable built-in matchit plugin
 source $VIMRUNTIME/macros/matchit.vim
