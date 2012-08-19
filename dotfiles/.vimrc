@@ -233,6 +233,8 @@ cab wQ wq
 cab t tabedit
 nmap <Leader>t :TagbarToggle<CR>
 
+" Toggle whitespace
+nmap <Leader>w :set list!<CR>
 
 " Move lines up and down with Alt+J and Alt+k
 " From: http://vim.wikia.com/wiki/Moving_lines_up_or_down_in_a_file
