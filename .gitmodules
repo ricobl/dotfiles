@@ -94,3 +94,6 @@
 	path = dotfiles/.vim/bundle/vim-powerline
 	url = git://github.com/Lokaltog/vim-powerline.git
 	ignore = untracked
+[submodule "dotfiles/.vim/bundle/vim-fugitive"]
+	path = dotfiles/.vim/bundle/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git
