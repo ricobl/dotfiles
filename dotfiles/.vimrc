@@ -135,6 +135,8 @@ if has('gui_running')
     colorscheme solarized
     " Remove toolbar
 	set guioptions-=T
+    " Maximize
+    set lines=999 columns=999
 else
     " Set a low timeout for commands to
     " avoid lag on console
