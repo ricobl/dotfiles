@@ -63,6 +63,7 @@ call Pl#Theme#RemoveSegment('fileformat')
 call Pl#Theme#RemoveSegment('fileencoding')
 call Pl#Theme#RemoveSegment('filetype')
 call Pl#Theme#RemoveSegment('scrollpercent')
+let g:Powerline_symbols = 'fancy'
 
 " Enable built-in matchit plugin
 source $VIMRUNTIME/macros/matchit.vim
@@ -128,9 +129,9 @@ highlight SpellBad term=underline gui=undercurl guisp=Orange
 
 " Increase font size
 if os == "Darwin"
-    set guifont=Menlo\ Regular:h14
+    set guifont=Menlo\ Regular\ for\ Powerline:h16
 else
-    set guifont=Ubuntu\ Mono\ Bold\ 14
+    set guifont=Ubuntu\ Mono\ Bold\ 16
 endif
 
 " Vim / Gvim settings
@@ -149,9 +150,6 @@ endif
 set listchars=tab:▸\ ,eol:¬,trail:·
 hi NonText ctermfg=7 guifg=gray50
 hi SpecialKey ctermfg=7 guifg=gray50
-
-" Font
-let &guifont = substitute(&guifont,':h\zs\d\+', '\=eval(submatch(0)+2)', '')
 
 
 " OPTIONS
