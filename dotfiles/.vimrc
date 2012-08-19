@@ -116,11 +116,6 @@ highlight StatusLine ctermfg=black ctermbg=green cterm=NONE
 highlight StatusLineNC ctermfg=black ctermbg=lightblue cterm=NONE
 " Always show statusline
 set laststatus=2
-" Format status line (tagbar | line,col)
-" set statusline=
-" set statusline+=%{tagbar#currenttag('%s','','fs')}
-" set statusline+=%=
-" set statusline+=%l,%c
 
 " Set a dark background
 set background=dark
