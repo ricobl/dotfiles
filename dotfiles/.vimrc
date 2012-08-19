@@ -203,6 +203,8 @@ set nostartofline
 nmap 0 ^
 " Make D erase the rest of the line
 nnoremap D d$
+" Make K work like k
+nnoremap K k
 
 " Insert lines and go back to normal mode
 nmap <Leader>o o<ESC>
