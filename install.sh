@@ -12,6 +12,7 @@ DOTFILES=`dirname $SCRIPT_PATH`
 
 [ ! -d ~/bin ] && ln -s "$DOTFILES/bin" ~/bin
 [ ! -f ~/.bashrc ] && ln -s "$DOTFILES/dotfiles/.bashrc" ~/.bashrc
+[ ! -f ~/.inputrc ] && ln -s "$DOTFILES/dotfiles/.inputrc" ~/.inputrc
 [ ! -f ~/.vimrc ] && ln -s "$DOTFILES/dotfiles/.vimrc" ~/.vimrc
 [ ! -d ~/.ipython ] && ln -s "$DOTFILES/dotfiles/.ipython" ~/.ipython
 [ ! -d ~/.vim ] && ln -s "$DOTFILES/dotfiles/.vim" ~/.vim

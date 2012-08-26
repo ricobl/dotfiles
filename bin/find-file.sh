@@ -15,5 +15,5 @@ if [ $# -eq 0 ]; then
 	return 2
 fi
 
-# Search for files
-ack -afg $glob "$path"
+# Search for files or return with no error
+ack -afg $glob "$path" || exit 0
