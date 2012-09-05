@@ -80,7 +80,7 @@ filetype indent on
 autocmd BufRead,BufNewFile *.html set filetype=html.htmldjango
 
 " Make Sass (scss) files behave like css
-autocmd BufRead,BufNewFile *.html set filetype=scss.css
+autocmd BufRead,BufNewFile *.scss set filetype=scss.css
 
 " Enable python+django snippets
 " autocmd FileType python set ft=python.django
