@@ -1,16 +1,12 @@
 #!/bin/sh
 
-# Program: find-file.sh
-# Version: 0.1
-# Date: 2010-08-02
-# Author: Enrico <rico.bl@gmail.com>
-# Notes: Recursivelly search for files following pattern.
+# Notes: Recursively search for files following pattern.
 # Usage:
 # find-file.sh "glob pattern"
 # find-file.sh "glob pattern" /path
 
 # Setup
-glob="$1"
+glob=`echo "$1" | sed 's/\*/.+/g'`
 path="$2"
 [ -z $path ] && path="."
 
@@ -19,6 +15,5 @@ if [ $# -eq 0 ]; then
 	return 2
 fi
 
-# Search for files
-find "$path" -iwholename "*$glob*"
-
+# Search for files or return with no error
+ack -afg $glob "$path" || exit 0

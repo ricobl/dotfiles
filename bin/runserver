@@ -11,8 +11,8 @@ host="0.0.0.0:8000"
 
 # If found the "go" argument
 # Wait 1 second to open the browser
-[ "$1" == "--go" ] && sleep 1 && gnome-open "http://$host" &
+[ "$1" == "--go" ] && sleep 1 && open "http://$host" &
 
 # Run the dev server
-find . -iname "*.pyc" -delete
+rmpyc
 ./manage.py runserver "$host"

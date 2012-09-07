@@ -1,5 +1,7 @@
 " VIM 7.3 FIXES AND SETUP
 
+let os = substitute(system('uname'), "\n", "", "")
+
 if version >= 703
     " Stop vim from complaining about split lines using \
     set nocp
@@ -21,6 +23,15 @@ let snippets_dir = substitute(globpath(&rtp, 'snippets/'), "\n", ',', 'g')
 
 " Tagbar setup
 let g:tagbar_compact=1
+let g:tagbar_sort=0
+" Tagbar uses the CursorHold event to update active tag
+" The event is triggered after 'updatetime' milliseconds
+" of user inactivity.
+" Decreasing the default to force quicker updates.
+set updatetime=300
+
+" Disable some patterns on MRU list
+let MRU_Exclude_Files='^COMMIT_EDITMSG$'
 
 " Disable filetype before enabling pathogen to allow ftplugins to work
 " https://github.com/tpope/vim-pathogen/issues/closed/#issue/2
@@ -28,14 +39,16 @@ filetype off
 
 " Ropevim auto-guess project
 let ropevim_guess_project=1
+" Open files in tabs with RopeGotoDefinition
+let g:ropevim_open_files_in_tabs=1
 " Rope AutoComplete
 let ropevim_vim_completion=1
 let ropevim_extended_complete = 1
-let g:ropevim_autoimport_modules = ["globocore.*", "os.*", "traceback", "django.*"]
-imap <c-space> <C-R>=RopeCodeAssistInsertMode()<CR>
+let g:ropevim_autoimport_modules = ["os.*", "django.*"]
 
 " Enable pathogen
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
+call pathogen#helptags()
 
 " Customize NERDTree
 let NERDChristmasTree=1
@@ -43,9 +56,11 @@ let NERDTreeHijackNetrw=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 
-" CtrlP plugin
-" Don't handle working dir to ignore navigation with NERDTree
-let g:ctrlp_working_path_mode = 0
+" Abbreviation for mru
+cab mru Mru
+
+let g:Powerline_symbols = 'fancy'
+let g:Powerline_theme='custom'
 
 
 " Enable built-in matchit plugin
@@ -64,8 +79,12 @@ filetype indent on
 " (vim's auto-detection fails sometimes)
 autocmd BufRead,BufNewFile *.html set filetype=html.htmldjango
 
+" Make Sass (scss) files behave like css
+autocmd BufRead,BufNewFile *.scss set filetype=scss.css
+
 " Enable python+django snippets
-autocmd FileType python set ft=python.django
+" autocmd FileType python set ft=python.django
+autocmd BufRead,BufNewFile *.py set filetype=python.django
 autocmd FileType python setlocal omnifunc=RopeCompleteFunc
 " Disable preview window on auto-complete
 set cot-=preview
@@ -82,7 +101,10 @@ au! BufRead,BufNewFile *acc setfiletype ruby
 function! CapsOff()
     :silent execute "!~/bin/togglecaps.py off > /dev/null 2>&1 &"
 endfunction
-autocmd InsertLeave * call CapsOff()
+
+if os != "Darwin"
+    autocmd InsertLeave * call CapsOff()
+endif
 
 " Jump to last edited position
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -93,6 +115,8 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " Make status-line fade on inactive windows
 highlight StatusLine ctermfg=black ctermbg=green cterm=NONE
 highlight StatusLineNC ctermfg=black ctermbg=lightblue cterm=NONE
+" Always show statusline
+set laststatus=2
 
 " Set a dark background
 set background=dark
@@ -100,9 +124,10 @@ set background=dark
 highlight SpellBad term=underline gui=undercurl guisp=Orange 
 
 " Increase font size
-let os = substitute(system('uname'), "\n", "", "")
 if os == "Darwin"
-    set guifont=Menlo\ Regular:h14
+    set guifont=Menlo\ Regular\ for\ Powerline:h16
+else
+    set guifont=Ubuntu\ Mono\ Bold\ 16
 endif
 
 " Vim / Gvim settings
@@ -111,6 +136,8 @@ if has('gui_running')
     colorscheme solarized
     " Remove toolbar
 	set guioptions-=T
+    " Maximize
+    set lines=999 columns=999
 else
     " Set a low timeout for commands to
     " avoid lag on console
@@ -149,6 +176,10 @@ set number incsearch cursorline linebreak
 " Smart case search
 set ignorecase
 set smartcase
+" Disable smartcase for auto-completion
+" and enable for searching
+autocmd InsertEnter * set noic
+autocmd InsertLeave * set ic
 " Keep some visible lines when scrolling
 set scrolloff=5
 
@@ -173,6 +204,8 @@ set nostartofline
 nmap 0 ^
 " Make D erase the rest of the line
 nnoremap D d$
+" Make K work like k
+nnoremap K k
 
 " Insert lines and go back to normal mode
 nmap <Leader>o o<ESC>
@@ -181,6 +214,8 @@ nmap <Leader>O O<ESC>
 " Buffer navigation (Ctrl+Tab / Ctrl+Shift+Tab)
 nnoremap <C-Tab> :tabnext<CR>
 nnoremap <C-S-Tab> :tabprevious<CR>
+inoremap <C-Tab> :tabnext<CR>
+inoremap <C-S-Tab> :tabprevious<CR>
 nmap <SwipeLeft> :tabprevious<CR>
 nmap <SwipeRight> :tabnext<CR>
 
@@ -197,7 +232,10 @@ cab wQ wq
 
 " Tabs
 cab t tabedit
+nmap <Leader>t :TagbarToggle<CR>
 
+" Toggle whitespace
+nmap <Leader>w :set list!<CR>
 
 " Move lines up and down with Alt+J and Alt+k
 " From: http://vim.wikia.com/wiki/Moving_lines_up_or_down_in_a_file
@@ -220,12 +258,42 @@ nnoremap <F1> <Esc>
 inoremap <F1> <Esc>
 vnoremap <F1> <Esc>
 
+" Easier auto-completion
+imap <c-space> <C-X><C-O>
+
 " Rope shortcuts
 map <Leader>d :RopeGotoDefinition<CR>
 map <Leader>g :RopeGenerateFunction<CR>
+map <Leader>a :RopeAutoImport<CR>
+map <Leader>r :RopeRename<CR>
+imap <c-space> <C-R>=RopeCodeAssistInsertMode()<CR>
 
 " Open file under cursor (better than gf)
-map <Leader>f :e **/<C-r><C-f><CR>
+map <Leader>f :n **/<C-r><C-f><CR>:tab sball<CR>:tabprev<CR>
 
 " Open NERDTree
 map <Leader>e :NERDTreeToggle<CR>
+
+" Easy replace current word / selection
+nnoremap <Leader>/ :%s/<C-r><C-w>//g<Left><Left>
+vnoremap <Leader>/ y:%s/<C-r><C-">//g<Left><Left>
+
+" Toggles the quickfix window. Adapted from:
+" http://vim.wikia.com/wiki/Toggle_to_open_or_close_the_quickfix_window
+command -bang -nargs=? QFix call QFixToggle(<bang>0)
+function! QFixToggle(forced)
+    if exists("g:qfix_win") && a:forced == 0
+        cclose
+    else
+        copen
+    endif
+endfunction
+
+" used to track the quickfix window
+augroup QFixToggle
+    autocmd!
+    autocmd BufWinEnter quickfix let g:qfix_win = bufnr("$")
+    autocmd BufWinLeave * if exists("g:qfix_win") && expand("<abuf>") == g:qfix_win | unlet! g:qfix_win | endif
+augroup END
+
+nmap <Leader>q :QFix<CR>
