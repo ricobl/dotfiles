@@ -11,22 +11,24 @@ SCRIPT_PATH=`realpath $0`
 DOTFILES=`dirname $SCRIPT_PATH`
 
 [ ! -d ~/bin ] && ln -s "$DOTFILES/bin" ~/bin
+[ ! -f ~/.profile ] && ln -s "$DOTFILES/dotfiles/.profile" ~/.profile
 [ ! -f ~/.bashrc ] && ln -s "$DOTFILES/dotfiles/.bashrc" ~/.bashrc
+[ ! -f ~/.bash_profile ] && ln -s "$DOTFILES/dotfiles/.bash_profile" ~/.bash_profile
 [ ! -f ~/.inputrc ] && ln -s "$DOTFILES/dotfiles/.inputrc" ~/.inputrc
 [ ! -f ~/.vimrc ] && ln -s "$DOTFILES/dotfiles/.vimrc" ~/.vimrc
 [ ! -d ~/.ipython ] && ln -s "$DOTFILES/dotfiles/.ipython" ~/.ipython
 [ ! -d ~/.vim ] && ln -s "$DOTFILES/dotfiles/.vim" ~/.vim
 
 # Updates vim help tags
-vim "+helptags ~/.vim/doc" "+q"
+#vim "+helptags ~/.vim/doc" "+q"
 
 # Initialize and update submodules (for vim plugins)
 git submodule init
 git submodule update
 
-# Set git user
-[ -z `git config --global user.name` ] && git config --global user.name "Enrico"
-[ -z `git config --global user.email` ] && git config --global user.email "rico.bl@gmail.com"
+
+[ -z 'git config --global user.name' ] && git config --global user.name "Petry"
+[ -z 'git config --global user.email' ] && git config --global user.email "marcos.petry@corp.globo.com"
 
 # Configure diff / merge tool
 if [ `uname` == "Darwin" ]; then
