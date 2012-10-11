@@ -1,3 +1,5 @@
 #!/bin/sh
 # vim: filetype=sh :
-python -m SimpleHTTPServer
+port=$1
+[[ -z $port ]] && port=8888
+python -m SimpleHTTPServer $port
