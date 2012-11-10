@@ -70,20 +70,18 @@ export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_DOWNLOAD_CACHE="$HOME/.pip/cache"
 
 if [ $OS == "Darwin" ]; then
-    VIM='mvim'
     alias ls='ls -G'
     # Change paths as required for homebrew
     PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 else
-    VIM='gvim'
     alias ls='ls --color=auto'
     # Same as Mac's open
     alias open='gnome-open 2> /dev/null'
 fi
 
 alias grep='grep --color=auto'
-alias vim="$VIM --remote-tab-silent"
-alias xvim="xargs $VIM --remote-tab-silent > /dev/null"
+alias vim='~/bin/vim-proxy.sh'
+alias xvim="xargs ~/bin/vim-proxy.sh"
 
 # Add user bin to the path
 [ -d  "$HOME/bin" ] && PATH="$PATH:$HOME/bin"
