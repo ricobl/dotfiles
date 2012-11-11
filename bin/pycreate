@@ -29,11 +29,14 @@ def create(path):
     create_dir(os.path.dirname(path))
 
     if ext:
-        create_file(path)
+        create_file(path, '# -*- coding: utf-8 -*-\n\n')
+
+    print path
 
 def main():
     paths = sys.argv[1:]
     [create(p) for p in paths]
+
 
 if __name__ == '__main__':
     main()
