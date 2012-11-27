@@ -102,6 +102,8 @@ fi
 
 # Enable bash completion if available
 [[ -f '/etc/bash_completion' ]] && . /etc/bash_completion
+# Hide *.pyc from bash filename completion
+export FIGNORE='pyc'
 
 # Fabric, vagrant, django and pip completion
 . ~/bin/fab_bash_completion
