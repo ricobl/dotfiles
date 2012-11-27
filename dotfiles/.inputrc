@@ -1,1 +1,4 @@
+# Ignore case on file completion
 set completion-ignore-case On
+# Ignore completion on hidden files
+set match-hidden-files off
