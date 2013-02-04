@@ -16,4 +16,4 @@ if [ $# -eq 0 ]; then
 fi
 
 # Search for files or return with no error
-ack -afg $glob "$path" || exit 0
+ack -afG $glob "$path" || exit 0
