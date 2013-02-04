@@ -31,9 +31,9 @@ grep_search () {
 [[ -z "$is_git_dir" ]] && search_func=ack_search || search_func=git_search
 
 if [ $# -eq 1 ]; then
-    search_func '*' "$1"
+    $search_func '*' "$1"
 elif [ $# -eq 2 ]; then
-    search_func "$1" "$2"
+    $search_func "$1" "$2"
 else
 	echo "Usage: $0 [file_pattern] text_pattern"
 	exit
