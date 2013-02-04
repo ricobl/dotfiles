@@ -114,10 +114,13 @@ export IPYTHON_DIR="~/.ipython"
 export NOSE_REDNOSE=1
 
 # EASY FILE FIND
-# Disable glob expansion for find-file (ff)
+# Disable glob expansion for find-file (ff) and seek
 # http://blog.edwards-research.com/2011/05/preventing-globbing/ 
 __ff(){ ~/bin/find-file.sh "$@"; set +f; }
+__seek(){ ~/bin/seek.sh "$@"; set +f; }
+
 alias ff='set -f; __ff'
+alias seek='set -f; __seek'
 
 function pycd {
     module_dir="`python -c "import $1; print $1.__file__" | xargs dirname`"
