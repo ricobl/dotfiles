@@ -78,10 +78,6 @@
 	path = dotfiles/.vim/bundle/indentpython.vim
 	url = git://github.com/vim-scripts/indentpython.vim.git
 	ignore = untracked
-[submodule "dotfiles/.vim/bundle/vim-supertab"]
-	path = dotfiles/.vim/bundle/vim-supertab
-	url = git://github.com/tsaleh/vim-supertab.git
-	ignore = untracked
 [submodule "dotfiles/.vim/bundle/nginx.vim"]
 	path = dotfiles/.vim/bundle/nginx.vim
 	url = git://github.com/vim-scripts/nginx.vim.git
@@ -97,3 +93,9 @@
 [submodule "dotfiles/.vim/bundle/vim-fugitive"]
 	path = dotfiles/.vim/bundle/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
+[submodule "dotfiles/.vim/bundle/AutoComplPop"]
+	path = dotfiles/.vim/bundle/AutoComplPop
+	url = git://github.com/vim-scripts/AutoComplPop.git
+[submodule "dotfiles/.vim/bundle/L9"]
+	path = dotfiles/.vim/bundle/L9
+	url = git://github.com/vim-scripts/L9.git
