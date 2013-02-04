@@ -80,8 +80,8 @@ else
 fi
 
 alias grep='grep --color=auto'
-alias vim='~/bin/vim-proxy.sh'
-alias xvim="xargs ~/bin/vim-proxy.sh"
+alias vim='~/bin/vim-proxy.py'
+alias xvim="xargs ~/bin/vim-proxy.py"
 alias ll="ls -l"
 
 # Add user bin to the path
