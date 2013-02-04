@@ -20,15 +20,31 @@ def is_running():
 def open_vim(*args):
     run(vim, '--servername', 'VIM', *args)
 
+def parse_command(command):
+    return ':' + command.lstrip('+') + '<CR>'
+
 def split_params(*params):
-    params = set(params)
-    commands = set([p for p in params if p.startswith('+')])
-    files = commands.difference(params)
+    files = []
+    commands = []
+    vim_params = []
+
+    for p in params:
+        if p.startswith('-'):
+            commands.append(p)
+            continue
+        if p.startswith('+'):
+            commands += ['--remote-send', parse_command(p)]
+            continue
+        files.append(p)
 
     return files, commands
 
 def open_files(*args):
-    open_vim('--remote-tab-silent', *args)
+    files, commands = split_params(*args)
+    if files:
+        open_vim('--remote-tab-silent', *files)
+    if commands:
+        open_vim(*commands)
 
 def activate():
     run('osascript', '-e', """tell application "MacVim" to activate""")
