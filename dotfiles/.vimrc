@@ -46,6 +46,9 @@ let ropevim_vim_completion=1
 let ropevim_extended_complete = 1
 let g:ropevim_autoimport_modules = ["os.*", "django.*"]
 
+" Disable python-related bundles while I don't fix
+" vim/python bindings
+let g:pathogen_disabled = ['rope-omni', 'ropevim', 'pyflakes']
 " Enable pathogen
 call pathogen#infect()
 call pathogen#helptags()
@@ -214,8 +217,8 @@ nmap <Leader>O O<ESC>
 " Buffer navigation (Ctrl+Tab / Ctrl+Shift+Tab)
 nnoremap <C-Tab> :tabnext<CR>
 nnoremap <C-S-Tab> :tabprevious<CR>
-inoremap <C-Tab> :tabnext<CR>
-inoremap <C-S-Tab> :tabprevious<CR>
+inoremap <C-Tab> <C-O>:tabnext<CR>
+inoremap <C-S-Tab> <C-O>:tabprevious<CR>
 nmap <SwipeLeft> :tabprevious<CR>
 nmap <SwipeRight> :tabnext<CR>
 
@@ -269,7 +272,7 @@ map <Leader>r :RopeRename<CR>
 imap <c-space> <C-R>=RopeCodeAssistInsertMode()<CR>
 
 " Open file under cursor (better than gf)
-map <Leader>f :n **/<C-r><C-f><CR>:tab sball<CR>:tabprev<CR>
+map <Leader>f :tab drop **/<C-r><C-f><CR>
 
 " Open NERDTree
 map <Leader>e :NERDTreeToggle<CR>
