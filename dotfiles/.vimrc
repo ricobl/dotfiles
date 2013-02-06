@@ -121,10 +121,8 @@ highlight StatusLineNC ctermfg=black ctermbg=lightblue cterm=NONE
 " Always show statusline
 set laststatus=2
 
-" Set a dark background
-set background=dark
 " Show lines with errors using pyflakes
-highlight SpellBad term=underline gui=undercurl guisp=Orange 
+highlight SpellBad term=underline gui=undercurl guisp=Orange
 
 " Increase font size
 if os == "Darwin"
@@ -135,6 +133,8 @@ endif
 
 " Vim / Gvim settings
 if has('gui_running')
+    " Set a dark background
+    set background=dark
     " Change syntax highlight scheme
     colorscheme solarized
     " Remove toolbar
@@ -170,7 +170,7 @@ set nobackup noswapfile
 set modeline
 
 " Enable bash-like completion: complete, show list, cycle
-set wildmenu wildmode=longest,list,full 
+set wildmenu wildmode=longest,list,full
 " Disable file formats from wild-list
 set wildignore=*.pyc,*.gif,*.png,*.jpg,*.jpeg
 " Hide pyc files and hidden files in file explorer
