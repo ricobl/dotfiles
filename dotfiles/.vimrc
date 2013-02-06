@@ -152,6 +152,9 @@ set listchars=tab:▸\ ,eol:¬,trail:·
 hi NonText ctermfg=7 guifg=gray50
 hi SpecialKey ctermfg=7 guifg=gray50
 
+" Disable folds on opening
+autocmd Syntax * normal zR
+
 
 " OPTIONS
 
@@ -185,6 +188,8 @@ autocmd InsertEnter * set noic
 autocmd InsertLeave * set ic
 " Keep some visible lines when scrolling
 set scrolloff=5
+" Folding
+set foldmethod=indent
 
 
 " Shortcuts
@@ -193,6 +198,9 @@ set scrolloff=5
 let mapleader=','
 " Commands with ";"
 nnoremap ; :
+
+" Toggle folds using space
+nnoremap <Space> za
 
 " Scroll to the middle of the screen when searching
 nmap n nzz
