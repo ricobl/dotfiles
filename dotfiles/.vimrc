@@ -155,6 +155,9 @@ hi SpecialKey ctermfg=7 guifg=gray50
 " Disable folds on opening
 autocmd Syntax * normal zR
 
+" Clean whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
 
 " OPTIONS
 
