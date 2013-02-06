@@ -86,10 +86,6 @@
 	path = dotfiles/.vim/bundle/template.vim
 	url = git://github.com/vim-scripts/template.vim.git
 	ignore = untracked
-[submodule "dotfiles/.vim/bundle/vim-powerline"]
-	path = dotfiles/.vim/bundle/vim-powerline
-	url = git://github.com/Lokaltog/vim-powerline.git
-	ignore = untracked
 [submodule "dotfiles/.vim/bundle/vim-fugitive"]
 	path = dotfiles/.vim/bundle/vim-fugitive
 	url = git://github.com/tpope/vim-fugitive.git
@@ -97,3 +93,6 @@
 [submodule "dotfiles/.vim/bundle/supertab"]
 	path = dotfiles/.vim/bundle/supertab
 	url = git://github.com/ervandew/supertab.git
+[submodule "dotfiles/.vim/bundle/vim-powerline"]
+	path = dotfiles/.vim/bundle/vim-powerline
+	url = git://github.com/Lokaltog/vim-powerline.git
