@@ -14,7 +14,7 @@ search_dir="./"
 is_git_dir=`git rev-parse --git-dir 2> /dev/null || echo ''`
 
 git_search () {
-    git grep -il "$2" -- "$1"
+    git grep -Iil "$2" -- "$1"
 }
 
 ack_search () {
@@ -24,7 +24,7 @@ ack_search () {
 }
 
 grep_search () {
-    grep -ilr --include="$file_pattern" "$text_pattern" "$search_dir"
+    grep -Iilr --exclude="*.pyc" --include="$file_pattern" "$text_pattern" "$search_dir"
 }
 
 # Configure search function
