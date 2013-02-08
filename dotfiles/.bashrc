@@ -88,16 +88,21 @@ alias ll="ls -l"
 # Add user bin to the path
 [ -d  "$HOME/bin" ] && PATH="$PATH:$HOME/bin"
 
+quick_workon(){
+    source "$WORKON_HOME/$1/bin/activate"
+}
 # Virtualenvs
-if [[ -f '/usr/local/bin/virtualenvwrapper.sh' ]]; then
-    source "/usr/local/bin/virtualenvwrapper.sh"
+if [[ -f '/usr/local/bin/virtualenvwrapper_lazy.sh' ]]; then
+    export VIRTUALENVWRAPPER_PYTHON=`which python2.7`
+    export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+    source "/usr/local/bin/virtualenvwrapper_lazy.sh"
 
     # Activate latest virtualenv or a default one
     # Based on: http://unfoldthat.com/2011/08/18/virtualenv-in-new-terminal-windows.html
     if [ -e "$WORKON_HOME/last_venv" ]; then
-        workon `cat "$WORKON_HOME/last_venv"`
+        quick_workon `cat "$WORKON_HOME/last_venv"`
     elif [ -n "$DEFAULT_VIRTUAL_ENV" ]; then
-        workon "$DEFAULT_VIRTUAL_ENV"
+        quick_workon "$DEFAULT_VIRTUAL_ENV"
     fi
 fi
 
