@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
 
-import site
-from os import environ
-from os.path import join
-import sys
+def activate():
+    from os import environ
+    if 'VIRTUAL_ENV' not in environ:
+        return
 
-if 'VIRTUAL_ENV' in environ:
+    import sys
+    import site
+    from os.path import join
+
     virtual_env = join(environ.get('VIRTUAL_ENV'),
-                       'lib',
-                       'python%d.%d' % sys.version_info[:2],
-                       'site-packages')
+                    'lib',
+                    'python%d.%d' % sys.version_info[:2],
+                    'site-packages')
 
     # Remember original sys.path.
     prev_sys_path = list(sys.path)
@@ -24,6 +27,5 @@ if 'VIRTUAL_ENV' in environ:
     sys.path[1:1] = new_sys_path
 
     print 'VIRTUAL_ENV ->', virtual_env
-    del virtual_env
 
-del site, environ, join, sys
+activate()
