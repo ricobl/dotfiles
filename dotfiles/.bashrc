@@ -115,7 +115,7 @@ export FIGNORE='pyc'
 . ~/bin/fab_bash_completion
 [[ -n `which pip` ]] && eval "`pip completion --bash`"
 
-export IPYTHON_DIR="~/.ipython"
+export IPYTHONDIR="~/.ipython"
 # Enable nose rednose plugin for colored output
 export NOSE_REDNOSE=1
 
