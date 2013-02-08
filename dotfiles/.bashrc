@@ -121,7 +121,7 @@ export NOSE_REDNOSE=1
 
 # EASY FILE FIND
 # Disable glob expansion for find-file (ff) and seek
-# http://blog.edwards-research.com/2011/05/preventing-globbing/ 
+# http://blog.edwards-research.com/2011/05/preventing-globbing/
 __ff(){ ~/bin/find-file.sh "$@"; set +f; }
 __seek(){ ~/bin/seek.sh "$@"; set +f; }
 
