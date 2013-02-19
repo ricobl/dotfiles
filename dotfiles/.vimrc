@@ -46,9 +46,6 @@ let ropevim_vim_completion=1
 let ropevim_extended_complete = 1
 let g:ropevim_autoimport_modules = ["os.*", "django.*"]
 
-" Disable python-related bundles while I don't fix
-" vim/python bindings
-let g:pathogen_disabled = ['rope-omni', 'ropevim', 'pyflakes']
 " Enable pathogen
 call pathogen#infect()
 call pathogen#helptags()
