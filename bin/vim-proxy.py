@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import sys, subprocess
+import sys, subprocess, os
 
 params = sys.argv[1:]
 is_mac = 'darwin' in sys.platform.lower()
@@ -15,10 +15,16 @@ def capture(*args):
     return output.strip()
 
 def is_running():
-    return capture(vim, '--serverlist') != ''
+    servername = get_servername()
+    return servername in capture(vim, '--serverlist')
+
+def get_servername():
+    curdir = os.path.abspath(os.path.curdir)
+    servername = '/'.join(curdir.split('/')[-2:])
+    return servername
 
 def open_vim(*args):
-    run(vim, '--servername', 'VIM', *args)
+    run(vim, '--servername', get_servername(), *args)
 
 def parse_command(command):
     return ':' + command.lstrip('+') + '<CR>'
