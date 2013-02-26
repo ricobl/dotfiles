@@ -42,6 +42,10 @@ else
     git config --global merge.tool meld
     git config --global diff.tool meld
 fi
+
+# Global ignores
+git config --global core.excludesfile '~/.gitignore_global'
+
 # Disable ".orig" backups
 git config --global mergetool.keepBackup false
 
