@@ -46,6 +46,14 @@ let ropevim_vim_completion=1
 let ropevim_extended_complete = 1
 let g:ropevim_autoimport_modules = ["os.*", "django.*"]
 
+" Jedi options
+let g:jedi#show_function_definition = "0"
+
+
+" Sessions
+let g:session_autoload = "yes"
+let g:session_autosave = "yes"
+
 " Enable pathogen
 call pathogen#infect()
 call pathogen#helptags()
@@ -83,13 +91,12 @@ autocmd BufRead,BufNewFile *.html set filetype=html.htmldjango
 autocmd BufRead,BufNewFile *.scss set filetype=scss.css
 
 " Enable python+django snippets
-" autocmd FileType python set ft=python.django
 autocmd BufRead,BufNewFile *.py set filetype=python.django
 autocmd FileType python setlocal omnifunc=RopeCompleteFunc
 " Disable preview window on auto-complete
 set cot-=preview
 " Close auto-complete preview window after exiting insert mode
-" autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 
 
@@ -150,7 +157,9 @@ hi NonText ctermfg=7 guifg=gray50
 hi SpecialKey ctermfg=7 guifg=gray50
 
 " Disable folds on opening
-autocmd Syntax * normal zR
+" autocmd Syntax * normal zR
+set foldlevel=100
+
 
 " Clean whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
@@ -277,7 +286,7 @@ map <Leader>d :RopeGotoDefinition<CR>
 map <Leader>g :RopeGenerateFunction<CR>
 map <Leader>a :RopeAutoImport<CR>
 map <Leader>r :RopeRename<CR>
-imap <c-space> <C-R>=RopeCodeAssistInsertMode()<CR>
+" imap <c-space> <C-R>=RopeCodeAssistInsertMode()<CR>
 
 " Open file under cursor (better than gf)
 map <Leader>f :tab drop **/<C-r><C-f><CR>
