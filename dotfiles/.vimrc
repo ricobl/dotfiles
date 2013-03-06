@@ -151,6 +151,11 @@ else
 	set ttimeoutlen=100
 endif
 
+" Fix gutter background
+hi! link SignColumn   LineNr
+hi! link ShowMarksHLl DiffAdd
+hi! link ShowMarksHLu DiffChange
+
 " Setup whitespace
 set listchars=tab:▸\ ,eol:¬,trail:·
 hi NonText ctermfg=7 guifg=gray50
