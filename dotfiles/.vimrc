@@ -258,6 +258,7 @@ cab wQ wq
 " Tabs
 cab t tabedit
 nmap <Leader>t :TagbarToggle<CR>
+nmap <C-w> :q<CR>
 
 " Toggle whitespace
 nmap <Leader>w :set list!<CR>
