@@ -314,6 +314,12 @@ function! QFixToggle(forced)
     endif
 endfunction
 
+function! CurrentClass()
+    let fullpath = tagbar#currenttag('%s', '', 'f')
+    let classname = split(fullpath, '\.')[0]
+    return classname
+endfunction
+
 " used to track the quickfix window
 augroup QFixToggle
     autocmd!
