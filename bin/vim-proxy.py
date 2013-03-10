@@ -21,7 +21,7 @@ def is_running():
 def get_servername():
     curdir = os.path.abspath(os.path.curdir)
     servername = '/'.join(curdir.split('/')[-2:])
-    return servername
+    return servername.upper()
 
 def open_vim(*args):
     run(vim, '--servername', get_servername(), *args)
@@ -32,8 +32,6 @@ def parse_command(command):
 def split_params(*params):
     files = []
     commands = []
-    vim_params = []
-
     for p in params:
         if p.startswith('-'):
             commands.append(p)
@@ -53,11 +51,13 @@ def open_files(*args):
         open_vim(*commands)
 
 def activate():
-    run('osascript', '-e', """tell application "MacVim" to activate""")
+    if is_mac:
+        run('osascript', '-e', """tell application "MacVim" to activate""")
+    else:
+        run('xdotool', 'search', '--name', get_servername(), 'windowactivate')
 
 def new_tab():
     open_vim('--remote-send', '<Esc>:tabnew<CR>')
-    activate()
 
 if not params:
     if is_running():
@@ -67,3 +67,4 @@ if not params:
 else:
     open_files(*params)
 
+activate()
