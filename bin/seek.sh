@@ -28,7 +28,7 @@ grep_search () {
 }
 
 # Configure search function
-[[ -z "$is_git_dir" ]] && search_func=ack_search || search_func=git_search
+[ -z "$is_git_dir" ] && search_func=ack_search || search_func=git_search
 
 if [ $# -eq 1 ]; then
     $search_func '*' "$1"
