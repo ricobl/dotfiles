@@ -128,9 +128,13 @@ __seek(){ ~/bin/seek.sh "$@"; set +f; }
 alias ff='set -f; __ff'
 alias seek='set -f; __seek'
 
-function pycd {
+pycd(){
     module_dir="`python -c "import $1; print $1.__file__" | xargs dirname`"
     \cd "$module_dir"
+}
+
+cdgit(){
+    cd "$(git rev-parse --show-toplevel)/$1"
 }
 
 # Extra setup
