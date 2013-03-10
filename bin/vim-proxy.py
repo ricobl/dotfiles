@@ -4,8 +4,12 @@
 import sys, subprocess, os
 
 params = sys.argv[1:]
-is_mac = 'darwin' in sys.platform.lower()
-vim = is_mac and 'mvim' or 'gvim'
+
+IS_MAC = 'darwin' in sys.platform.lower()
+VIM = IS_MAC and 'mvim' or 'gvim'
+PWD = os.path.abspath(os.path.curdir)
+# Use 2 parent dirs as servername
+SERVER_NAME = '/'.join(PWD.split('/')[-2:]).upper()
 
 def run(*args):
     return subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -15,16 +19,10 @@ def capture(*args):
     return output.strip()
 
 def is_running():
-    servername = get_servername()
-    return servername in capture(vim, '--serverlist')
-
-def get_servername():
-    curdir = os.path.abspath(os.path.curdir)
-    servername = '/'.join(curdir.split('/')[-2:])
-    return servername.upper()
+    return SERVER_NAME in capture(VIM, '--serverlist')
 
 def open_vim(*args):
-    run(vim, '--servername', get_servername(), *args)
+    run(VIM, '--servername', SERVER_NAME, *args)
 
 def parse_command(command):
     return ':' + command.lstrip('+') + '<CR>'
@@ -51,10 +49,10 @@ def open_files(*args):
         open_vim(*commands)
 
 def activate():
-    if is_mac:
+    if IS_MAC:
         run('osascript', '-e', """tell application "MacVim" to activate""")
     else:
-        run('xdotool', 'search', '--name', get_servername(), 'windowactivate')
+        run('xdotool', 'search', '--name', SERVER_NAME, 'windowactivate')
 
 def new_tab():
     open_vim('--remote-send', '<Esc>:tabnew<CR>')
