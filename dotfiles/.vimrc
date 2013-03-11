@@ -236,6 +236,10 @@ nnoremap D d$
 " Make K work like k
 nnoremap K k
 
+" Use enter to navigate between changes
+nmap <CR> g;
+nmap <S-CR> g,
+
 " Insert lines and go back to normal mode
 nmap <Leader>o o<ESC>
 nmap <Leader>O O<ESC>
@@ -295,7 +299,6 @@ map <Leader>d :RopeGotoDefinition<CR>
 map <Leader>g :RopeGenerateFunction<CR>
 map <Leader>a :RopeAutoImport<CR>
 map <Leader>r :RopeRename<CR>
-" imap <c-space> <C-R>=RopeCodeAssistInsertMode()<CR>
 
 " Open file under cursor (better than gf)
 map <Leader>f :tab drop **/<C-r><C-f><CR>
