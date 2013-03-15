@@ -236,10 +236,6 @@ nnoremap D d$
 " Make K work like k
 nnoremap K k
 
-" Use enter to navigate between changes
-nmap <CR> g;
-nmap <S-CR> g,
-
 " Insert lines and go back to normal mode
 nmap <Leader>o o<ESC>
 nmap <Leader>O O<ESC>
