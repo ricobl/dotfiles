@@ -307,8 +307,8 @@ map <Leader>f :tab drop **/<C-r><C-f><CR>
 map <Leader>e :NERDTreeToggle<CR>
 
 " Easy replace current word / selection
-nnoremap <Leader>/ :%s/<C-r><C-w>//g<Left><Left>
-vnoremap <Leader>/ y:%s/<C-r><C-">//g<Left><Left>
+nnoremap <Leader>/ :%s/<C-r><C-w>//gc<Left><Left><Left>
+vnoremap <Leader>/ y:%s/<C-r><C-">//gc<Left><Left><Left>
 
 " Toggles the quickfix window. Adapted from:
 " http://vim.wikia.com/wiki/Toggle_to_open_or_close_the_quickfix_window
