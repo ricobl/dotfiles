@@ -46,10 +46,6 @@
 	path = dotfiles/.vim/bundle/indent-object
 	url = git://github.com/michaeljsmith/vim-indent-object.git
 	ignore = untracked
-[submodule "dotfiles/.vim/bundle/bufkill"]
-	path = dotfiles/.vim/bundle/bufkill
-	url = git://github.com/vim-scripts/bufkill.vim.git
-	ignore = untracked
 [submodule "dotfiles/.vim/bundle/colors-solarized"]
 	path = dotfiles/.vim/bundle/colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
