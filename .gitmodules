@@ -102,3 +102,6 @@
 	path = dotfiles/.vim/bundle/VimBookmarking
 	url = git://github.com/dterei/VimBookmarking.git
 	ignore = untracked
+[submodule "dotfiles/.vim/bundle/rsi"]
+	path = dotfiles/.vim/bundle/rsi
+	url = git://github.com/tpope/vim-rsi.git
