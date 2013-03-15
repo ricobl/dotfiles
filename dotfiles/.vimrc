@@ -215,6 +215,10 @@ nnoremap ; :
 
 " Toggle folds using space
 nnoremap <Space> za
+" Navigate between bookmarks
+nmap <silent> <CR> :ToggleBookmark<CR>
+nmap <silent> <Tab> :NextBookmark<CR>
+nmap <silent> <S-Tab> :PreviousBookmark<CR>
 
 " Scroll to the middle of the screen when searching
 nmap n nzz
