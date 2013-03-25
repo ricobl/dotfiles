@@ -12,7 +12,7 @@ DEST=$2
 SCRIPT=$(basename $0)
 
 usage () {
-    echo 'Usage: git submodule-add <repository> [path]'
+    echo "Usage: $SCRIPT <repository> [path]"
 }
 error () {
     echo "$SCRIPT: $1"
