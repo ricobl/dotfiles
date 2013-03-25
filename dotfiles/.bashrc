@@ -136,6 +136,9 @@ pycd(){
 cdgit(){
     cd "$(git rev-parse --show-toplevel)/$1"
 }
+cddotfiles(){
+    cd $(realpath ~/.bashrc)
+}
 
 # Extra setup
 [ -f ~/.bashprofile ] && . ~/.bashprofile
