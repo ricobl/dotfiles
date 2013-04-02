@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# Creates a submodule even if the working dir isn't the repository root.
+# Automatically generates the destination dir name if not provided.
+
+DIR=$PWD
+GIT_ROOT=$(git rev-parse --show-toplevel)
+PREFIX=$(git rev-parse --show-prefix)
+
+REPO=$1
+DEST=$2
+SCRIPT=$(basename $0)
+
+usage () {
+    echo "Usage: $SCRIPT <repository> [<path>]"
+}
+error () {
+    echo "$SCRIPT: $1"
+    usage
+    exit 1
+}
+
+[ -z $REPO ] && error 'Missing submodule repository'
+[ -z $DEST ] && DEST=$(basename $1 | sed 's/\.git$//')
+[ -e $DEST ] && error "$DEST: already exists"
+
+pushd $GIT_ROOT > /dev/null
+git submodule add $REPO "$PREFIX$DEST"
+popd > /dev/null
