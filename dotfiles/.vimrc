@@ -167,7 +167,15 @@ set foldlevel=100
 
 
 " Clean whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
+function! StripTrailingWhitespace()
+    normal mZ
+    %s/\s\+$//e
+    if line("'Z") != line(".")
+        echo "Stripped whitespace\n"
+    endif
+    normal `Z
+endfunction
+autocmd BufWritePre * :call StripTrailingWhitespace()
 
 
 " OPTIONS
