@@ -93,6 +93,7 @@ autocmd BufRead,BufNewFile *.scss set filetype=scss.css
 " Enable python+django snippets
 autocmd BufRead,BufNewFile *.py set filetype=python.django
 autocmd FileType python setlocal omnifunc=RopeCompleteFunc
+
 " Disable preview window on auto-complete
 set cot-=preview
 " Close auto-complete preview window after exiting insert mode
@@ -165,6 +166,8 @@ hi SpecialKey ctermfg=7 guifg=gray50
 " autocmd Syntax * normal zR
 set foldlevel=100
 
+let g:indentLine_char = "┊"
+let g:indentLine_first_char = "┊"
 
 " Clean whitespace on save
 function! StripTrailingWhitespace()
