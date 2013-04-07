@@ -114,6 +114,7 @@ export FIGNORE='pyc'
 # Fabric, vagrant, django and pip completion
 . ~/bin/fab_bash_completion
 [[ -n `which pip` ]] && eval "`pip completion --bash`"
+. ~/bin/cddotfiles_bash_completion
 
 export IPYTHONDIR="~/.ipython"
 # Enable nose rednose plugin for colored output
@@ -137,7 +138,8 @@ cdgit(){
     cd "$(git rev-parse --show-toplevel)/$1"
 }
 cddotfiles(){
-    cd $(realpath ~/.bashrc)/..
+    local dotfiles=$(realpath ~/.bashrc)/..
+    cd "$dotfiles"/$1
 }
 
 # Extra setup
