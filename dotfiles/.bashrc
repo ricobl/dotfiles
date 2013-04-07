@@ -85,6 +85,9 @@ alias vim='~/bin/vim-proxy.py'
 alias xvim="xargs ~/bin/vim-proxy.py"
 alias ll="ls -l"
 
+# Bind Ctrl+l to clear terminal
+bind -x '"\C-l":printf "\ec"'
+
 # Add user bin to the path
 [ -d  "$HOME/bin" ] && PATH="$PATH:$HOME/bin"
 
