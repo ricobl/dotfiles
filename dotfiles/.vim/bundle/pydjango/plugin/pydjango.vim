@@ -1,5 +1,4 @@
 if !has('python')
-    echo "Error: pydjango requires vim compiled with +python"
     finish
 endif
 
