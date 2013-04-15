@@ -110,7 +110,14 @@ if [[ -f '/usr/local/bin/virtualenvwrapper_lazy.sh' ]]; then
 fi
 
 # Enable bash completion if available
-[[ -f '/etc/bash_completion' ]] && . /etc/bash_completion
+if [ $OS == "Darwin" ]; then
+    _etc_completion=`brew --prefix`/etc/bash_completion
+else
+    _etc_completion='/etc/bash_completion'
+fi
+
+[[ -f $_etc_completion ]] && . $_etc_completion
+
 # Hide *.pyc from bash filename completion
 export FIGNORE='pyc'
 
