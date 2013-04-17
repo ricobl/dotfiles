@@ -109,3 +109,6 @@
 	path = dotfiles/.vim/bundle/indentLine
 	url = git://github.com/Yggdroot/indentLine.git
 	ignore = untracked
+[submodule "dotfiles/.vim/bundle/vim-golang"]
+	path = dotfiles/.vim/bundle/vim-golang
+	url = git://github.com/jnwhiteh/vim-golang.git
