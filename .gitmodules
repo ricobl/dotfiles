@@ -112,3 +112,6 @@
 [submodule "dotfiles/.vim/bundle/vim-golang"]
 	path = dotfiles/.vim/bundle/vim-golang
 	url = git://github.com/jnwhiteh/vim-golang.git
+[submodule "dotfiles/.vim/bundle/scss-syntax.vim"]
+	path = dotfiles/.vim/bundle/scss-syntax.vim
+	url = git://github.com/cakebaker/scss-syntax.vim.git
