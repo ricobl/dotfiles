@@ -2,6 +2,8 @@
 set completion-ignore-case On
 # Ignore completion on hidden files
 set match-hidden-files off
+# Auto-complete directory symlinks with "/"
+set mark-symlinked-directories on
 
 # Mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
 "\e[1;5C": forward-word
