@@ -152,6 +152,9 @@ else
 	set ttimeoutlen=100
 endif
 
+" Disable ESC mapping
+set noesckeys
+
 " Fix gutter background
 hi! link SignColumn   LineNr
 hi! link ShowMarksHLl DiffAdd
