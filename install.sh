@@ -53,6 +53,9 @@ git config --global mergetool.keepBackup false
 git config --global push.default tracking
 git config --global branch.autosetupmerge true
 
+# Always rebase when pulling
+git config --global branch.autosetuprebase always
+
 # Colored output
 git config --global color.ui auto
 
