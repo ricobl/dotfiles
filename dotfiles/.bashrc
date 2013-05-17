@@ -151,7 +151,3 @@ cddotfiles(){
     local dotfiles=$(realpath ~/.bashrc)/..
     cd "$dotfiles"/$1
 }
-
-# Extra setup
-[ -f ~/.bashprofile ] && . ~/.bashprofile
-
