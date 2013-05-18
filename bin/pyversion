@@ -1,0 +1,9 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import sys
+import pkg_resources
+
+for package in sys.argv[1:]:
+    print('{}=={}'.format(
+        package, pkg_resources.get_distribution(package).version))
