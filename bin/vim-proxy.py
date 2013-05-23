@@ -64,5 +64,5 @@ if not params:
         open_vim()
 else:
     open_files(*params)
-    # if is_running():
-    #     activate()
+    if not IS_MAC and is_running():
+        activate()
