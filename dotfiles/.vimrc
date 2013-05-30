@@ -304,6 +304,10 @@ vnoremap <F1> <Esc>
 
 " Easier auto-completion
 imap <c-space> <C-X><C-O>
+" Command / search completion
+cmap <unique> <silent> <tab> <Plug>CmdlineCompleteBackward
+cmap <unique> <silent> <s-tab> <Plug>CmdlineCompleteForward
+
 
 " Rope shortcuts
 map <Leader>d :RopeGotoDefinition<CR>
