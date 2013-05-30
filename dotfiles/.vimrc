@@ -140,6 +140,7 @@ endif
 if has('gui_running')
     " Set a dark background
     set background=dark
+    set transparency=4
     " Change syntax highlight scheme
     colorscheme solarized
     " Remove toolbar
