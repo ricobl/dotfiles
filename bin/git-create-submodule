@@ -24,6 +24,4 @@ error () {
 [ -z $DEST ] && DEST=$(basename $1 | sed 's/\.git$//')
 [ -e $DEST ] && error "$DEST: already exists"
 
-pushd $GIT_ROOT > /dev/null
-git submodule add $REPO "$PREFIX$DEST"
-popd > /dev/null
+(cd $GIT_ROOT && git submodule add $REPO "$PREFIX$DEST")
