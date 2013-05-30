@@ -115,3 +115,6 @@
 [submodule "dotfiles/.vim/bundle/scss-syntax.vim"]
 	path = dotfiles/.vim/bundle/scss-syntax.vim
 	url = git://github.com/cakebaker/scss-syntax.vim.git
+[submodule "dotfiles/.vim/bundle/CmdlineComplete"]
+	path = dotfiles/.vim/bundle/CmdlineComplete
+	url = git://github.com/vim-scripts/CmdlineComplete.git
