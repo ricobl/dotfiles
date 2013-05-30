@@ -1,3 +1,9 @@
 #!/bin/bash
 
-git status -s | grep '^ M' | sed -e 's/^ //g' | cut -d ' ' -f 2
+
+PATTERN=$1
+GIT_ROOT=$(git rev-parse --show-toplevel)
+
+[ -z $1 ] && PATTERN='*' || PATTERN="*$1*"
+
+git ls-files -m -- $PATTERN
