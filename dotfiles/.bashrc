@@ -140,7 +140,7 @@ alias ff='set -f; __ff'
 alias seek='set -f; __seek'
 
 pycd(){
-    module_dir="`python -c "import $1; print $1.__file__" | xargs dirname`"
+    module_dir="`python -c "import pkgutil;print pkgutil.get_loader('$1').filename"`"
     \cd "$module_dir"
 }
 
