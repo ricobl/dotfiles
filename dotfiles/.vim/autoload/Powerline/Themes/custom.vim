@@ -4,11 +4,10 @@ let g:Powerline#Themes#custom#theme = Pl#Theme#Create(
 		\ , 'mode_indicator'
 		\ , 'fugitive:branch'
 		\ , 'hgrev:branch'
-		\ , 'fileinfo'
 		\ , Pl#Segment#Truncate()
+		\ , 'fileinfo'
 		\ , 'tagbar:fullcurrenttag'
 		\ , Pl#Segment#Split()
-		\ , 'virtualenv:statusline'
 		\ , 'lineinfo'
 	\ ),
 	\
