@@ -94,10 +94,6 @@
 	path = dotfiles/.vim/bundle/supertab
 	url = git://github.com/ervandew/supertab.git
 	ignore = untracked
-[submodule "dotfiles/.vim/bundle/vim-powerline"]
-	path = dotfiles/.vim/bundle/vim-powerline
-	url = git://github.com/Lokaltog/vim-powerline.git
-	ignore = untracked
 [submodule "dotfiles/.vim/bundle/VimBookmarking"]
 	path = dotfiles/.vim/bundle/VimBookmarking
 	url = git://github.com/dterei/VimBookmarking.git
@@ -115,3 +111,7 @@
 [submodule "dotfiles/.vim/bundle/scss-syntax.vim"]
 	path = dotfiles/.vim/bundle/scss-syntax.vim
 	url = git://github.com/cakebaker/scss-syntax.vim.git
+[submodule "dotfiles/.vim/bundle/vim-airline"]
+	path = dotfiles/.vim/bundle/vim-airline
+	url = git@github.com:bling/vim-airline.git
+	ignore = untracked

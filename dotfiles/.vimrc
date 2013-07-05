@@ -67,9 +67,13 @@ let NERDTreeDirArrows=1
 " Abbreviation for mru
 cab mru Mru
 
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_theme='custom'
-
+let g:airline_powerline_fonts=0
+let g:airline_left_sep = '⮀'
+let g:airline_right_sep = '⮂'
+let g:airline_linecolumn_prefix = '⭡ '
+let g:airline_fugitive_prefix = '⭠ '
+let g:airline_readonly_symbol = '⭤'
+let g:airline_modified_detection=0
 
 " Enable built-in matchit plugin
 source $VIMRUNTIME/macros/matchit.vim
@@ -140,7 +144,6 @@ endif
 if has('gui_running')
     " Set a dark background
     set background=dark
-    set transparency=4
     " Change syntax highlight scheme
     colorscheme solarized
     " Remove toolbar
