@@ -46,14 +46,6 @@ let ropevim_vim_completion=1
 let ropevim_extended_complete = 1
 let g:ropevim_autoimport_modules = ["os.*", "django.*"]
 
-" Jedi options
-let g:jedi#show_function_definition = "0"
-
-
-" Sessions
-let g:session_autoload = "yes"
-let g:session_autosave = "yes"
-
 " Enable pathogen
 call pathogen#infect()
 call pathogen#helptags()
@@ -67,13 +59,11 @@ let NERDTreeDirArrows=1
 " Abbreviation for mru
 cab mru Mru
 
-let g:airline_powerline_fonts=0
 let g:airline_left_sep = '⮀'
 let g:airline_right_sep = '⮂'
 let g:airline_linecolumn_prefix = '⭡ '
 let g:airline_fugitive_prefix = '⭠ '
 let g:airline_readonly_symbol = '⭤'
-let g:airline_modified_detection=0
 
 " Enable built-in matchit plugin
 source $VIMRUNTIME/macros/matchit.vim
@@ -124,9 +114,6 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 
 " COLORS / UI
 
-" Make status-line fade on inactive windows
-highlight StatusLine ctermfg=black ctermbg=green cterm=NONE
-highlight StatusLineNC ctermfg=black ctermbg=lightblue cterm=NONE
 " Always show statusline
 set laststatus=2
 
