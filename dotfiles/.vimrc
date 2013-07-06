@@ -46,6 +46,19 @@ let ropevim_vim_completion=1
 let ropevim_extended_complete = 1
 let g:ropevim_autoimport_modules = ["os.*", "django.*"]
 
+" Syntastic configuration
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_check_on_open=1
+let g:syntastic_auto_loc_list=0
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_enable_highlighting=1
+let g:syntastic_quiet_warnings=0
+let g:syntastic_mode_map = {
+            \ 'mode': 'passive',
+            \ 'active_filetypes': ['puppet', 'ruby', 'python','javascript', 'css'],
+            \ 'passive_filetypes': []}
+
 " Enable pathogen
 call pathogen#infect()
 call pathogen#helptags()
@@ -220,10 +233,10 @@ nnoremap ; :
 
 " Toggle folds using space
 nnoremap <Space> za
-" Navigate between bookmarks
-nmap <silent> <CR> :ToggleBookmark<CR>
-nmap <silent> <Tab> :NextBookmark<CR>
-nmap <silent> <S-Tab> :PreviousBookmark<CR>
+
+" Jump to the next syntastic error
+nmap <silent> <Tab> :lnext<CR>
+nmap <silent> <S-Tab> :lprev<CR>
 
 " Scroll to the middle of the screen when searching
 nmap n nzz
@@ -316,28 +329,8 @@ nnoremap <Leader>? ?<C-r><C-w>
 nnoremap <Leader>s :%s/<C-r><C-w>//gc<Left><Left><Left>
 vnoremap <Leader>s "0y:%s/<C-r><C-0>//gc<Left><Left><Left>
 
-" Toggles the quickfix window. Adapted from:
-" http://vim.wikia.com/wiki/Toggle_to_open_or_close_the_quickfix_window
-command -bang -nargs=? QFix call QFixToggle(<bang>0)
-function! QFixToggle(forced)
-    if exists("g:qfix_win") && a:forced == 0
-        cclose
-    else
-        copen
-    endif
-endfunction
-
 function! CurrentClass()
     let fullpath = tagbar#currenttag('%s', '', 'f')
     let classname = split(fullpath, '\.')[0]
     return classname
 endfunction
-
-" used to track the quickfix window
-augroup QFixToggle
-    autocmd!
-    autocmd BufWinEnter quickfix let g:qfix_win = bufnr("$")
-    autocmd BufWinLeave * if exists("g:qfix_win") && expand("<abuf>") == g:qfix_win | unlet! g:qfix_win | endif
-augroup END
-
-nmap <Leader>q :QFix<CR>

@@ -115,3 +115,9 @@
 	path = dotfiles/.vim/bundle/vim-airline
 	url = git@github.com:bling/vim-airline.git
 	ignore = untracked
+[submodule "dotfiles/.vim/bundle/vim-togglelist"]
+	path = dotfiles/.vim/bundle/vim-togglelist
+	url = https://github.com/milkypostman/vim-togglelist.git
+[submodule "dotfiles/.vim/bundle/syntastic"]
+	path = dotfiles/.vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
