@@ -53,7 +53,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_auto_loc_list=0
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_enable_highlighting=1
-let g:syntastic_quiet_warnings=0
+let g:syntastic_quiet_warnings=1
 let g:syntastic_mode_map = {
             \ 'mode': 'passive',
             \ 'active_filetypes': ['puppet', 'ruby', 'python','javascript', 'css'],
@@ -73,10 +73,18 @@ let NERDTreeDirArrows=1
 cab mru Mru
 
 let g:airline_left_sep = '⮀'
+let g:airline_left_alt_sep = '⮁'
 let g:airline_right_sep = '⮂'
-let g:airline_linecolumn_prefix = '⭡ '
+let g:airline_right_alt_sep = '⮃'
 let g:airline_fugitive_prefix = '⭠ '
 let g:airline_readonly_symbol = '⭤'
+let g:airline_linecolumn_prefix = '⭡'
+let g:airline_linecolumn_prefix = '⭡'
+
+let g:airline_enable_tagbar = 0
+let g:airline_section_x = ''
+let g:airline_section_y = '%(%{get(w:,"airline_active",0) ? tagbar#currenttag("%s","", "f") : ""}%)'
+
 
 " Enable built-in matchit plugin
 source $VIMRUNTIME/macros/matchit.vim
@@ -147,13 +155,13 @@ if has('gui_running')
     " Change syntax highlight scheme
     colorscheme solarized
     " Remove toolbar
-	set guioptions-=T
+    set guioptions-=T
     " Maximize
     set lines=999 columns=999
 else
     " Set a low timeout for commands to
     " avoid lag on console
-	set ttimeoutlen=100
+    set ttimeoutlen=100
 endif
 
 " Disable ESC mapping
