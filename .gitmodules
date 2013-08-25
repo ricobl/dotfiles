@@ -124,3 +124,4 @@
 [submodule "dotfiles/.vim/bundle/vim-virtualenv"]
 	path = dotfiles/.vim/bundle/vim-virtualenv
 	url = git@github.com:jmcantrell/vim-virtualenv.git
+	ignore = untracked
