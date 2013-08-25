@@ -12,7 +12,7 @@ path="$2"
 
 if [ $# -eq 0 ]; then
 	echo "Usage: $0 glob_pattern [path]"
-	return 2
+	exit 2
 fi
 
 # Search for files or return with no error
