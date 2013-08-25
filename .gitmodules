@@ -121,3 +121,6 @@
 [submodule "dotfiles/.vim/bundle/syntastic"]
 	path = dotfiles/.vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
+[submodule "dotfiles/.vim/bundle/vim-virtualenv"]
+	path = dotfiles/.vim/bundle/vim-virtualenv
+	url = git@github.com:jmcantrell/vim-virtualenv.git
