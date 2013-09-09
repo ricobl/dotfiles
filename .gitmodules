@@ -66,10 +66,6 @@
 	path = dotfiles/.vim/bundle/text-object-left-and-right
 	url = git://github.com/vim-scripts/text-object-left-and-right.git
 	ignore = untracked
-[submodule "dotfiles/.vim/bundle/argtextobj.vim"]
-	path = dotfiles/.vim/bundle/argtextobj.vim
-	url = git://github.com/vim-scripts/argtextobj.vim.git
-	ignore = untracked
 [submodule "dotfiles/.vim/bundle/nerdtree"]
 	path = dotfiles/.vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
@@ -124,4 +120,8 @@
 [submodule "dotfiles/.vim/bundle/vim-virtualenv"]
 	path = dotfiles/.vim/bundle/vim-virtualenv
 	url = git@github.com:jmcantrell/vim-virtualenv.git
+	ignore = untracked
+[submodule "dotfiles/.vim/bundle/vim-argumentative"]
+	path = dotfiles/.vim/bundle/vim-argumentative
+	url = https://github.com/PeterRincker/vim-argumentative.git
 	ignore = untracked
