@@ -125,3 +125,6 @@
 	path = dotfiles/.vim/bundle/vim-argumentative
 	url = https://github.com/PeterRincker/vim-argumentative.git
 	ignore = untracked
+[submodule "dotfiles/.vim/bundle/vim-isort"]
+	path = dotfiles/.vim/bundle/vim-isort
+	url = git@github.com:fisadev/vim-isort.git
