@@ -128,3 +128,6 @@
 [submodule "dotfiles/.vim/bundle/vim-isort"]
 	path = dotfiles/.vim/bundle/vim-isort
 	url = git@github.com:fisadev/vim-isort.git
+[submodule "dotfiles/.vim/bundle/vim-easydir"]
+	path = dotfiles/.vim/bundle/vim-easydir
+	url = git@github.com:dockyard/vim-easydir.git
