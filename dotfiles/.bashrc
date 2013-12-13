@@ -81,6 +81,8 @@ else
     alias open='gnome-open 2> /dev/null'
 fi
 
+set -o vi
+
 alias vim='~/bin/vim-proxy.py'
 alias xvim="xargs ~/bin/vim-proxy.py"
 alias ll="ls -l"
