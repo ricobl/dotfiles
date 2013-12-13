@@ -3,9 +3,23 @@
 # Quick init for git projects
 
 git init
-echo "*.pyc" >> .gitignore
-echo "*~" >> .gitignore
-echo "*.swp" >> .gitignore
+
+# Base .gitignore
 echo "?humbs.db" >> .gitignore
+echo '*.egg-info' >> .gitignore
+echo '*.log' >> .gitignore
+echo '*.pyc' >> .gitignore
+echo '*.swo' >> .gitignore
+echo '*.swp' >> .gitignore
+echo '*~' >> .gitignore
+echo '.#*' >> .gitignore
+echo '.DS_Store' >> .gitignore
+echo '.coverage' >> .gitignore
+echo '.pydevproject' >> .gitignore
+echo '.ropeproject/' >> .gitignore
+echo 'build/' >> .gitignore
+echo 'dist/' >> .gitignore
+echo 'pip-log.txt' >> .gitignore
+
 git add .gitignore
 git commit -m "Initial commit"
