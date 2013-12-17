@@ -124,9 +124,12 @@
 [submodule "dotfiles/.vim/bundle/vim-isort"]
 	path = dotfiles/.vim/bundle/vim-isort
 	url = git@github.com:fisadev/vim-isort.git
+	ignore = untracked
 [submodule "dotfiles/.vim/bundle/vim-easydir"]
 	path = dotfiles/.vim/bundle/vim-easydir
 	url = git@github.com:dockyard/vim-easydir.git
+	ignore = untracked
 [submodule "dotfiles/.vim/bundle/snipmate.vim"]
 	path = dotfiles/.vim/bundle/snipmate.vim
 	url = git@github.com:ervandew/snipmate.vim.git
+	ignore = untracked
