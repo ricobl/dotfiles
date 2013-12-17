@@ -6,10 +6,6 @@
 	path = dotfiles/.vim/bundle/tcomment
 	url = git://github.com/tomtom/tcomment_vim.git
 	ignore = untracked
-[submodule "dotfiles/.vim/bundle/snipmate"]
-	path = dotfiles/.vim/bundle/snipmate
-	url = git://github.com/msanders/snipmate.vim.git
-	ignore = untracked
 [submodule "dotfiles/.vim/bundle/surround"]
 	path = dotfiles/.vim/bundle/surround
 	url = git://github.com/vim-scripts/surround.vim.git
@@ -131,3 +127,6 @@
 [submodule "dotfiles/.vim/bundle/vim-easydir"]
 	path = dotfiles/.vim/bundle/vim-easydir
 	url = git@github.com:dockyard/vim-easydir.git
+[submodule "dotfiles/.vim/bundle/snipmate.vim"]
+	path = dotfiles/.vim/bundle/snipmate.vim
+	url = git@github.com:ervandew/snipmate.vim.git
