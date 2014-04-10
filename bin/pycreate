@@ -26,7 +26,9 @@ def create_dir(dirname):
 
 def create(path):
     filename, ext = os.path.splitext(path)
-    create_dir(os.path.dirname(path))
+    dirname = os.path.dirname(path)
+    if dirname:
+        create_dir(dirname)
 
     if ext:
         create_file(path, '# -*- coding: utf-8 -*-\n\n')
