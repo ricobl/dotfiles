@@ -133,3 +133,6 @@
 	path = dotfiles/.vim/bundle/snipmate.vim
 	url = git@github.com:ervandew/snipmate.vim.git
 	ignore = untracked
+[submodule "dotfiles/.vim/bundle/vim-sparql"]
+	path = dotfiles/.vim/bundle/vim-sparql
+	url = git@github.com:Omer/vim-sparql.git
