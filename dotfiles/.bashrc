@@ -153,3 +153,5 @@ cddotfiles(){
     local dotfiles=$(realpath ~/.bashrc)/..
     cd "$dotfiles"/$1
 }
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
