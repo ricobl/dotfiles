@@ -14,7 +14,7 @@ search_dir="./"
 is_git_dir=`git rev-parse --git-dir 2> /dev/null || echo ''`
 
 git_search () {
-    git grep -Iil "$2" -- "$1"
+    git grep -Iil "$2" -- "*$1"
 }
 
 ack_search () {
