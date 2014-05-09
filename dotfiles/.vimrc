@@ -79,6 +79,7 @@ let g:airline_right_alt_sep = '⮃'
 let g:airline_fugitive_prefix = '⭠ '
 let g:airline_readonly_symbol = '⭤'
 let g:airline_linecolumn_prefix = '⭡'
+let g:airline_linecolumn_prefix = '⭡'
 
 let g:airline_enable_tagbar = 0
 let g:airline_section_x = ''
