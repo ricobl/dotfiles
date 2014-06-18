@@ -325,7 +325,7 @@ map <Leader>a :RopeAutoImport<CR>
 map <Leader>r :RopeRename<CR>
 
 " Open file under cursor (better than gf)
-map <Leader>f :tab drop **/<C-r><C-f><CR>
+map <Leader>f :tab drop **/<C-r><C-f>*<CR>
 
 " Open NERDTree
 map <Leader>e :NERDTreeToggle<CR>
