@@ -107,7 +107,6 @@ autocmd BufRead,BufNewFile *.html.* set filetype=html.htmldjango
 autocmd BufRead,BufNewFile *.scss set filetype=scss.css
 
 " Enable python+django snippets
-autocmd BufRead,BufNewFile *.py set filetype=python.django
 autocmd FileType python setlocal omnifunc=RopeCompleteFunc
 
 " Disable preview window on auto-complete
@@ -116,18 +115,8 @@ set cot-=preview
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 
-
-" Set ruby filetype for lettuce/cucumber features and pyccuracy actions
-au! BufRead,BufNewFile *.feature setfiletype ruby
-au! BufRead,BufNewFile *acc setfiletype ruby
-
-" Disable caps when leaving insert-mode
-function! CapsOff()
-    :silent execute "!~/bin/togglecaps.py off > /dev/null 2>&1 &"
-endfunction
-
 if os != "Darwin"
-    autocmd InsertLeave * call CapsOff()
+    autocmd InsertLeave * call functions#CapsOff()
 endif
 
 " Jump to last edited position
@@ -186,15 +175,7 @@ let g:indentLine_char = "┊"
 let g:indentLine_first_char = "┊"
 
 " Clean whitespace on save
-function! StripTrailingWhitespace()
-    normal mZ
-    %s/\s\+$//e
-    if line("'Z") != line(".")
-        echo "Stripped whitespace\n"
-    endif
-    normal `Z
-endfunction
-autocmd BufWritePre * :call StripTrailingWhitespace()
+autocmd BufWritePre * :call functions#StripTrailingWhitespace()
 
 
 " OPTIONS
@@ -272,12 +253,6 @@ nnoremap <C-Tab> :tabnext<CR>
 nnoremap <C-S-Tab> :tabprevious<CR>
 inoremap <C-Tab> <C-O>:tabnext<CR>
 inoremap <C-S-Tab> <C-O>:tabprevious<CR>
-nmap <SwipeLeft> :tabprevious<CR>
-nmap <SwipeRight> :tabnext<CR>
-
-" Use swipe to jump to BOF / EOF
-nmap <SwipeUp> gg
-nmap <SwipeDown> G
 
 " Uppercase common commands
 cab W w
@@ -337,9 +312,3 @@ vnoremap <Leader>? "0y?<C-r><C-0>
 nnoremap <Leader>? ?<C-r><C-w>
 nnoremap <Leader>s :%s/<C-r><C-w>//gc<Left><Left><Left>
 vnoremap <Leader>s "0y:%s/<C-r><C-0>//gc<Left><Left><Left>
-
-function! CurrentClass()
-    let fullpath = tagbar#currenttag('%s', '', 'f')
-    let classname = split(fullpath, '\.')[0]
-    return classname
-endfunction

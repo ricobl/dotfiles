@@ -105,4 +105,4 @@ snippet ipdb
 # Super snippet using tagbar to get current class and method
 # See `CurrentClass` on .vimrc
 snippet super
-	super(`CurrentClass()`, self).`tagbar#currenttag("%s", "")`(${1:*args, **kwargs})${2}
+	super(`functions#CurrentClass()`, self).`tagbar#currenttag("%s", "")`(${1:*args, **kwargs})${2}
