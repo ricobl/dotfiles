@@ -18,8 +18,9 @@ set nocompatible
 
 " PLUGINS
 
-" Use custom snippets dir
-let snippets_dir = substitute(globpath(&rtp, 'snippets/'), "\n", ',', 'g')
+" Disable snipmate scope aliases (eg: javascript on html)
+let g:snipMate = {}
+let g:snipMate.no_default_aliases=1
 
 " Tagbar setup
 let g:tagbar_compact=1

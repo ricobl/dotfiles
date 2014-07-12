@@ -132,3 +132,12 @@
 [submodule "dotfiles/.vim/bundle/vim-sparql"]
 	path = dotfiles/.vim/bundle/vim-sparql
 	url = git@github.com:Omer/vim-sparql.git
+[submodule "dotfiles/.vim/bundle/snipmate"]
+	path = dotfiles/.vim/bundle/snipmate
+	url = git@github.com:garbas/vim-snipmate.git
+[submodule "dotfiles/.vim/bundle/vim-addon-mw-utils"]
+	path = dotfiles/.vim/bundle/vim-addon-mw-utils
+	url = git@github.com:MarcWeber/vim-addon-mw-utils.git
+[submodule "dotfiles/.vim/bundle/tlib_vim"]
+	path = dotfiles/.vim/bundle/tlib_vim
+	url = git@github.com:tomtom/tlib_vim.git
