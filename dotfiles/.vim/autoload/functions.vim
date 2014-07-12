@@ -19,3 +19,20 @@ function! functions#CurrentClass()
     let classname = split(fullpath, '\.')[0]
     return classname
 endfunction
+
+" Git branch
+function! functions#GitBranch()
+    if !exists('g:git_branch')
+        call functions#UpdateGitBranch()
+    endif
+
+    return g:git_branch
+endfunction
+
+" Updates current git branch
+function! functions#UpdateGitBranch()
+    let g:git_branch = system("git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* //'")
+    if g:git_branch != ''
+        let g:git_branch = substitute(g:git_branch, '\n', '', 'g')
+    endif
+endfunction

@@ -78,10 +78,6 @@
 	path = dotfiles/.vim/bundle/template.vim
 	url = git://github.com/vim-scripts/template.vim.git
 	ignore = untracked
-[submodule "dotfiles/.vim/bundle/vim-fugitive"]
-	path = dotfiles/.vim/bundle/vim-fugitive
-	url = git://github.com/tpope/vim-fugitive.git
-	ignore = untracked
 [submodule "dotfiles/.vim/bundle/supertab"]
 	path = dotfiles/.vim/bundle/supertab
 	url = git://github.com/ervandew/supertab.git

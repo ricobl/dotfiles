@@ -83,6 +83,7 @@ let g:airline_linecolumn_prefix = '⭡'
 let g:airline_linecolumn_prefix = '⭡'
 
 let g:airline_enable_tagbar = 0
+let g:airline_section_b = '%{functions#GitBranch()}'
 let g:airline_section_x = ''
 let g:airline_section_y = '%(%{get(w:,"airline_active",0) ? tagbar#currenttag("%s","", "f") : ""}%)'
 
@@ -177,6 +178,10 @@ let g:indentLine_first_char = "┊"
 
 " Clean whitespace on save
 autocmd BufWritePre * :call functions#StripTrailingWhitespace()
+
+" Update git branch when reading files
+"autocmd BufRead,BufNewFile * :call functions#UpdateGitBranch()
+autocmd BufEnter,FocusGained * :call functions#UpdateGitBranch()
 
 
 " OPTIONS
