@@ -2,20 +2,35 @@
 
 # Extracts a compressed file
 
-if [ -f $1 ] ; then
-    case $1 in
-        *.tar.bz2)        tar xjf $1        ;;
-        *.tar.gz)         tar xzf $1        ;;
-        *.bz2)            bunzip2 $1        ;;
-        *.rar)            unrar x $1        ;;
-        *.gz)             gunzip $1         ;;
-        *.tar)            tar xf $1         ;;
-        *.tbz2)           tar xjf $1        ;;
-        *.tgz)            tar xzf $1        ;;
-        *.zip)            unzip $1          ;;
-        *.Z)              uncompress $1     ;;
-        *)                echo "'$1' cannot be extracted via extract()" ;;
+realpath() {
+    [[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}"
+}
+
+archive=$1
+real_archive=$(realpath $archive)
+
+filename=$(basename "$archive")
+[[ -z $2 ]] && target="${filename%.*}" || target=$2
+
+[[ -f $target ]] && echo "$target already exists and is a file" && exit 1
+
+mkdir -p $target
+cd $target
+
+if [ -f $real_archive ] ; then
+    case $real_archive in
+        *.tar.bz2)        tar xjf $real_archive        ;;
+        *.tar.gz)         tar xzf $real_archive        ;;
+        *.bz2)            bunzip2 $real_archive        ;;
+        *.rar)            unrar x $real_archive        ;;
+        *.gz)             gunzip $real_archive         ;;
+        *.tar)            tar xf $real_archive         ;;
+        *.tbz2)           tar xjf $real_archive        ;;
+        *.tgz)            tar xzf $real_archive        ;;
+        *.zip)            unzip $real_archive          ;;
+        *.Z)              uncompress $real_archive     ;;
+        *)                echo "'$archive' cannot be extracted via extract()" ;;
     esac
 else
-    echo "'$1' is not a valid file"
+    echo "'$archive' is not a valid file"
 fi
