@@ -6,7 +6,7 @@
 # find-file.sh "glob pattern" /path
 
 # Setup
-glob=`echo "$1" | sed 's/\*/.+/g'`
+glob="*$1*"
 path="$2"
 [ -z $path ] && path="."
 
@@ -16,4 +16,4 @@ if [ $# -eq 0 ]; then
 fi
 
 # Search for files or return with no error
-ack -afG $glob "$path" || exit 0
+find "$path" -iwholename $glob || exit 0
