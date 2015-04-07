@@ -137,3 +137,11 @@
 [submodule "dotfiles/.vim/bundle/tlib_vim"]
 	path = dotfiles/.vim/bundle/tlib_vim
 	url = git@github.com:tomtom/tlib_vim.git
+[submodule "dotfiles/.vim/bundle/vim-autopep8"]
+	path = dotfiles/.vim/bundle/vim-autopep8
+	url = git@github.com:tell-k/vim-autopep8.git
+	ignore = untracked
+[submodule "dotfiles/.vim/bundle/vim-flavored-markdown"]
+	path = dotfiles/.vim/bundle/vim-flavored-markdown
+	url = git@github.com:jtratner/vim-flavored-markdown.git
+	ignore = untracked

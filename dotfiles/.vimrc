@@ -102,11 +102,17 @@ filetype indent on
 
 " Make all HTML files behave like Django templates
 " (vim's auto-detection fails sometimes)
-autocmd BufRead,BufNewFile *.html set filetype=html.htmldjango
-autocmd BufRead,BufNewFile *.html.* set filetype=html.htmldjango
+autocmd BufRead,BufNewFile *.html setlocal filetype=html.htmldjango
+autocmd BufRead,BufNewFile *.html.* setlocal filetype=html.htmldjango
+
+" Enable github flavored markdown
+augroup markdown
+    au!
+    au BufNewFile,BufRead *.mkd,*.md,*.markdown setlocal filetype=ghmarkdown
+augroup END
 
 " Make Sass (scss) files behave like css
-autocmd BufRead,BufNewFile *.scss set filetype=scss.css
+autocmd BufRead,BufNewFile *.scss setlocal filetype=scss.css
 
 " Enable python+django snippets
 autocmd FileType python setlocal omnifunc=RopeCompleteFunc
