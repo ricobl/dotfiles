@@ -276,6 +276,43 @@ cab wQ wq
 " Tabs
 cab t tabedit
 nmap <Leader>t :TagbarToggle<CR>
+map <C-1> 1gt
+map <C-2> 2gt
+map <C-3> 3gt
+map <C-4> 4gt
+map <C-5> 5gt
+map <C-6> 6gt
+map <C-7> 7gt
+map <C-8> 8gt
+map <C-9> :tablast<CR>
+imap <C-1> <C-O>1gt
+imap <C-2> <C-O>2gt
+imap <C-3> <C-O>3gt
+imap <C-4> <C-O>4gt
+imap <C-5> <C-O>5gt
+imap <C-6> <C-O>6gt
+imap <C-7> <C-O>7gt
+imap <C-8> <C-O>8gt
+imap <C-9> :tablast<CR>
+map <D-1> 1gt
+map <D-2> 2gt
+map <D-3> 3gt
+map <D-4> 4gt
+map <D-5> 5gt
+map <D-6> 6gt
+map <D-7> 7gt
+map <D-8> 8gt
+map <D-9> :tablast<CR>
+imap <D-1> <D-O>1gt
+imap <D-2> <D-O>2gt
+imap <D-3> <D-O>3gt
+imap <D-4> <D-O>4gt
+imap <D-5> <D-O>5gt
+imap <D-6> <D-O>6gt
+imap <D-7> <D-O>7gt
+imap <D-8> <D-O>8gt
+imap <D-9> :tablast<CR>
+
 
 " Toggle whitespace
 nmap <Leader>w :set list!<CR>
