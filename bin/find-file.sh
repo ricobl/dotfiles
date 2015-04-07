@@ -16,4 +16,4 @@ if [ $# -eq 0 ]; then
 fi
 
 # Search for files or return with no error
-find "$path" -iwholename $glob || exit 0
+find "$path" -iwholename "$glob" || exit 0
