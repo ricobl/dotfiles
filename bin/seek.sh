@@ -10,25 +10,19 @@
 # seek.sh "file.pattern" "text pattern"
 
 # Setup
-search_dir="./"
+search_dir="."
 is_git_dir=`git rev-parse --git-dir 2> /dev/null || echo ''`
 
 git_search () {
     git grep -Iil "$2" -- "*$1*"
 }
 
-ack_search () {
-    # Convert glob into regex
-    file_pattern=`echo "$1" | sed 's/\*/.+/g'`
-    ack -ilaG "$file_pattern" "$2" -- "$search_dir"
-}
-
 grep_search () {
-    grep -Iilr --exclude="*.pyc" --include="$file_pattern" "$text_pattern" "$search_dir"
+    grep -Iilr --exclude="*.pyc" --include="$1" "$2" "$search_dir"
 }
 
 # Configure search function
-[ -z "$is_git_dir" ] && search_func=ack_search || search_func=git_search
+[ -z "$is_git_dir" ] && search_func=grep_search || search_func=git_search
 
 if [ $# -eq 1 ]; then
     $search_func '*' "$1"
