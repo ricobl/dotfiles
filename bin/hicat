@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Uses `pygmentize` to highlight text or fallback to plain text highlight
+
+args="$*"
+[ $# -eq 0 ] && args='/dev/stdin'
+
+pygmentize -g $args
