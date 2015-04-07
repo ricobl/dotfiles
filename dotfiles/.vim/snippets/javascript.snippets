@@ -1,7 +1,7 @@
 # Prototype
 snippet proto
 	${1:class_name}.prototype.${2:method_name} =
-	function(${3:first_argument}) {
+	function (${3:first_argument}) {
 		${4:// body...}
 	};
 # Function
@@ -16,7 +16,7 @@ snippet log
 	console.log(${1});
 # Anonymous Function
 snippet f
-	function(${1}){${2}}${3}
+	function (${1}) {${2}}${3}
 # if
 snippet if
 	if (${1:true}) {${2}};
@@ -95,4 +95,11 @@ snippet test
 	test('${1}', function(){
 		${2}
 	});
-	
+snippet describe
+	describe('${1}', function () {
+			${2}
+	});
+snippet it
+	it('${1}', function () {
+		${2}
+	});
