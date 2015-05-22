@@ -26,7 +26,7 @@ do
     dir=`dirname $repo`
     pushd "$dir" > /dev/null
         echo -e "${c_dir}$dir${c_off}"
-        git $*
+        git "$@"
     popd > /dev/null
 done
 
