@@ -192,6 +192,9 @@ autocmd BufEnter,FocusGained * :call functions#UpdateGitBranch()
 
 " OPTIONS
 
+" Enable local project settings
+set exrc
+
 " Improve block selection by allowing selection of empty spaces
 set virtualedit+=block
 
