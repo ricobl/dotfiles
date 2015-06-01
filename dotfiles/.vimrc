@@ -224,7 +224,8 @@ autocmd InsertLeave * set ic
 set scrolloff=5
 " Folding
 set foldmethod=indent
-
+" Increase the maximum of tabs
+set tabpagemax=100
 
 " Shortcuts
 
