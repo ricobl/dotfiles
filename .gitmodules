@@ -145,3 +145,6 @@
 	path = dotfiles/.vim/bundle/vim-flavored-markdown
 	url = git@github.com:jtratner/vim-flavored-markdown.git
 	ignore = untracked
+[submodule "dotfiles/.vim/bundle/vim-io"]
+	path = dotfiles/.vim/bundle/vim-io
+	url = https://github.com/andreimaxim/vim-io.git
