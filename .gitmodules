@@ -148,3 +148,6 @@
 [submodule "dotfiles/.vim/bundle/vim-io"]
 	path = dotfiles/.vim/bundle/vim-io
 	url = https://github.com/andreimaxim/vim-io.git
+[submodule "dotfiles/.vim/bundle/vim-ruby"]
+	path = dotfiles/.vim/bundle/vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby.git
