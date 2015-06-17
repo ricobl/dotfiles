@@ -2,4 +2,8 @@
 
 # Searches for a string in files that might have been removed
 
-git grep -i $1 $(git rev-list --all)
+git rev-list --all | (
+    while read revision; do
+        git grep -F "$1" $revision
+    done
+)
