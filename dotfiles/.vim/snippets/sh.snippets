@@ -1,13 +1,13 @@
 # #!/bin/bash
 snippet #!
 	#!/bin/bash
-	
+
 snippet !sh
 	#!/bin/sh
-	
+
 snippet !bash
 	#!/bin/bash
-	
+
 snippet if
 	if [[ ${1:condition} ]]; then
 		${2:#statements}
@@ -15,7 +15,13 @@ snippet if
 snippet elif
 	elif [[ ${1:condition} ]]; then
 		${2:#statements}
+
 snippet for
+	for i in $( ls ); do
+		echo item: $i
+	done
+
+snippet fori
 	for (( ${2:i} = 0; $2 < ${1:count}; $2++ )); do
 		${3:#statements}
 	done
