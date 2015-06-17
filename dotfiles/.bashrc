@@ -131,6 +131,7 @@ export FIGNORE='pyc'
 export IPYTHONDIR="~/.ipython"
 # Enable nose rednose plugin for colored output
 export NOSE_REDNOSE=1
+export PYTHONDONTWRITEBYTECODE=1
 
 # EASY FILE FIND
 # Disable glob expansion for find-file (ff) and seek
