@@ -15,6 +15,7 @@ if version >= 703
 endif
 
 set nocompatible
+set autoread
 
 " PLUGINS
 
