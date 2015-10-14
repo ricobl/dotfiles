@@ -147,3 +147,6 @@
 [submodule "dotfiles/.vim/bundle/vim-ruby"]
 	path = dotfiles/.vim/bundle/vim-ruby
 	url = git://github.com/vim-ruby/vim-ruby.git
+[submodule "dotfiles/.vim/bundle/vim-mustache-handlebars"]
+	path = dotfiles/.vim/bundle/vim-mustache-handlebars
+	url = https://github.com/mustache/vim-mustache-handlebars.git
