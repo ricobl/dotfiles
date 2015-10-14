@@ -23,6 +23,10 @@ for f in `ls -A $DOTFILES/dotfiles`; do
     safe_link "$DOTFILES/dotfiles/$f"
 done
 
+# Install main Fish Shell config
+mkdir -p "$HOME/.config/fish"
+cp "$DOTFILES/config.fish" "$HOME/.config/fish/"
+
 # Updates vim help tags
 vim "+helptags ~/.vim/doc" "+q"
 
