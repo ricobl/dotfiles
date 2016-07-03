@@ -19,6 +19,7 @@ cd $target
 
 if [ -f $real_archive ] ; then
     case $real_archive in
+        *.tar.xz)         tar xpvf $real_archive       ;;
         *.tar.bz2)        tar xjf $real_archive        ;;
         *.tar.gz)         tar xzf $real_archive        ;;
         *.bz2)            bunzip2 $real_archive        ;;
