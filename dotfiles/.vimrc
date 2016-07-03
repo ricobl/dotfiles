@@ -144,7 +144,8 @@ highlight SpellBad term=underline gui=undercurl guisp=Orange
 if os == "Darwin"
     set guifont=Menlo\ Regular\ for\ Powerline:h16
 else
-    set guifont=Ubuntu\ Mono\ Bold\ 16
+    " https://github.com/nicolalamacchia/powerline-consolas/blob/master/consola.ttf
+    set guifont=Consolas\ 14
 endif
 
 " Vim / Gvim settings
