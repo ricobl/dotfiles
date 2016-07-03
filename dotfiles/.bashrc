@@ -152,7 +152,8 @@ cdgit(){
     cd "$(git rev-parse --show-toplevel)/$1"
 }
 cddotfiles(){
-    local dotfiles=$(realpath ~/.bashrc)/..
+    local bashrc=$(realpath ~/.bashrc)
+    local dotfiles=$(dirname $bashrc)
     cd "$dotfiles"/$1
 }
 
