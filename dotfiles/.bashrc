@@ -153,7 +153,7 @@ cdgit(){
 }
 cddotfiles(){
     local bashrc=$(realpath ~/.bashrc)
-    local dotfiles=$(dirname $bashrc)
+    local dotfiles=$(dirname $(dirname $bashrc))
     cd "$dotfiles"/$1
 }
 
