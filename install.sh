@@ -30,6 +30,9 @@ cp "$DOTFILES/config.fish" "$HOME/.config/fish/"
 # Updates vim help tags
 vim "+helptags ~/.vim/doc" "+q"
 
+# Create persistent undo dir for vim
+mkdir -p ~/.vim/undo
+
 # Initialize and update submodules (for vim plugins)
 git submodule init
 git submodule update
