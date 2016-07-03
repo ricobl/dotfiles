@@ -1,12 +1,4 @@
-Fabric
-PIL
-coverage
-ipdb
 ipython
-lxml
-nose
-rednose
-pep8
+flake8
 virtualenv
 virtualenvwrapper
-ropevim
