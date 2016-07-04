@@ -7,8 +7,6 @@ set completion-ignore-case On
 set match-hidden-files off
 # Auto-complete directory symlinks with "/"
 set mark-symlinked-directories on
-# Enable vi-mode
-set editing-mode vi
 
 # Mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
 "\e[1;5C": forward-word
@@ -24,3 +22,7 @@ set editing-mode vi
 "\e[3D": backward-word
 "\e\e[C": forward-word
 "\e\e[D": backward-word
+
+# Disable the V key on normal mode
+set keymap vi-command
+v: ""
