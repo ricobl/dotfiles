@@ -13,6 +13,7 @@ def create_file(filename, content=''):
     with open(init_py, 'w') as handle:
         handle.write(content)
 
+
 def create_dir(dirname):
     if not os.path.isdir(dirname):
         os.makedirs(dirname)
@@ -24,6 +25,7 @@ def create_dir(dirname):
         init_py = os.path.join(base_dir, '__init__.py')
         create_file(init_py)
 
+
 def create(path):
     filename, ext = os.path.splitext(path)
     dirname = os.path.dirname(path)
@@ -33,7 +35,9 @@ def create(path):
     if ext:
         create_file(path, '# -*- coding: utf-8 -*-\n\n')
 
-    print path
+    sys.stdout.write(path)
+    sys.stdout.write('\n')
+
 
 def main():
     paths = sys.argv[1:]
