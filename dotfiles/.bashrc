@@ -75,6 +75,8 @@ if [ $OS == "Darwin" ]; then
     alias ls='ls -G'
     # Change paths as required for homebrew
     PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+    # Disable analytics on homebrew
+    export HOMEBREW_NO_ANALYTICS=1
 else
     alias ls='ls --color=auto'
     # Same as Mac's open
