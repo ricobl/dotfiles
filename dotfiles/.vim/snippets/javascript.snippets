@@ -24,7 +24,7 @@ snippet t
 # switch
 snippet switch
 	switch(${1:expression}) {
-		case '${3:case}':
+		case "${3:case}":
 			${4:// code}
 			break;
 		${5}
@@ -33,7 +33,7 @@ snippet switch
 	}
 # case
 snippet case
-	case '${1:case}':
+	case "${1:case}":
 		${2:// code}
 		break;
 	${3}
@@ -67,33 +67,33 @@ snippet timeout
 	setTimeout(function() {${3}}${2}, ${1:10};
 # Get Elements
 snippet get
-	getElementsBy${1:TagName}('${2}')${3}
+	getElementsBy${1:TagName}("${2}")${3}
 # Get Element
 snippet gett
-	getElementBy${1:Id}('${2}')${3}
+	getElementBy${1:Id}("${2}")${3}
 # JQuery
 snippet $
-	$('${1}')${2}
+	$("${1}")${2}
 snippet $f
 	$(function(){
-		var ${1:name} = $('${2:selector}');
+		var ${1:name} = $("${2:selector}");
 	});
 snippet $v
-	var ${1:name} = $('${2:selector}');${3}
+	var ${1:name} = $("${2:selector}");${3}
 snippet $e
 	${1:$(item)}.each(function(){
 		var self = ${2:$(this)};${3}
 	});
 # Test
 snippet test
-	test('${1}', function(){
+	test("${1}", function(){
 		${2}
 	});
 snippet describe
-	describe('${1}', function () {
+	describe("${1}", function () {
 			${2}
 	});
 snippet it
-	it('${1}', function () {
+	it("${1}", function () {
 		${2}
 	});
