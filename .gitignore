@@ -6,3 +6,4 @@ vim/snipmate
 dotfiles/.ipython/profile_default/*
 !dotfiles/.ipython/profile_default/ipython_config.py
 dotfiles/.vim/undo/
+dotfiles/.ipython/README
