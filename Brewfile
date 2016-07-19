@@ -1,3 +1,5 @@
+# vim: set filetype=ruby
+
 tap 'caskroom/cask'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
@@ -8,6 +10,7 @@ tap 'tsuru/homebrew-tsuru'
 
 brew 'ack'
 brew 'bash-completion'
+brew 'ctags'
 brew 'diff-so-fancy'
 brew 'git'
 brew 'git-extras'
