@@ -231,6 +231,8 @@ set scrolloff=5
 set foldmethod=indent
 " Increase the maximum of tabs
 set tabpagemax=100
+" Always show tab bar
+set showtabline=2
 
 " Shortcuts
 
