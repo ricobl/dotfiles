@@ -36,3 +36,17 @@ function! functions#UpdateGitBranch()
         let g:git_branch = substitute(g:git_branch, '\n', '', 'g')
     endif
 endfunction
+
+function! functions#Tabedit(...)
+  let t = tabpagenr()
+  let i = 0
+  for f in a:000
+    for g in glob(f, 0, 1)
+      exe "tabe " . fnameescape(g)
+      let i = i + 1
+    endfor
+  endfor
+  if i
+    exe "tabn " . (t + 1)
+  endif
+endfunction

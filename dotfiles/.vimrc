@@ -191,6 +191,9 @@ autocmd BufWritePre * :call functions#StripTrailingWhitespace()
 "autocmd BufRead,BufNewFile * :call functions#UpdateGitBranch()
 autocmd BufEnter,FocusGained * :call functions#UpdateGitBranch()
 
+" Open files in tabs
+command! -complete=file -nargs=* Tabedit call functions#Tabedit(<f-args>)
+
 
 " OPTIONS
 
@@ -282,7 +285,7 @@ cab Wq wq
 cab wQ wq
 
 " Tabs
-cab t tabedit
+cab t Tabedit
 nmap <Leader>t :TagbarToggle<CR>
 map <C-1> 1gt
 map <C-2> 2gt
