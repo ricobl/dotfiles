@@ -38,15 +38,20 @@ function! functions#UpdateGitBranch()
 endfunction
 
 function! functions#Tabedit(...)
-  let t = tabpagenr()
-  let i = 0
-  for f in a:000
-    for g in glob(f, 0, 1)
-      exe "tabe " . fnameescape(g)
-      let i = i + 1
+    let t = tabpagenr()
+    let i = 0
+    for f in a:000
+        let matches = glob(f, 0, 1)
+        if len(matches) > 0
+            for g in matches
+                exe "tabe " . fnameescape(g)
+                let i = i + 1
+            endfor
+        else
+            exe "tabe " . fnameescape(f)
+        endif
     endfor
-  endfor
-  if i
-    exe "tabn " . (t + 1)
-  endif
+    if i
+        exe "tabn " . (t + 1)
+    endif
 endfunction
