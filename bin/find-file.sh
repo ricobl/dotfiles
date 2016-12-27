@@ -15,5 +15,8 @@ if [ $# -eq 0 ]; then
 	exit 2
 fi
 
+# Strip trailing slash
+path="${path%/}"
+
 # Search for files or return with no error
 find "$path" -iwholename "$glob" || exit 0
