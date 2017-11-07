@@ -21,6 +21,12 @@ Tab: menu-complete
 # And reverse
 "\e[Z": menu-complete-backward
 
+# Allow binding of special chars (e.g.: Ctrl+w)
+set bind-tty-special-chars off
+
+# Delete full-paths with Ctrl+w
+"\C-w": unix-word-rubout
+
 # Mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
 "\e[1;5C": forward-word
 "\e[1;5D": backward-word
