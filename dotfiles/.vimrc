@@ -57,7 +57,7 @@ let g:syntastic_always_populate_loc_list=1
 let g:syntastic_enable_highlighting=1
 let g:syntastic_mode_map = {
             \ 'mode': 'passive',
-            \ 'active_filetypes': ['puppet', 'ruby', 'python','javascript', 'css'],
+            \ 'active_filetypes': ['puppet', 'ruby','javascript', 'css'],
             \ 'passive_filetypes': []}
 let g:syntastic_quiet_messages = {'level': 'warnings'}
 
