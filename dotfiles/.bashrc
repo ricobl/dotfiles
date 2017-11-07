@@ -44,7 +44,7 @@ function git_branch {
 }
 
 function git_tag {
-    tag=`git describe --exact-match --tags HEAD 2> /dev/null`
+    tag=`git tag -l --points-at HEAD 2> /dev/null | xargs echo`
     [ -z "$tag" ] && return 1
 
     echo " $tag"
