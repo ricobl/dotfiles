@@ -8,6 +8,19 @@ set match-hidden-files off
 # Auto-complete directory symlinks with "/"
 set mark-symlinked-directories on
 
+# Highlight matched portion (for bash 4.4)
+set colored-completion-prefix On
+
+# Immediately shows options on first Tab
+set show-all-if-ambiguous On
+set show-all-if-unmodified Off
+set menu-complete-display-prefix Off
+
+# Completes with the first option on first tab
+Tab: menu-complete
+# And reverse
+"\e[Z": menu-complete-backward
+
 # Mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
 "\e[1;5C": forward-word
 "\e[1;5D": backward-word
