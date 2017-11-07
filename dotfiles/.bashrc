@@ -167,3 +167,4 @@ export NVM_DIR="$HOME/.nvm"
 PATH="~/Android/Sdk/tools:~/Android/Sdk/platform-tools:${PATH}"
 
 export ANDROID_HOME=~/Android/Sdk
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
