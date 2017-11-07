@@ -149,3 +149,6 @@
 [submodule "dotfiles/.vim/bundle/editorconfig-vim"]
 	path = dotfiles/.vim/bundle/editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim.git
+[submodule "dotfiles/.vim/bundle/vim-prettier"]
+	path = dotfiles/.vim/bundle/vim-prettier
+	url = git@github.com:prettier/vim-prettier.git
