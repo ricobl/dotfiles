@@ -68,8 +68,6 @@ export WORKON_HOME="$HOME/.virtualenvs"
 export PIP_RESPECT_VIRTUALENV=true
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_DOWNLOAD_CACHE="$HOME/.pip/cache"
-# Faster and better grep options
-export GREP_OPTIONS='--color=auto --exclude=*.pyc -I'
 
 if [ $OS == "Darwin" ]; then
     alias ls='ls -G'
@@ -88,6 +86,8 @@ set -o vi
 alias vim='~/bin/vim-proxy.py'
 alias xvim="xargs ~/bin/vim-proxy.py"
 alias ll="ls -l"
+# Faster and better grep options
+alias grep="grep --color=auto --exclude=*.pyc -I"
 
 # Bind Ctrl+l to clear terminal
 bind -x '"\C-l":printf "\ec"'
