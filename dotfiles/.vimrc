@@ -145,7 +145,7 @@ if os == "Darwin"
     set guifont=Menlo\ Regular\ for\ Powerline:h16
 else
     " https://github.com/nicolalamacchia/powerline-consolas/blob/master/consola.ttf
-    set guifont=Consolas\ 14
+    set guifont=Consolas\ Bold\ 14
 endif
 
 " Vim / Gvim settings
