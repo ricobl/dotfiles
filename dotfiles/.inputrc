@@ -11,6 +11,9 @@ set mark-symlinked-directories on
 # Highlight matched portion (for bash 4.4)
 set colored-completion-prefix On
 
+# Immediately shows options on first Tab
+set show-all-if-ambiguous On
+
 # Allow binding of special chars (e.g.: Ctrl+w)
 set bind-tty-special-chars off
 
