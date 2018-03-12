@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Shows local branches that are gone on the remote "origin"
+
+git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git br -D

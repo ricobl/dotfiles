@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Deletes local branches that are gone on the remote "origin"
+
+git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}'
