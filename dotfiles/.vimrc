@@ -91,10 +91,13 @@ let g:airline_symbols.maxlinenr = '⭡'
 let g:airline_enable_tagbar = 0
 let g:airline#extensions#wordcount#enabled = 0
 
-let g:airline_section_b = '%{functions#GitBranch()}'
-let g:airline_section_x = ''
-let g:airline_section_y = ''
+let g:airline_section_b = '⭠ %{functions#GitBranch()}'
+" let g:airline_section_x = ''
+" let g:airline_section_y = ''
 let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
+
+let g:airline_theme = 'deus'
+
 
 " Enable built-in matchit plugin
 source $VIMRUNTIME/macros/matchit.vim
