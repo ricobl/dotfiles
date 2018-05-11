@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Quickly amends the last commit adding modified files and keeping the message
+
+cmd='git commit -a --amend --no-edit'
+
+echo "About to run:"
+echo
+echo "$cmd"
+echo
+
+read -p "Press enter to continue"
+
+$cmd
