@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Pushes current branch setting upstream to origin
+
+branch=`git rev-parse --symbolic-full-name --abbrev-ref HEAD`
+cmd="git push --set-upstream origin $branch"
+
+echo "About to run:"
+echo
+echo "$cmd"
+echo
+
+read -p "Press enter to continue"
+
+$cmd
