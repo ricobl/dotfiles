@@ -4,7 +4,12 @@
 
 cmd='git commit -a --amend --no-edit'
 
-echo "About to run:"
+echo "About to amend the last commit:"
+echo
+git log --oneline -1
+echo
+
+echo "With the command:"
 echo
 echo "$cmd"
 echo
