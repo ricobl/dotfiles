@@ -217,6 +217,10 @@ command! -complete=file -nargs=* Tabedit call functions#Tabedit(<f-args>)
 " Enable local project settings
 set exrc
 
+" Sessions
+" set sessionoptions-=options  " Don't save options to preserve highlight
+set sessionoptions=curdir,tabpages
+
 " Improve block selection by allowing selection of empty spaces
 set virtualedit+=block
 
