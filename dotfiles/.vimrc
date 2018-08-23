@@ -373,6 +373,8 @@ vnoremap <F1> <Esc>
 " Easier auto-completion
 imap <c-space> <C-X><C-O>
 
+" Remap gf to open file in a new tab
+map gf <C-W>gf
 
 " Rope shortcuts
 map <Leader>d :RopeGotoDefinition<CR>
