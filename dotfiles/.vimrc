@@ -65,6 +65,13 @@ let g:syntastic_quiet_messages = {'level': 'warnings'}
 call pathogen#infect()
 call pathogen#helptags()
 
+" FZF
+let g:fzf_action = {
+  \ 'enter': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+set rtp+=/usr/local/opt/fzf
+
 " Customize NERDTree
 let NERDChristmasTree=1
 let NERDTreeHijackNetrw=1

@@ -144,3 +144,6 @@
 [submodule "dotfiles/.vim/bundle/vim-abolish"]
 	path = dotfiles/.vim/bundle/vim-abolish
 	url = git://github.com/tpope/vim-abolish.git
+[submodule "dotfiles/.vim/bundle/fzf.vim"]
+	path = dotfiles/.vim/bundle/fzf.vim
+	url = git@github.com:junegunn/fzf.vim.git
