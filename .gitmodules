@@ -141,3 +141,6 @@
 [submodule "dotfiles/.vim/bundle/typescript-vim"]
 	path = dotfiles/.vim/bundle/typescript-vim
 	url = git@github.com:leafgarland/typescript-vim.git
+[submodule "dotfiles/.vim/bundle/vim-abolish"]
+	path = dotfiles/.vim/bundle/vim-abolish
+	url = git://github.com/tpope/vim-abolish.git
