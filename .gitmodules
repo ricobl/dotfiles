@@ -147,3 +147,6 @@
 [submodule "dotfiles/.vim/bundle/fzf.vim"]
 	path = dotfiles/.vim/bundle/fzf.vim
 	url = git@github.com:junegunn/fzf.vim.git
+[submodule "dotfiles/.vim/bundle/vim-rails"]
+	path = dotfiles/.vim/bundle/vim-rails
+	url = git://github.com/tpope/vim-rails.git
