@@ -83,8 +83,16 @@ fi
 
 set -o vi
 
+# EASY FILE FIND
+# Disable glob expansion for find-file (ff) and seek
+# http://blog.edwards-research.com/2011/05/preventing-globbing/
+__ff(){ ~/bin/find-file.sh "$@"; set +f; }
+__seek(){ ~/bin/seek.sh "$@"; set +f; }
+
+alias ff='set -f; __ff'
+alias seek='set -f; __seek'
 alias vim='~/bin/vim-proxy.py'
-alias xvim="xargs ~/bin/vim-proxy.py"
+alias xvim="xargs ~/bin/vim-proxy.py; set +f"
 alias ll="ls -l"
 # Faster and better grep options
 alias grep="grep --color=auto --exclude=*.pyc -I"
@@ -135,15 +143,6 @@ export IPYTHONDIR="~/.ipython"
 # Enable nose rednose plugin for colored output
 export NOSE_REDNOSE=1
 export PYTHONDONTWRITEBYTECODE=1
-
-# EASY FILE FIND
-# Disable glob expansion for find-file (ff) and seek
-# http://blog.edwards-research.com/2011/05/preventing-globbing/
-__ff(){ ~/bin/find-file.sh "$@"; set +f; }
-__seek(){ ~/bin/seek.sh "$@"; set +f; }
-
-alias ff='set -f; __ff'
-alias seek='set -f; __seek'
 
 pycd(){
     module_dir="`python -c "import pkgutil;print pkgutil.get_loader('$1').filename"`"
