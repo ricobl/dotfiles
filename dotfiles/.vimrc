@@ -236,8 +236,8 @@ set wildignore=*.pyc,*.gif,*.png,*.jpg,*.jpeg
 " Hide pyc files and hidden files in file explorer
 let g:netrw_list_hide='^\.[^\.],\.pyc$'
 
-" Default indenting: soft-tabs, 4 spaces
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent
+" Default indenting: soft-tabs, 2 spaces
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab autoindent
 " Round indentation to be multiple of shiftwidth
 set shiftround
 " Line numbers, incremental search, highlight current line, word-wrap
