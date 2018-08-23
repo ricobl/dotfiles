@@ -138,3 +138,6 @@
 [submodule "dotfiles/.vim/bundle/vim-airline-themes"]
 	path = dotfiles/.vim/bundle/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
+[submodule "dotfiles/.vim/bundle/typescript-vim"]
+	path = dotfiles/.vim/bundle/typescript-vim
+	url = git@github.com:leafgarland/typescript-vim.git
