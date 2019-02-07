@@ -78,6 +78,10 @@ let NERDTreeHijackNetrw=1
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 
+" Use local / per-directory MRU file
+let MRU_File = '.vim_mru_files'
+let MRU_Filename_Format = {'formatter':'v:val', 'parser':'.*', 'syntax': '[^/\\]\+$'}
+
 " Abbreviation for mru
 cab mru Mru
 
@@ -344,7 +348,6 @@ imap <D-6> <D-O>6gt
 imap <D-7> <D-O>7gt
 imap <D-8> <D-O>8gt
 imap <D-9> :tablast<CR>
-
 
 " Toggle whitespace
 nmap <Leader>w :set list!<CR>
