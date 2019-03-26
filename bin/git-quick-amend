@@ -2,7 +2,7 @@
 
 # Quickly amends the last commit adding modified files and keeping the message
 
-cmd='git commit -a --amend --no-edit'
+cmd="git commit -a --amend --no-edit ${@:1}"
 
 echo "About to amend the last commit:"
 echo
