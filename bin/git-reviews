@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# search issues:
+# is:open type:pr repo:envato/marketplace ${filter}
+# is:open type:pr repo:envato/marketplace review-requested:ricobl
+# is:open type:pr repo:envato/marketplace assignee:ricobl
+# is:open type:pr repo:envato/marketplace author:ricobl
+
+query_file="$0.graphql"
+response=`hub api graphql -F query="@$query_file"`
+
+[[ -n "$DEBUG" ]] && echo $response | jq && exit
+
+echo $response \
+  | jq -r '
+    .data
+    | [.[].nodes[]]
+    | unique_by(.number)
+    | .[]
+    | "## \(.title)", "`\(.author.login)` @ `\(.repository.nameWithOwner)`", "[\(.permalink)](#\(.number))", ""' \
+  | pygmentize -l md

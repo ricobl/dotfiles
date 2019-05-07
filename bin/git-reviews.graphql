@@ -1,0 +1,35 @@
+fragment PullRequest on PullRequest {
+  number
+  title
+  permalink
+  repository {
+    nameWithOwner
+  }
+  author { login }
+  # reviews(last: 10) {
+  #   nodes {
+  #     author { login }
+  #     state
+  #   }
+  # }
+}
+
+#
+# The `involves` qualifier is just a logical OR between the
+# author, assignee, mentions and commenter qualifiers for the same user.
+#
+# It doesn't include review-requests, so a new search is required.
+#
+# There might be duplicate results between the two queries.
+#
+# TODO: identify PRs I already reviewed
+#
+
+query {
+  involves: search(query: "is:open is:pr involves:ricobl sort:updated-desc", type: ISSUE, first: 10) {
+    nodes { ...PullRequest }
+  }
+  requests: search(query: "is:open is:pr review-requested:ricobl sort:updated-desc ", type: ISSUE, first: 10) {
+    nodes { ...PullRequest }
+  }
+}
