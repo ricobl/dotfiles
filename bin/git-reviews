@@ -7,15 +7,42 @@
 # is:open type:pr repo:envato/marketplace author:ricobl
 
 query_file="$0.graphql"
-response=`hub api graphql -F query="@$query_file"`
+response=$(hub api graphql -F query="@$query_file")
 
 [[ -n "$DEBUG" ]] && echo $response | jq && exit
 
-echo $response \
-  | jq -r '
-    .data
-    | [.[].nodes[]]
-    | unique_by(.number)
-    | .[]
-    | "## \(.title)", "`\(.author.login)` @ `\(.repository.nameWithOwner)`", "[\(.permalink)](#\(.number))", ""' \
-  | pygmentize -l md
+pull_requests=$(echo $response | jq '
+  # Remove redundant `.nodes` and duplicate pull requests
+  # [{number, title, ...}]
+  .data | map(.nodes[]) | unique_by(.number) |
+  # Simplify each pull request
+  map(
+    # Override `.reviews` with an array containing
+    # the latest response of each reviewer
+    . + {
+      reviews: (
+        .reviews.nodes |
+        # Reverse to get the latest responses
+        # (could not find a way to order reviews from the API)
+        reverse |
+        unique_by(.author) |
+        # Replace reviews array with {reviewer, state}
+        map({reviewer: .author.login, state: .state})
+      )
+    }
+  )
+')
+
+# Convert to markdown, colorize with pygments and replaces review states with emojis
+echo $pull_requests | jq -r '
+  .[] |
+    "## \(.title)",
+    "`\(.author.login)` @ `\(.repository.nameWithOwner)`",
+    "[\(.permalink)](#\(.number))",
+    (.reviews | map(":\(.state): \(.reviewer)") | join(" ")),
+    ""' \
+| pygmentize -l md \
+| sed \
+  -e 's/:APPROVED:/✅/g' \
+  -e 's/:COMMENTED:/💬/g' \
+  -e 's/:CHANGES_REQUESTED:/🚫/g'

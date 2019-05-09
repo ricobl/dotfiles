@@ -6,12 +6,12 @@ fragment PullRequest on PullRequest {
     nameWithOwner
   }
   author { login }
-  # reviews(last: 10) {
-  #   nodes {
-  #     author { login }
-  #     state
-  #   }
-  # }
+  reviews(last: 10) {
+    nodes {
+      author { login }
+      state
+    }
+  }
 }
 
 #
