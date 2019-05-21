@@ -2,7 +2,7 @@ OS=`uname`
 
 HISTSIZE=1000
 HISTFILESIZE=2000
-HISTCONTROL=ignoredups
+HISTCONTROL=ignoreboth
 # Make some commands not show up in history
 HISTIGNORE="ls:cd:cd -:pwd:exit"
 
@@ -93,6 +93,7 @@ alias ff='set -f; __ff'
 alias seek='set -f; __seek'
 alias vim='~/bin/vim-proxy.py'
 alias xvim="xargs ~/bin/vim-proxy.py; set +f"
+alias xcode="xargs code"
 alias ll="ls -l"
 # Faster and better grep options
 alias grep="grep --color=auto --exclude=*.pyc -I"
@@ -170,4 +171,5 @@ export ANDROID_HOME=~/Android/Sdk
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+export FZF_DEFAULT_OPTS="--bind ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

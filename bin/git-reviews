@@ -22,10 +22,8 @@ pull_requests=$(echo $response | jq '
     . + {
       reviews: (
         .reviews.nodes |
-        # Reverse to get the latest responses
-        # (could not find a way to order reviews from the API)
-        reverse |
-        unique_by(.author) |
+        # Group reviews by author and state (eg: ricobl / approved)
+        unique_by({author, state}) |
         # Replace reviews array with {reviewer, state}
         map({reviewer: .author.login, state: .state})
       )
@@ -45,4 +43,5 @@ echo $pull_requests | jq -r '
 | sed \
   -e 's/:APPROVED:/✅/g' \
   -e 's/:COMMENTED:/💬/g' \
+  -e 's/:PENDING:/⏳/g' \
   -e 's/:CHANGES_REQUESTED:/🚫/g'

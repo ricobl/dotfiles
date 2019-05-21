@@ -22,8 +22,6 @@ fragment PullRequest on PullRequest {
 #
 # There might be duplicate results between the two queries.
 #
-# TODO: identify PRs I already reviewed
-#
 
 query {
   involves: search(query: "is:open is:pr involves:ricobl sort:updated-desc", type: ISSUE, first: 10) {
