@@ -44,4 +44,5 @@ echo $pull_requests | jq -r '
   -e 's/:APPROVED:/✅/g' \
   -e 's/:COMMENTED:/💬/g' \
   -e 's/:PENDING:/⏳/g' \
+  -e 's/:DISMISSED:/😴/g' \
   -e 's/:CHANGES_REQUESTED:/🚫/g'
