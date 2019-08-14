@@ -1,0 +1,6 @@
+#!/bin/bash
+
+remote=`git remote | head -1`
+
+git remote prune "$remote"
+git delete-gone-branches
