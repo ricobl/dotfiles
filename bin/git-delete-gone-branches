@@ -1,5 +1,6 @@
 #!/bin/bash
 
-# Shows local branches that are gone on the remote "origin"
+# Shows local branches that are gone on the first remote available (usually `origin`)
 
-git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -D
+remote=`git remote | head -1`
+git branch -vv | grep "$remote/.*: gone]" | awk '{print $1}' | xargs git branch -D
