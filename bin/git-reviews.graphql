@@ -6,7 +6,7 @@ fragment PullRequest on PullRequest {
     nameWithOwner
   }
   author { login }
-  reviews(last: 10) {
+  reviews(last: 70) {
     nodes {
       author { login }
       state
@@ -24,10 +24,10 @@ fragment PullRequest on PullRequest {
 #
 
 query {
-  involves: search(query: "is:open is:pr involves:ricobl sort:updated-desc", type: ISSUE, first: 10) {
+  involves: search(query: "is:open is:pr involves:ricobl sort:updated-desc", type: ISSUE, first: 20) {
     nodes { ...PullRequest }
   }
-  requests: search(query: "is:open is:pr review-requested:ricobl sort:updated-desc ", type: ISSUE, first: 10) {
+  requests: search(query: "is:open is:pr review-requested:ricobl sort:updated-desc ", type: ISSUE, first: 20) {
     nodes { ...PullRequest }
   }
 }
