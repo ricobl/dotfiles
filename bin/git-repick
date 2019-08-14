@@ -1,0 +1,167 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+#************************************************************************#
+# Recreates a branch from its parent branch after the parent has changed #
+#************************************************************************#
+
+program=`basename $0`
+
+#**********#
+# Commands #
+#**********#
+_help_cmd(){
+  echo -e "Usage: $program <subcommand> <args>"
+  echo -e ""
+  echo -e "Assists in the process of recreating a branch after its parent changed."
+  echo -e ""
+  echo -e "Start with:"
+  echo -e ""
+  echo -e "    $program start <branch> <parent>"
+  echo -e ""
+  echo -e "A temporary branch is created from <parent> and commits introduced"
+  echo -e "in <branch> are cherry-picked. Conflicts need to be resolved if any."
+  echo -e ""
+  echo -e "To finish:"
+  echo -e ""
+  echo -e "    $program finish"
+  echo -e ""
+  echo -e "The temporary branch is swapped with the initial <branch> and the"
+  echo -e "initial <branch> renamed to REPICK-FINISHED/<branch> as a backup."
+  echo -e "It can be manually removed."
+  echo -e ""
+}
+
+_start_cmd(){
+  [ $# -eq 2 ] || _subcommand_abort start '<branch>' '<parent>'
+
+  _ensure_not_repicking
+
+  branch="$1"
+  parent="$2"
+
+  # Create temporary branch from parent
+  git checkout -b "REPICK/$branch/FROM/$parent" "$parent"
+
+  # Cherry-picks commits introduced on the reference branch
+  git cherry-pick `_cherry_pick_range`
+
+  # TODO: does cherry-pick return non-zero on conflicts?
+  #       It could allow automatically finishing when there
+  #       are no conflicts.
+}
+
+_finish_cmd(){
+  _ensure_repicking
+
+  branch=`_branch`
+  bkp="REPICK-FINISHED/$branch"
+
+  # Backup reference branch
+  git branch -m "$branch" "$bkp"
+  # Replace original reference branch with the current temporary branch
+  git branch -m "$branch"
+
+  echo -e "'$branch' has been replaced and backed up as '$bkp'"
+}
+
+_clear_cmd(){
+  echo 'Untested, proceed with caution'
+  exit
+  _list_cmd | xargs git rm -d
+}
+
+_list_cmd(){
+  git branch | sed 's/^*/ /g' | grep '^  REPICK'
+}
+
+_abort_cmd(){
+  _ensure_repicking
+
+  branch=`_branch`
+  bkp="REPICK-ABORTED/$branch"
+
+  # Backup temporary branch
+  git branch -m "$bkp"
+
+  echo -e "Temporary repick branch has been replaced and backed up as '$bkp'"
+  echo -e "Returning to reference branch '$branch'"
+
+  git checkout "$branch"
+}
+
+#***********#
+# FUNCTIONS #
+#***********#
+_subcommand_help(){
+  echo "Usage: $program $@"
+}
+
+_abort(){
+  _help_cmd
+  exit 1
+}
+
+_exit(){
+  echo "$@"
+  exit 1
+}
+
+_subcommand_abort(){
+  _subcommand_help "$@"
+  exit 1
+}
+
+# Delegates a sub-command to the specific function
+_subcommand(){
+  command="_$1_cmd"
+  shift
+  $command "$@"
+}
+
+_current_branch(){
+  git branch | grep '*' | cut -d ' ' -f 2
+}
+
+_repicking?(){
+  _current_branch | grep '^REPICK/' > /dev/null
+}
+
+_ensure_not_repicking(){
+  _repicking? && _exit 'Aborting. Currently on a repick branch.'
+}
+
+_ensure_repicking(){
+  _repicking? || _exit 'Aborting. Not in a repick branch.'
+}
+
+# Extracts the reference (1) or bash (2) branch from the temporary branch
+_split_branch(){
+  _current_branch \
+    | sed -e 's#^REPICK/##' \
+    | sed -e 's#/FROM/#|#' \
+    | cut -d '|' -f $1
+}
+_branch(){
+  _split_branch 1
+}
+_parent(){
+  _split_branch 2
+}
+
+_cherry_pick_range(){
+  # Returns the commit range for using with cherry-pick
+
+  # Get hashes in order so first comes on top
+  commits=$(git log --reverse --format='%h' `_parent`..`_branch`)
+  first=$(echo "$commits" | head -1)
+  last=$(echo "$commits" | tail -1)
+  echo "$first^..$last"
+}
+
+# Ensures there is a sub-command
+[ $# -eq 0 ] && _abort
+
+# Run sub-command
+_subcommand "$@"
