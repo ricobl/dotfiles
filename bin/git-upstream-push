@@ -3,7 +3,8 @@
 # Pushes current branch setting upstream to origin
 
 branch=`git rev-parse --symbolic-full-name --abbrev-ref HEAD`
-cmd="git push --set-upstream origin $branch"
+args="$@"
+cmd="git push $args --set-upstream origin $branch"
 
 echo "About to run:"
 echo
