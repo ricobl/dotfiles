@@ -42,14 +42,33 @@ _start_cmd(){
   parent="$2"
 
   # Create temporary branch from parent
-  git checkout -b "REPICK/$branch/FROM/$parent" "$parent"
+  _branch_cmd "$branch" "$parent"
 
   # Cherry-picks commits introduced on the reference branch
-  git cherry-pick `_cherry_pick_range`
+  range=$(_cherry_pick_range "$branch" "$parent")
+  git cherry-pick "$range" && echo 'Successfully applied commits' || echo 'Plase resolve merge conflicts'
+}
 
-  # TODO: does cherry-pick return non-zero on conflicts?
-  #       It could allow automatically finishing when there
-  #       are no conflicts.
+_branch_cmd(){
+  [ $# -eq 2 ] || _subcommand_abort branch '<branch>' '<parent>'
+
+  _ensure_not_repicking
+
+  branch="$1"
+  parent="$2"
+
+  # Create temporary branch from parent
+  git checkout -b "REPICK/$branch/FROM/$parent" "$parent"
+}
+
+_preview_cmd(){
+  [ $# -eq 2 ] || _subcommand_abort preview '<branch>' '<parent>'
+
+  branch="$1"
+  parent="$2"
+  range=$(_cherry_pick_range "$branch" "$parent")
+
+  git lg "$range"
 }
 
 _finish_cmd(){
@@ -67,9 +86,14 @@ _finish_cmd(){
 }
 
 _clear_cmd(){
-  echo 'Untested, proceed with caution'
-  exit
-  _list_cmd | xargs git rm -d
+  echo 'Delete the following branches?'
+  echo ''
+  _list_cmd
+  echo ''
+
+  read -p 'Press enter to continue'
+
+  _list_cmd | xargs git branch -D
 }
 
 _list_cmd(){
@@ -125,11 +149,11 @@ _current_branch(){
 }
 
 _repicking?(){
-  _current_branch | grep '^REPICK/' > /dev/null
+  _current_branch | grep '^REPICK/'
 }
 
 _ensure_not_repicking(){
-  _repicking? && _exit 'Aborting. Currently on a repick branch.'
+  _repicking? && _exit 'Aborting. Currently on a repick branch.' || true
 }
 
 _ensure_repicking(){
@@ -149,12 +173,14 @@ _branch(){
 _parent(){
   _split_branch 2
 }
-
 _cherry_pick_range(){
   # Returns the commit range for using with cherry-pick
 
+  branch="$1"
+  parent="$2"
+
   # Get hashes in order so first comes on top
-  commits=$(git log --reverse --format='%h' `_parent`..`_branch`)
+  commits=$(git log --reverse --format='%h' $parent..$branch)
   first=$(echo "$commits" | head -1)
   last=$(echo "$commits" | tail -1)
   echo "$first^..$last"
