@@ -2,4 +2,7 @@
 # vim: filetype=sh :
 port=$1
 [[ -z $port ]] && port=8888
+
+echo "Starting simple server on: http://localhost:$port"
+
 python -m SimpleHTTPServer $port
