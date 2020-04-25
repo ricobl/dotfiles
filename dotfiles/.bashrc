@@ -104,6 +104,9 @@ bind -x '"\C-l":printf "\ec"'
 # Add user bin to the path
 [ -d  "$HOME/bin" ] && PATH="$PATH:$HOME/bin"
 
+# Add work directory to CDPATH path
+[ -d  "$HOME/work" ] && CDPATH="$CDPATH:$HOME/work"
+
 quick_workon(){
     source "$WORKON_HOME/$1/bin/activate"
 }
