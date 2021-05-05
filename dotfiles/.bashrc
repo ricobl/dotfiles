@@ -137,11 +137,8 @@ fi
 # Hide *.pyc from bash filename completion
 export FIGNORE='pyc'
 
-# Fabric, vagrant, django and pip completion
-. ~/bin/fab_bash_completion
-[[ -n `which pip` ]] && eval "`pip completion --bash`"
+# # Custom completions
 . ~/bin/cddotfiles_bash_completion
-. ~/bin/npmrc_bash_completion
 
 export IPYTHONDIR="~/.ipython"
 # Enable nose rednose plugin for colored output
