@@ -77,3 +77,4 @@ git config --global alias.co checkout
 git config --global alias.br branch
 git config --global alias.lg "$_git_lg"
 git config --global alias.l "$_git_lg -10"
+git config --global alias.ln "$_git_lg -10 --name-only"
