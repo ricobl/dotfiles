@@ -96,9 +96,6 @@ alias ll="ls -l"
 # Faster and better grep options
 alias grep="grep --color=auto --exclude=*.pyc -I"
 
-# Bind Ctrl+l to clear terminal
-bind -x '"\C-l":printf "\ec"'
-
 # Add user bin to the path
 [ -d  "$HOME/bin" ] && PATH="$PATH:$HOME/bin"
 

@@ -20,6 +20,9 @@ set bind-tty-special-chars off
 # Delete full-paths with Ctrl+w
 "\C-w": unix-word-rubout
 
+# Bind Ctrl+l to clear terminal
+"\C-l": clear-screen
+
 # Mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
 "\e[1;5C": forward-word
 "\e[1;5D": backward-word
