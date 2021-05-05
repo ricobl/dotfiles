@@ -81,8 +81,6 @@ else
     alias open='gnome-open 2> /dev/null'
 fi
 
-set -o vi
-
 # EASY FILE FIND
 # Disable glob expansion for find-file (ff) and seek
 # http://blog.edwards-research.com/2011/05/preventing-globbing/
