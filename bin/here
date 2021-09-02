@@ -1,0 +1,40 @@
+#!/bin/bash
+
+script=`basename $0`
+
+usage() {
+    echo ""
+    echo "Run commands specific to the current directory."
+    echo ""
+    echo "Commands are stored in a central location in your home dir, uncluttering your local directory."
+    echo ""
+    echo "Usage: "
+    echo ""
+    echo "  $script [cmd] [arg1] [arg2] ... [argN]"
+    echo ""
+    echo "For this directory, save scripts here: "
+    echo ""
+    echo "  $(bin_dir)"
+
+    exit 1
+}
+
+show_here_dir() {
+  bin_dir
+  exit 0
+}
+
+serialize_pwd() {
+  pwd | sed "s#$HOME#HOME#" | tr / '~'
+}
+
+bin_dir() {
+  echo "$HOME/.here/$(serialize_pwd)"
+}
+
+# This is to support completion
+[[ -n $SHOW_HERE_DIR ]] && show_here_dir
+
+[[ $# -ge 1 ]] || usage
+
+exec "$(bin_dir)/$@"
