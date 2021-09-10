@@ -1,40 +1,105 @@
 #!/bin/bash
 
+set -euo pipefail
+
 script=`basename $0`
+editor="${EDITOR:-code}"
+
+_error() {
+  echo >&2 "$@"
+}
 
 usage() {
-    echo ""
-    echo "Run commands specific to the current directory."
-    echo ""
-    echo "Commands are stored in a central location in your home dir, uncluttering your local directory."
-    echo ""
-    echo "Usage: "
-    echo ""
-    echo "  $script [cmd] [arg1] [arg2] ... [argN]"
-    echo ""
-    echo "For this directory, save scripts here: "
-    echo ""
-    echo "  $(bin_dir)"
+  output=$(cat <<OUTPUT
+Run commands specific to the current directory.
 
-    exit 1
+Commands are stored in a central location in your home dir, uncluttering your local directory.
+
+Usage:
+
+  $script [cmd] [arg1] [arg2] ... [argN]
+
+For this directory, save scripts here:
+
+  $(_bin_dir)
+OUTPUT
+  )
+  _error "$output"
+  exit 1
 }
 
-show_here_dir() {
-  bin_dir
-  exit 0
+_abort() {
+  _error "Error: $@"
+
+  exit 1
 }
 
-serialize_pwd() {
+_serialize_pwd() {
   pwd | sed "s#$HOME#HOME#" | tr / '~'
 }
 
-bin_dir() {
-  echo "$HOME/.here/$(serialize_pwd)"
+_bin_dir() {
+  echo "$HOME/.here/$(_serialize_pwd)"
 }
 
-# This is to support completion
-[[ -n $SHOW_HERE_DIR ]] && show_here_dir
+show_here_dir() {
+  _bin_dir
+  exit 0
+}
+
+list_scripts() {
+  ls "$(_bin_dir)"
+}
+
+create_script() {
+  filename="$(_bin_dir)/$1"
+
+  [[ -f "$filename" ]] && _abort "File already exists: $filename"
+
+  template=$(cat <<OUTPUT
+#!/usr/bin/env bash
+
+# Write your script here...
+# exec ... "$@"
+OUTPUT
+  )
+
+  echo "$template" > "$filename"
+  chmod +x "$filename"
+
+  $editor "$filename"
+}
+
+edit_script() {
+  filename="$(_bin_dir)/$1"
+
+  $editor "$filename"
+}
+
+run_script(){
+  filename="$(_bin_dir)/$1"
+
+  [[ -f "$filename" ]] || _abort "Script does not exist: $filename"
+
+  exec "$(_bin_dir)/$@"
+}
 
 [[ $# -ge 1 ]] || usage
 
-exec "$(bin_dir)/$@"
+if [[ "$1" == "--"* ]]; then
+  opt="$1"
+  shift
+  case "$opt" in
+    "--list" )
+        list_scripts "$@"; exit $?;;
+    "--create" )
+        create_script "$@"; exit $?;;
+    "--edit" )
+        edit_script "$@"; exit $?;;
+    "--dir" )
+        show_here_dir "$@"; exit $?;;
+    *) _abort "Invalid option: $@";;
+  esac
+fi
+
+run_script "$@"
