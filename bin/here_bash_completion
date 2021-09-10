@@ -1,0 +1,17 @@
+#!/bin/bash
+
+_here_completion(){
+  local cur="$2"
+  local num_words=${#COMP_WORDS[@]}
+  local num_args=$(( $num_words - 1 ))
+
+  local bin_dir=$(here --dir)
+
+  if [[ $num_args == 1 && -d $bin_dir ]]; then
+    COMPREPLY=( $(cd "$bin_dir" && compgen -f -- "${cur}" ) )
+  else
+    COMPREPLY=( $(compgen -o default -- "${cur}") )
+  fi
+}
+
+complete -o nospace -F _here_completion here
