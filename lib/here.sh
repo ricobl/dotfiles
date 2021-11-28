@@ -19,7 +19,8 @@ here_create_file() {
 
   content="$2"
 
-  mkdir -p "$(here_target_dir)"
+  here_create_dir
+
   echo "$content" > "$filename"
   chmod +x "$filename"
 
@@ -30,4 +31,8 @@ here_edit_file() {
   filename="$(here_target_dir)/$1"
 
   $editor "$filename"
+}
+
+here_create_dir() {
+  mkdir -p "$(here_target_dir)"
 }
