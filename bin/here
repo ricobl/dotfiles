@@ -64,6 +64,7 @@ $content
 OUTPUT
   )
 
+  mkdir -p "$(_bin_dir)"
   echo "$template" > "$filename"
   chmod +x "$filename"
 
