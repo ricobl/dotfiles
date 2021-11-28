@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+# Passes the content of a file through a filter command, buffers the
+# output in memory and overwrites the original file.
+#
+# Useful for in place editing like reformatting a JSON file.
+#
+# The following example reformats json files using `jq`:
+#
+# filter-file *.json -- jq
+
+set -euo pipefail
+
+abort(){
+  echo "$1"
+  echo ""
+  echo "Usage:"
+  echo ""
+  echo "  filter-file file [...] -- command [arg ...]"
+}
+
+files=""
+
+while (( "$#" )); do
+  case "$1" in
+    --) shift; break ;;
+    # preserve positional arguments
+    *) files="$files $1"; shift ;;
+  esac
+done
+
+# Use the remaining arguments as the command to filter files
+command="$@"
+
+[[ -z $files ]] && abort 'Please provide files to filter' && exit 1
+[[ -z $command ]] && abort 'Please provide a filter command' && exit 1
+
+for file in $files; do
+  filtered=$(cat "$file" | $@)
+  echo "$filtered" > "$file"
+done
