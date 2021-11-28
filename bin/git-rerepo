@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# Creates a clean repository from a branch in another.
+#
+# Helpful for starting fresh, only including history # from a single branch.
+
+usage(){
+  echo 'Usage: git rerepo <source-dir> <dest-dir>'
+}
+
+[[ $# -ne 2 ]] && usage && exit 1
+
+source_repo="$1"
+dest_dir="$2"
+
+[[ ! -d "$source_repo" ]] && echo 'Source repository does not exist' && exit 1
+[[ -d "$dest_dir" ]] && echo 'Destination directory already exists' && exit 1
+
+# GNU and OSX temporary directory
+tmp_dir=$(mktemp -d 2>/dev/null || mktemp -d -t 'git-rerepo')
+
+# Make sure it's cleaned up on exit
+cleanup() {
+  rm -rf "$tmp_dir"
+}
+trap cleanup EXIT
+
+# Create new bare repo and push current source branch to new master
+current_branch=$(git -C $source_repo branch | grep '^\*' | cut -d ' ' -f 2)
+git init --bare "$tmp_dir"
+git -C "$source_repo" push "$tmp_dir" +"$current_branch":master
+
+# Create new local repo
+git clone "$tmp_dir" "$dest_dir"
+
+# Unset origin
+git -C "$dest_dir" remote remove origin
