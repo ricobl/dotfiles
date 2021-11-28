@@ -53,14 +53,14 @@ list_scripts() {
 
 create_script() {
   filename="$(_bin_dir)/$1"
-
   [[ -f "$filename" ]] && _abort "File already exists: $filename"
+
+  content="${2-# exec ... \"\$@\" # Write your command here...}"
 
   template=$(cat <<OUTPUT
 #!/usr/bin/env bash
 
-# Write your script here...
-# exec ... "$@"
+$content
 OUTPUT
   )
 
