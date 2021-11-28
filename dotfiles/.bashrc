@@ -134,6 +134,7 @@ export FIGNORE='pyc'
 
 # # Custom completions
 . ~/bin/cddotfiles_bash_completion
+. ~/bin/here_bash_completion
 
 export IPYTHONDIR="~/.ipython"
 # Enable nose rednose plugin for colored output
