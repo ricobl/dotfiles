@@ -1,0 +1,87 @@
+#!/bin/bash
+
+set -euo pipefail
+
+script=`basename $0`
+script_dir=$(dirname $(realpath $0))
+lib_dir=$(realpath $script_dir/../lib)
+
+here_base_dir="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Notes"
+
+source "$lib_dir/here.sh"
+
+_error() {
+  echo >&2 "$@"
+}
+
+usage() {
+  output=$(cat <<OUTPUT
+Crates notes specific to the current directory.
+
+Files are stored in a central location in your iCloud drive, uncluttering your local directory.
+
+Usage:
+
+  $script [cmd] [arg1] [arg2] ... [argN]
+
+For this directory, notes are saved here:
+
+  $(_notes_dir)
+OUTPUT
+  )
+  _error "$output"
+  exit 1
+}
+
+_abort() {
+  _error "Error: $@"
+
+  exit 1
+}
+
+_slugify(){
+  echo "$@" | iconv -t ascii//TRANSLIT | sed -E 's/[^a-zA-Z0-9]+/-/g' | sed -E 's/^-+\|-+$//g' | tr A-Z a-z
+}
+
+show_target_dir() {
+  echo "$(here_target_dir)"
+}
+
+list_notes() {
+  ls "$(here_target_dir)"
+}
+
+create_note() {
+  title="$@"
+  filename=$(_slugify "$title")
+  content="# $title"
+
+  here_create_file "$filename.md" "$content"
+}
+
+link_dir() {
+  here_create_dir
+  local_symlink="_notes"
+
+  [[ -d "$local_symlink" ]] && _abort "Directory already exists: $(here_target_dir)"
+
+  ln -sf "$(here_target_dir)" "$local_symlink"
+}
+
+[[ $# -ge 1 ]] || usage
+
+if [[ "$1" == "--"* ]]; then
+  opt="$1"
+  shift
+  case "$opt" in
+    "--link" )
+        link_dir "$@"; exit $?;;
+    "--create" )
+        create_note "$@"; exit $?;;
+    "--dir" )
+        show_target_dir "$@"; exit $?;;
+    *) _abort "Invalid option: $@";;
+  esac
+fi
+
+run_script "$@"
