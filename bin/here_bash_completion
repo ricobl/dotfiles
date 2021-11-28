@@ -7,7 +7,12 @@ _here_completion(){
 
   local bin_dir=$(here --dir)
 
-  if [[ $num_args == 1 && -d $bin_dir ]]; then
+  if [[ $num_args == 1 && "$cur" == "--"* ]]; then
+    # Parse options from the script
+    local _options=$(cat `which here` | grep -E '\--[a-z-]+' | sed -E 's/^.*(--[a-z-]+).*$/\1/')
+    # Use a backslash to avoid compgen treating the current word as its own argument
+    COMPREPLY=($(compgen -W "${_options[*]}" "\\${cur}"))
+  elif [[ $num_args == 1 && -d $bin_dir ]]; then
     COMPREPLY=( $(cd "$bin_dir" && compgen -f -- "${cur}" ) )
   else
     COMPREPLY=( $(compgen -o default -- "${cur}") )
