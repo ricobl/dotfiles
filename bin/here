@@ -3,7 +3,12 @@
 set -euo pipefail
 
 script=`basename $0`
-editor="${EDITOR:-code}"
+script_dir=$(dirname $(realpath $0))
+lib_dir=$(realpath $script_dir/../lib)
+
+here_base_dir="$HOME/.here"
+
+source "$lib_dir/here.sh"
 
 _error() {
   echo >&2 "$@"
@@ -21,7 +26,7 @@ Usage:
 
 For this directory, save scripts here:
 
-  $(_bin_dir)
+  $(here_target_dir)
 OUTPUT
   )
   _error "$output"
@@ -34,27 +39,15 @@ _abort() {
   exit 1
 }
 
-_serialize_pwd() {
-  pwd | sed "s#$HOME#HOME#" | tr / '~'
-}
-
-_bin_dir() {
-  echo "$HOME/.here/$(_serialize_pwd)"
-}
-
-show_here_dir() {
-  _bin_dir
-  exit 0
+show_target_dir() {
+  echo "$(here_target_dir)"
 }
 
 list_scripts() {
-  ls "$(_bin_dir)"
+  ls "$(here_target_dir)"
 }
 
 create_script() {
-  filename="$(_bin_dir)/$1"
-  [[ -f "$filename" ]] && _abort "File already exists: $filename"
-
   content="${2-# exec ... \"\$@\" # Write your command here...}"
 
   template=$(cat <<OUTPUT
@@ -64,25 +57,19 @@ $content
 OUTPUT
   )
 
-  mkdir -p "$(_bin_dir)"
-  echo "$template" > "$filename"
-  chmod +x "$filename"
-
-  $editor "$filename"
+  here_create_file "$1" "$template"
 }
 
 edit_script() {
-  filename="$(_bin_dir)/$1"
-
-  $editor "$filename"
+  here_edit_file "$1"
 }
 
 run_script(){
-  filename="$(_bin_dir)/$1"
+  filename="$(here_target_dir)/$1"
 
   [[ -f "$filename" ]] || _abort "Script does not exist: $filename"
 
-  exec "$(_bin_dir)/$@"
+  exec "$(here_target_dir)/$@"
 }
 
 [[ $# -ge 1 ]] || usage
@@ -98,7 +85,7 @@ if [[ "$1" == "--"* ]]; then
     "--edit" )
         edit_script "$@"; exit $?;;
     "--dir" )
-        show_here_dir "$@"; exit $?;;
+        show_target_dir "$@"; exit $?;;
     *) _abort "Invalid option: $@";;
   esac
 fi
