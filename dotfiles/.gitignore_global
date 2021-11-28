@@ -1,5 +1,6 @@
-.fab_completion
 .DS_Store
+.fab_completion
+.grep_patterns
 .ropeproject
 .session.vim
 .vim_mru_files

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# Focused grep, uses patterns from a local `.grep_patterns` file.
+#
+# Helps excluding test and docs directories.
+#
+# Use a `:!` prefix to exclude a pattern. E.g.:
+#
+# :!features/**
+# :!spec/**
+# :!tests/**
+
+args=()
+patterns=($([[ -f .grep_patterns ]] && cat .grep_patterns || true))
+
+found_double_dash=false
+
+for a in "$@"; do
+  if [[ "$a" == "--" ]]; then
+    found_double_dash=true
+    continue
+  fi
+
+  # Before the `--` populate `$args`, otherwise populate `$patterns`
+  [[ "$found_double_dash" = true ]] && patterns+=("$a") || args+=("$a")
+done
+
+echo git grep "${args[@]}" -- "${patterns[@]}"
