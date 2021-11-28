@@ -1,3 +1,5 @@
 #!/bin/bash
 
-vim-proxy.py ~/.bashrc
+editor="${EDITOR:-code}"
+
+$editor ~/.bashrc
