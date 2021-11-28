@@ -10,6 +10,7 @@ set mark-symlinked-directories on
 
 # Highlight matched portion (for bash 4.4)
 set colored-completion-prefix On
+set colored-stats On
 
 # Immediately shows options on first Tab
 set show-all-if-ambiguous On
