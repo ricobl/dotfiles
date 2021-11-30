@@ -25,4 +25,4 @@ for a in "$@"; do
   [[ "$found_double_dash" = true ]] && patterns+=("$a") || args+=("$a")
 done
 
-echo git grep "${args[@]}" -- "${patterns[@]}"
+git grep "${args[@]}" -- "${patterns[@]}"
