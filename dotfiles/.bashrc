@@ -89,8 +89,7 @@ __seek(){ ~/bin/seek.sh "$@"; set +f; }
 
 alias ff='set -f; __ff'
 alias seek='set -f; __seek'
-alias vim='~/bin/vim-proxy.py'
-alias xvim="xargs ~/bin/vim-proxy.py; set +f"
+alias xvim="xargs vim; set +f"
 alias xcode="xargs code"
 alias ll="ls -l"
 # Faster and better grep options
