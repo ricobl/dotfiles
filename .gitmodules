@@ -1,7 +1,3 @@
-[submodule "dotfiles/.vim/bundle/vim-javascript"]
-	path = dotfiles/.vim/bundle/vim-javascript
-	url = git@github.com:pangloss/vim-javascript.git
-	ignore = untracked
 [submodule "dotfiles/.vim/bundle/tcomment"]
 	path = dotfiles/.vim/bundle/tcomment
 	url = git@github.com:tomtom/tcomment_vim.git
@@ -10,25 +6,9 @@
 	path = dotfiles/.vim/bundle/surround
 	url = git@github.com:vim-scripts/surround.vim.git
 	ignore = untracked
-[submodule "dotfiles/.vim/bundle/mru"]
-	path = dotfiles/.vim/bundle/mru
-	url = git@github.com:vim-scripts/mru.vim.git
-	ignore = untracked
-[submodule "dotfiles/.vim/bundle/Markdown"]
-	path = dotfiles/.vim/bundle/Markdown
-	url = git@github.com:vim-scripts/Markdown.git
-	ignore = untracked
-[submodule "dotfiles/.vim/bundle/python-syntax"]
-	path = dotfiles/.vim/bundle/python-syntax
-	url = git@github.com:vim-scripts/python.vim--Vasiliev.git
-	ignore = untracked
 [submodule "dotfiles/.vim/bundle/repeat"]
 	path = dotfiles/.vim/bundle/repeat
 	url = git@github.com:vim-scripts/repeat.vim.git
-	ignore = untracked
-[submodule "dotfiles/.vim/bundle/xmledit"]
-	path = dotfiles/.vim/bundle/xmledit
-	url = git@github.com:sukima/xmledit.git
 	ignore = untracked
 [submodule "dotfiles/.vim/bundle/indent-object"]
 	path = dotfiles/.vim/bundle/indent-object
@@ -46,25 +26,9 @@
 	path = dotfiles/.vim/bundle/ReplaceWithRegister
 	url = git@github.com:vim-scripts/ReplaceWithRegister.git
 	ignore = untracked
-[submodule "dotfiles/.vim/bundle/tagbar"]
-	path = dotfiles/.vim/bundle/tagbar
-	url = git@github.com:majutsushi/tagbar.git
-	ignore = untracked
 [submodule "dotfiles/.vim/bundle/text-object-left-and-right"]
 	path = dotfiles/.vim/bundle/text-object-left-and-right
 	url = git@github.com:vim-scripts/text-object-left-and-right.git
-	ignore = untracked
-[submodule "dotfiles/.vim/bundle/nerdtree"]
-	path = dotfiles/.vim/bundle/nerdtree
-	url = git@github.com:scrooloose/nerdtree.git
-	ignore = untracked
-[submodule "dotfiles/.vim/bundle/indentpython.vim"]
-	path = dotfiles/.vim/bundle/indentpython.vim
-	url = git@github.com:vim-scripts/indentpython.vim.git
-	ignore = untracked
-[submodule "dotfiles/.vim/bundle/nginx.vim"]
-	path = dotfiles/.vim/bundle/nginx.vim
-	url = git@github.com:vim-scripts/nginx.vim.git
 	ignore = untracked
 [submodule "dotfiles/.vim/bundle/template.vim"]
 	path = dotfiles/.vim/bundle/template.vim
@@ -77,29 +41,9 @@
 [submodule "dotfiles/.vim/bundle/rsi"]
 	path = dotfiles/.vim/bundle/rsi
 	url = git@github.com:tpope/vim-rsi.git
-[submodule "dotfiles/.vim/bundle/vim-golang"]
-	path = dotfiles/.vim/bundle/vim-golang
-	url = git@github.com:jnwhiteh/vim-golang.git
-[submodule "dotfiles/.vim/bundle/scss-syntax.vim"]
-	path = dotfiles/.vim/bundle/scss-syntax.vim
-	url = git@github.com:cakebaker/scss-syntax.vim.git
-[submodule "dotfiles/.vim/bundle/vim-airline"]
-	path = dotfiles/.vim/bundle/vim-airline
-	url = git@github.com:bling/vim-airline.git
-	ignore = untracked
-[submodule "dotfiles/.vim/bundle/vim-togglelist"]
-	path = dotfiles/.vim/bundle/vim-togglelist
-	url = git@github.com:milkypostman/vim-togglelist.git
-[submodule "dotfiles/.vim/bundle/syntastic"]
-	path = dotfiles/.vim/bundle/syntastic
-	url = git@github.com:scrooloose/syntastic.git
 [submodule "dotfiles/.vim/bundle/vim-argumentative"]
 	path = dotfiles/.vim/bundle/vim-argumentative
 	url = https://github.com/PeterRincker/vim-argumentative.git
-	ignore = untracked
-[submodule "dotfiles/.vim/bundle/vim-isort"]
-	path = dotfiles/.vim/bundle/vim-isort
-	url = git@github.com:fisadev/vim-isort.git
 	ignore = untracked
 [submodule "dotfiles/.vim/bundle/vim-easydir"]
 	path = dotfiles/.vim/bundle/vim-easydir
@@ -114,39 +58,9 @@
 [submodule "dotfiles/.vim/bundle/tlib_vim"]
 	path = dotfiles/.vim/bundle/tlib_vim
 	url = git@github.com:tomtom/tlib_vim.git
-[submodule "dotfiles/.vim/bundle/vim-autopep8"]
-	path = dotfiles/.vim/bundle/vim-autopep8
-	url = git@github.com:tell-k/vim-autopep8.git
-	ignore = untracked
-[submodule "dotfiles/.vim/bundle/vim-flavored-markdown"]
-	path = dotfiles/.vim/bundle/vim-flavored-markdown
-	url = git@github.com:jtratner/vim-flavored-markdown.git
-	ignore = untracked
-[submodule "dotfiles/.vim/bundle/vim-ruby"]
-	path = dotfiles/.vim/bundle/vim-ruby
-	url = git@github.com:vim-ruby/vim-ruby.git
 [submodule "dotfiles/.vim/bundle/editorconfig-vim"]
 	path = dotfiles/.vim/bundle/editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim.git
-[submodule "dotfiles/.vim/bundle/vim-prettier"]
-	path = dotfiles/.vim/bundle/vim-prettier
-	url = git@github.com:prettier/vim-prettier.git
-	ignore = untracked
-[submodule "dotfiles/.vim/bundle/vim-jsx"]
-	path = dotfiles/.vim/bundle/vim-jsx
-	url = https://github.com/mxw/vim-jsx.git
-[submodule "dotfiles/.vim/bundle/vim-airline-themes"]
-	path = dotfiles/.vim/bundle/vim-airline-themes
-	url = https://github.com/vim-airline/vim-airline-themes
-[submodule "dotfiles/.vim/bundle/typescript-vim"]
-	path = dotfiles/.vim/bundle/typescript-vim
-	url = git@github.com:leafgarland/typescript-vim.git
-[submodule "dotfiles/.vim/bundle/vim-abolish"]
-	path = dotfiles/.vim/bundle/vim-abolish
-	url = git://github.com/tpope/vim-abolish.git
 [submodule "dotfiles/.vim/bundle/fzf.vim"]
 	path = dotfiles/.vim/bundle/fzf.vim
 	url = git@github.com:junegunn/fzf.vim.git
-[submodule "dotfiles/.vim/bundle/vim-rails"]
-	path = dotfiles/.vim/bundle/vim-rails
-	url = git://github.com/tpope/vim-rails.git

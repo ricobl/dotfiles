@@ -23,15 +23,6 @@ set autoread
 let g:snipMate = {}
 let g:snipMate.no_default_aliases=1
 
-" Tagbar setup
-let g:tagbar_compact=1
-let g:tagbar_sort=0
-" Tagbar uses the CursorHold event to update active tag
-" The event is triggered after 'updatetime' milliseconds
-" of user inactivity.
-" Decreasing the default to force quicker updates.
-set updatetime=300
-
 " Disable some patterns on MRU list
 let MRU_Exclude_Files='^COMMIT_EDITMSG$'
 
@@ -84,30 +75,6 @@ let MRU_Filename_Format = {'formatter':'v:val', 'parser':'.*', 'syntax': '[^/\\]
 
 " Abbreviation for mru
 cab mru Mru
-
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
-let g:airline_fugitive_prefix = '⭠ '
-let g:airline_skip_empty_sections = 1
-let g:airline_solarized_bg='dark'
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-let g:airline_symbols.readonly = '⭤'
-let g:airline_symbols.maxlinenr = '⭡'
-
-let g:airline_enable_tagbar = 0
-let g:airline#extensions#wordcount#enabled = 0
-
-let g:airline_section_b = '⭠ %{functions#GitBranch()}'
-" let g:airline_section_x = ''
-let g:airline_section_y = ''
-let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
-
-let g:airline_theme = 'deus'
 
 
 " Enable built-in matchit plugin
@@ -311,7 +278,6 @@ cab wQ wq
 
 " Tabs
 cab t Tabedit
-nmap <Leader>t :TagbarToggle<CR>
 map <C-1> 1gt
 map <C-2> 2gt
 map <C-3> 3gt
