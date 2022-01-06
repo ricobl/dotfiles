@@ -153,8 +153,8 @@ export PYTHONDONTWRITEBYTECODE=1
 export DELTA_PAGER='less -rX'
 
 pycd(){
-  module_dir="`python -c "import pkgutil;print pkgutil.get_loader('$1').filename"`"
-  \cd "$module_dir"
+  local filename="`python -c "import pkgutil;print pkgutil.get_loader('$1').filename"`"
+  cd $(dirname "$filename")
 }
 
 cdgit(){
