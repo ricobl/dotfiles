@@ -30,34 +30,34 @@ shopt -s histappend checkwinsize
 # Light colors: \[\033[1;??m\]
 
 function color {
-    echo "\[\033[$1;$2m\]"
+  echo "\[\033[$1;$2m\]"
 }
 
 function git_branch {
-    __git_ps1 " %s"
+  __git_ps1 " %s"
 }
 
 function git_tag {
-    tag=`git tag -l --points-at HEAD 2> /dev/null | xargs echo`
-    [ -z "$tag" ] && return 1
-
-    echo " $tag"
+  tag=`git tag -l --points-at HEAD 2> /dev/null | xargs echo`
+  [ -z "$tag" ] && return 1
+  
+  echo " $tag"
 }
 
 function _prompt_command () {
   local exit_code=$?
-
+  
   local c_prompt=`color 0 33`
   local c_path=`color 1 33`
   local c_branch=`color 1 32`
   local c_tag=`color 1 34`
   local c_off=`color 0 00`
-
+  
   # Show brackets in red when the last command has failed
   if [ $exit_code -gt 0 ]; then
     local c_prompt=`color 1 31`
   fi
-
+  
   PS1="${c_prompt}[${c_path}\W$c_branch\$(git_branch)$c_tag\$(git_tag)${c_prompt}]${c_off} "
   PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
 }
@@ -79,15 +79,15 @@ export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_DOWNLOAD_CACHE="$HOME/.pip/cache"
 
 if [ $OS == "Darwin" ]; then
-    alias ls='ls -G'
-    # Change paths as required for homebrew
-    PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-    # Disable analytics on homebrew
-    export HOMEBREW_NO_ANALYTICS=1
+  alias ls='ls -G'
+  # Change paths as required for homebrew
+  PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+  # Disable analytics on homebrew
+  export HOMEBREW_NO_ANALYTICS=1
 else
-    alias ls='ls --color=auto'
-    # Same as Mac's open
-    alias open='gnome-open 2> /dev/null'
+  alias ls='ls --color=auto'
+  # Same as Mac's open
+  alias open='gnome-open 2> /dev/null'
 fi
 
 # EASY FILE FIND
@@ -111,28 +111,28 @@ alias grep="grep --color=auto --exclude=*.pyc -I"
 [ -d  "$HOME/work" ] && CDPATH="$CDPATH:$HOME/work"
 
 quick_workon(){
-    source "$WORKON_HOME/$1/bin/activate"
+  source "$WORKON_HOME/$1/bin/activate"
 }
 # Virtualenvs
 if [[ -f '/usr/local/bin/virtualenvwrapper_lazy.sh' ]]; then
-    export VIRTUALENVWRAPPER_PYTHON=`which python2.7`
-    export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-    source "/usr/local/bin/virtualenvwrapper_lazy.sh"
-
-    # Activate latest virtualenv or a default one
-    # Based on: http://unfoldthat.com/2011/08/18/virtualenv-in-new-terminal-windows.html
-    if [ -e "$WORKON_HOME/last_venv" ]; then
-        quick_workon `cat "$WORKON_HOME/last_venv"`
+  export VIRTUALENVWRAPPER_PYTHON=`which python2.7`
+  export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+  source "/usr/local/bin/virtualenvwrapper_lazy.sh"
+  
+  # Activate latest virtualenv or a default one
+  # Based on: http://unfoldthat.com/2011/08/18/virtualenv-in-new-terminal-windows.html
+  if [ -e "$WORKON_HOME/last_venv" ]; then
+    quick_workon `cat "$WORKON_HOME/last_venv"`
     elif [ -n "$DEFAULT_VIRTUAL_ENV" ]; then
-        quick_workon "$DEFAULT_VIRTUAL_ENV"
-    fi
+    quick_workon "$DEFAULT_VIRTUAL_ENV"
+  fi
 fi
 
 # Enable bash completion if available
 if [ $OS == "Darwin" ]; then
-    _etc_completion=`brew --prefix`/etc/bash_completion
+  _etc_completion=`brew --prefix`/etc/bash_completion
 else
-    _etc_completion='/etc/bash_completion'
+  _etc_completion='/etc/bash_completion'
 fi
 
 [[ -f $_etc_completion ]] && . $_etc_completion
@@ -153,17 +153,17 @@ export PYTHONDONTWRITEBYTECODE=1
 export DELTA_PAGER='less -rX'
 
 pycd(){
-    module_dir="`python -c "import pkgutil;print pkgutil.get_loader('$1').filename"`"
-    \cd "$module_dir"
+  module_dir="`python -c "import pkgutil;print pkgutil.get_loader('$1').filename"`"
+  \cd "$module_dir"
 }
 
 cdgit(){
-    cd "$(git rev-parse --show-toplevel)/$1"
+  cd "$(git rev-parse --show-toplevel)/$1"
 }
 cddotfiles(){
-    local bashrc=$(readlink ~/.bashrc)
-    local dotfiles=$(dirname $(dirname $bashrc))
-    cd "$dotfiles"/$1
+  local bashrc=$(readlink ~/.bashrc)
+  local dotfiles=$(dirname $(dirname $bashrc))
+  cd "$dotfiles"/$1
 }
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
