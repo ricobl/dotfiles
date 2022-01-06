@@ -1,11 +1,9 @@
 # vim: set filetype=ruby
 
-tap 'caskroom/cask'
+tap 'homebrew/cask'
 tap 'homebrew/bundle'
 tap 'homebrew/core'
-tap 'homebrew/dupes'
 tap 'homebrew/services'
-tap 'homebrew/versions'
 
 brew 'ack'
 brew 'bash-completion'
