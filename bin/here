@@ -58,6 +58,8 @@ OUTPUT
   )
 
   here_create_file "$1" "$template"
+  filename="$(here_target_dir)/$1"
+  chmod +x "$filename"
 }
 
 edit_script() {

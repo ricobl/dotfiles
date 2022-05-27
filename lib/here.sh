@@ -22,7 +22,6 @@ here_create_file() {
   here_create_dir
 
   echo "$content" > "$filename"
-  chmod +x "$filename"
 
   $editor "$filename"
 }
