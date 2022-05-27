@@ -5,4 +5,4 @@
 args="$*"
 [ $# -eq 0 ] && args='/dev/stdin'
 
-pygmentize -g $args
+pygmentize -O style=zenburn -g $args
