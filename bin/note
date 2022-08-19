@@ -6,7 +6,7 @@ script=`basename $0`
 script_dir=$(dirname $(realpath $0))
 lib_dir=$(realpath $script_dir/../lib)
 
-here_base_dir="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Notes"
+here_base_dir="$HOME/.here/notes"
 
 source "$lib_dir/here.sh"
 
