@@ -1,22 +1,33 @@
 #!/bin/bash
 
-_here_completion(){
+_here_completion() {
   local cur="$2"
   local num_words=${#COMP_WORDS[@]}
   local num_args=$(( $num_words - 1 ))
 
   local bin_dir=$(here --dir)
 
+  local first_word=${COMP_WORDS[1]}
+
+  # Complete params if first arg starts with `--`
   if [[ $num_args == 1 && "$cur" == "--"* ]]; then
     # Parse options from the script
     local _options=$(cat `which here` | grep -E '\--[a-z-]+' | sed -E 's/^.*(--[a-z-]+).*$/\1/')
     # Use a backslash to avoid compgen treating the current word as its own argument
     COMPREPLY=($(compgen -W "${_options[*]}" "\\${cur}"))
+
+  # Complete commands if first word is a `--` param
+  elif [[ $num_args == 2 && "$first_word" == "--"* ]]; then
+    COMPREPLY=( $(cd "$bin_dir" && compgen -f -- "${cur}" ) )
+
+  # Complete commands when on the first item
   elif [[ $num_args == 1 && -d $bin_dir ]]; then
     COMPREPLY=( $(cd "$bin_dir" && compgen -f -- "${cur}" ) )
+
+  # Fallback to file completion
   else
     COMPREPLY=( $(compgen -o default -- "${cur}") )
   fi
 }
 
-complete -o nospace -F _here_completion here
+complete -F _here_completion here
