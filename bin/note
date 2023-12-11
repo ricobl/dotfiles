@@ -84,4 +84,4 @@ if [[ "$1" == "--"* ]]; then
   esac
 fi
 
-run_script "$@"
+create_note "$@"
