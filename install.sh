@@ -66,8 +66,10 @@ git config --global color.ui auto
 _git_lg="log --format='%C(green)%h %C(red)%cd %C(reset)%s %C(blue)%an%C(yellow)%d' --date=relative"
 git config --global alias.st status
 git config --global alias.ci commit
-git config --global alias.co checkout
+git config --global alias.sw switch
+git config --global alias.re restore
 git config --global alias.br branch
+git config --global alias.fpush "push --force-with-lease"
 git config --global alias.lg "$_git_lg"
 git config --global alias.l "$_git_lg -10"
 git config --global alias.ln "$_git_lg -10 --name-only"
