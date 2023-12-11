@@ -1,15 +1,10 @@
 #!/bin/bash
 
-# Parse options from the main script
-_parse_here_options() {
-  echo $(cat `which here` | grep -E '\--[a-z-]+' | sed -E 's/^.*(--[a-z-]+).*$/\1/')
-}
-
 _complete_options() {
   local cur="$1"
 
   # Parse options from the script
-  local _options=$(_parse_here_options)
+  local _options=$(cat `which here` | grep -E '\--[a-z-]+' | sed -E 's/^.*(--[a-z-]+).*$/\1/')
   # Use a backslash to avoid compgen treating the current word as its own argument
   echo $(compgen -W "${_options[*]}" "\\${cur}")
 }
@@ -29,27 +24,43 @@ _here_completion() {
 
   local first_word=${COMP_WORDS[1]}
 
+  # `$ here <tab>`
   # Complete options or commands when on the first item
   if [[ $num_args == 1 ]]; then
     # Combine commands and options and let them get filtered by current word
     COMPREPLY=( $(_complete_commands "$cur") $(_complete_options "$cur") )
 
+  # `$ here --edit <tab>`
   # Complete commands after the `--edit` param
   elif [[ $num_args == 2 && "$first_word" == "--edit" ]]; then
     COMPREPLY=( $(_complete_commands "$cur") )
 
+  # `$ here --<param> <tab>`
   # Don't complete after other params
   elif [[ $num_args == 2 && "$first_word" == "--"* ]]; then
     COMPREPLY=()
 
+  # `$ here --edit <command> <tab>`
   # Don't complete after `--edit <command>`
   elif [[ $num_args == 3 && "$first_word" == "--edit" ]]; then
     COMPREPLY=()
 
+  # `$ here <command> <tab> ... <tab-n>`
   # Fallback to file completion
   else
-    COMPREPLY=( $(compgen -o default -- "${cur}") )
+    COMPREPLY=( $(compgen -f -- "${cur}") )
   fi
+
+  # Go through all matches and append slashes to directories
+  # and spaces to everything else (params, commands and filenames)
+  for ((i=0; i<${#COMPREPLY[@]}; i++)); do
+    if [[ -d "${COMPREPLY[$i]}" ]]; then
+      COMPREPLY[$i]="${COMPREPLY[$i]}/"
+    else
+      COMPREPLY[$i]="${COMPREPLY[$i]} "
+    fi
+  done
 }
 
-complete -F _here_completion here
+# Using nospace to prevent spaces on directories
+complete -o nospace -F _here_completion here
