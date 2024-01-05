@@ -5,8 +5,7 @@ _complete_options() {
 
   # Parse options from the script
   local _options=$(cat `which here` | grep -E '\--[a-z-]+' | sed -E 's/^.*(--[a-z-]+).*$/\1/')
-  # Use a backslash to avoid compgen treating the current word as its own argument
-  echo $(compgen -W "${_options[*]}" "\\${cur}")
+  echo $(compgen -W "${_options[*]}" -- "${cur}")
 }
 
 _complete_commands() {
