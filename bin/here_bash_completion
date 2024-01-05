@@ -16,6 +16,26 @@ _complete_commands() {
   [[ -d $bin_dir ]] && cd "$bin_dir" && compgen -f -- "${cur}"
 }
 
+# In old bash versions it's impossible to customize the suffix for `compgen` suggestions.
+# The only way is to selectively append slashes to directories and spaces to everything else.
+# This is done by editing the COMPREPLY global array in-place.
+
+_append_spaces_to_replies() {
+  local i=0
+  for ((i=0; i<${#COMPREPLY[@]}; i++)); do
+    COMPREPLY[$i]="${COMPREPLY[$i]} "
+  done
+}
+
+_append_slashes_to_directories() {
+  local i=0
+  for ((i=0; i<${#COMPREPLY[@]}; i++)); do
+    if [[ -d "${COMPREPLY[$i]}" ]]; then
+      COMPREPLY[$i]="${COMPREPLY[$i]}/"
+    fi
+  done
+}
+
 _here_completion() {
   local cur="$2"
   local num_words=${#COMP_WORDS[@]}
@@ -28,11 +48,13 @@ _here_completion() {
   if [[ $current_word_index == 1 ]]; then
     # Combine commands and options and let them get filtered by current word
     COMPREPLY=( $(_complete_commands "$cur") $(_complete_options "$cur") )
+    _append_spaces_to_replies
 
   # `$ here --edit <tab>`
   # Complete commands after the `--edit` param
   elif [[ $current_word_index == 2 && "$first_word" == "--edit" ]]; then
     COMPREPLY=( $(_complete_commands "$cur") )
+    _append_spaces_to_replies
 
   # `$ here --<param> <tab>`
   # Don't complete after other params
@@ -48,17 +70,8 @@ _here_completion() {
   # Fallback to file completion
   else
     COMPREPLY=( $(compgen -f -- "${cur}") )
+    _append_slashes_to_directories
   fi
-
-  # Go through all matches and append slashes to directories
-  # and spaces to everything else (params, commands and filenames)
-  for ((i=0; i<${#COMPREPLY[@]}; i++)); do
-    if [[ -d "${COMPREPLY[$i]}" ]]; then
-      COMPREPLY[$i]="${COMPREPLY[$i]}/"
-    else
-      COMPREPLY[$i]="${COMPREPLY[$i]} "
-    fi
-  done
 }
 
 # Using nospace to prevent spaces on directories
