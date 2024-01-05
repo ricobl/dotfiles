@@ -5,7 +5,7 @@ _complete_options() {
 
   # Parse options from the script
   local _options=$(cat `which here` | grep -E '\--[a-z-]+' | sed -E 's/^.*(--[a-z-]+).*$/\1/')
-  echo $(compgen -W "${_options[*]}" -- "${cur}")
+  compgen -W "${_options[*]}" -- "${cur}"
 }
 
 _complete_commands() {
@@ -13,7 +13,7 @@ _complete_commands() {
   local bin_dir=$(here --dir)
 
   # Switch to directory for this path and use file completion from there to get commands
-  echo $([[ -d $bin_dir ]] && cd "$bin_dir" && compgen -f -- "${cur}")
+  [[ -d $bin_dir ]] && cd "$bin_dir" && compgen -f -- "${cur}"
 }
 
 _here_completion() {
