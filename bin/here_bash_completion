@@ -19,29 +19,29 @@ _complete_commands() {
 _here_completion() {
   local cur="$2"
   local num_words=${#COMP_WORDS[@]}
-  local num_args=$(( $num_words - 1 ))
+  local current_word_index=$COMP_CWORD
 
   local first_word=${COMP_WORDS[1]}
 
   # `$ here <tab>`
   # Complete options or commands when on the first item
-  if [[ $num_args == 1 ]]; then
+  if [[ $current_word_index == 1 ]]; then
     # Combine commands and options and let them get filtered by current word
     COMPREPLY=( $(_complete_commands "$cur") $(_complete_options "$cur") )
 
   # `$ here --edit <tab>`
   # Complete commands after the `--edit` param
-  elif [[ $num_args == 2 && "$first_word" == "--edit" ]]; then
+  elif [[ $current_word_index == 2 && "$first_word" == "--edit" ]]; then
     COMPREPLY=( $(_complete_commands "$cur") )
 
   # `$ here --<param> <tab>`
   # Don't complete after other params
-  elif [[ $num_args == 2 && "$first_word" == "--"* ]]; then
+  elif [[ $current_word_index == 2 && "$first_word" == "--"* ]]; then
     COMPREPLY=()
 
   # `$ here --edit <command> <tab>`
   # Don't complete after `--edit <command>`
-  elif [[ $num_args == 3 && "$first_word" == "--edit" ]]; then
+  elif [[ $current_word_index == 3 && "$first_word" == "--edit" ]]; then
     COMPREPLY=()
 
   # `$ here <command> <tab> ... <tab-n>`
