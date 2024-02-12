@@ -36,6 +36,6 @@ command="$@"
 [[ -z $command ]] && abort 'Please provide a filter command' && exit 1
 
 for file in $files; do
-  filtered=$(cat "$file" | $@)
+  filtered=$(cat "$file" | "$@")
   echo "$filtered" > "$file"
 done
