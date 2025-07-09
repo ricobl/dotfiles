@@ -32,6 +32,12 @@ here_edit_file() {
   $editor "$filename"
 }
 
+here_show_file() {
+  filename="$(here_target_dir)/$1"
+
+  hicat "$filename"
+}
+
 here_create_dir() {
   mkdir -p "$(here_target_dir)"
 }

@@ -66,6 +66,10 @@ edit_script() {
   here_edit_file "$1"
 }
 
+show_script() {
+  here_show_file "$1"
+}
+
 run_script(){
   filename="$(here_target_dir)/$1"
 
@@ -86,6 +90,8 @@ if [[ "$1" == "--"* ]]; then
         create_script "$@"; exit $?;;
     "--edit" )
         edit_script "$@"; exit $?;;
+    "--show" )
+        show_script "$@"; exit $?;;
     "--dir" )
         show_target_dir "$@"; exit $?;;
     *) _abort "Invalid option: $@";;

@@ -51,8 +51,9 @@ _here_completion() {
     _append_spaces_to_replies
 
   # `$ here --edit <tab>`
-  # Complete commands after the `--edit` param
-  elif [[ $current_word_index == 2 && "$first_word" == "--edit" ]]; then
+  # `$ here --show <tab>`
+  # Complete commands after the `--edit` or `--show` params
+  elif [[ $current_word_index == 2 && "$first_word" =~ ^--(edit|show)$ ]]; then
     COMPREPLY=( $(_complete_commands "$cur") )
     _append_spaces_to_replies
 
