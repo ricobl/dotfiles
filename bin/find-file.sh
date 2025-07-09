@@ -19,4 +19,4 @@ fi
 path="${path%/}"
 
 # Search for files or return with no error
-find "$path" -iwholename "$glob" || exit 0
+find -L "$path" -iwholename "$glob" || exit 0
