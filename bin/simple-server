@@ -1,9 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # vim: filetype=sh :
+
 port=$1
 [[ -z $port ]] && port=8888
 
+# Check if port is already in use
+if lsof -nP -iTCP:$port -sTCP:LISTEN >/dev/null 2>&1; then
+  echo "Error: Port $port seems to be in use"
+  echo "Use 'process-on-port.sh $port' to see what's using it"
+  exit 1
+fi
+
 echo "Starting simple server on: http://localhost:$port"
 
-# python -m SimpleHTTPServer $port
 python3 -m http.server $port
