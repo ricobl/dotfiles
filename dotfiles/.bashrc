@@ -43,6 +43,13 @@ function git_tag {
   echo " $tag"
 }
 
+function aws_vault_session {
+  # Check if AWS_VAULT is set (indicates active aws-vault session)
+  if [ -n "$AWS_VAULT" ]; then
+    echo " aws:$AWS_VAULT"
+  fi
+}
+
 function _prompt_command () {
   local exit_code=$?
 
@@ -50,18 +57,24 @@ function _prompt_command () {
   local c_path=`color 1 33`
   local c_branch=`color 1 32`
   local c_tag=`color 1 34`
+  local c_aws=`color 1 31`
   local c_off=`color 0 00`
 
   # Show brackets in red when the last command has failed
-  if [ $exit_code -gt 0 ]; then
-    local c_prompt=`color 1 31`
+  if [ $exit_code != 0 ]; then
+    c_prompt=`color 1 31`
   fi
 
-  PS1="${c_prompt}[${c_path}\W$c_branch\$(git_branch)$c_tag\$(git_tag)${c_prompt}]${c_off} "
-  PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+  PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]"
+  PS1+="${c_prompt}["
+  PS1+="${c_path}\W"
+  PS1+="${c_branch}\$(git_branch)"
+  PS1+="${c_tag}\$(git_tag)"
+  PS1+="${c_aws}\$(aws_vault_session)"
+  PS1+="${c_prompt}]${c_off} "
 }
 
-PROMPT_COMMAND='_prompt_command'
+PROMPT_COMMAND=_prompt_command
 
 # Colors for Man Pages
 export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
@@ -119,6 +132,7 @@ export FIGNORE='pyc'
 # # Custom completions
 . ~/bin/cddotfiles_bash_completion
 . ~/bin/here_bash_completion
+. ~/bin/custom-git-completion.sh
 
 export IPYTHONDIR="~/.ipython"
 export PYTHONDONTWRITEBYTECODE=1
