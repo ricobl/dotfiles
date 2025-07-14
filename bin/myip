@@ -1,29 +1,7 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+#!/usr/bin/env bash
 
-import re
-import commands
-
-def get_ip():
-    """
-    Get local IP address or localhost if none found.
-
-    Needs to grab a list of network interfaces via `/sbin/ifconfig`
-    because `socket.gethostbyname[_ex]` makes a DNS query on MacOS
-    which may have trouble resolving the IP if the hostname is
-    associated to another address.
-    """
-    local = '0.0.0.0'
-    interface = ''
-    status, interfaces = commands.getstatusoutput('/sbin/ifconfig -a')
-    if status == 0:
-        pattern = re.compile('inet [^0-9]*([0-9.]*).*')
-        for line in interfaces.split('\n'):
-            m = pattern.search(line)
-            if m:
-                ip = m.group(1)
-                if ip[0:4] != '127.' and not interface:
-                    interface = ip
-    return interface or local
-
-print get_ip()
+if [[ $(uname) == "Darwin" ]]; then
+  ifconfig | grep "inet " | grep -v 127.0.0.1 | awk '{print $2}' | head -n1
+else
+  hostname -I | awk '{print $1}'
+fi
