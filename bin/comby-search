@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+# Use comby to search for code in a language-aware fashion, useful to
+# comb through large codebases where simple pattern search would take
+# too long.
+
+# TIPS:
+#
+# There's a playground here: https://comby.live/index.html
+#
+# Comby doesn't seem to ignore whitespace properly.
+#
+# Searching for permutations of whitespace around language tokens seems to help.
+# (But it's obviously more work!)
+#
+# Worth noting that a space will match against newlines as well.
+#
+# Here are searches for calls to `Class.method` with "value"
+# as the first argument and whitespace permutations around the argument.
+#
+# $ comby-search 'Class.method(:[metric~"value"], ...)' ./path -f .rb
+# $ comby-search 'Class.method( :[metric~"value"], ...)' ./path -f .rb
+# $ comby-search 'Class.method(:[metric~"value"] , ...)' ./path -f .rb
+
+usage() {
+  local script_name
+  script_name=$(basename "$0")
+  echo "Usage: $script_name <match_template> <path> [options]"
+  echo ""
+  echo "  match_template: the template to match (required)"
+  echo "  path: the path to search (default: .)"
+  echo "  options: options to pass to comby"
+  echo ""
+  echo "Run comby --help for more options."
+  echo ""
+  echo "Sample:"
+  echo ""
+  echo "  $script_name 'Class.method(:[metric~"value"], ...)' ./path -f .rb"
+}
+
+abort() {
+  echo "Error: $1"
+  echo ""
+  usage
+  exit 1
+}
+
+[ $# -eq 0 ] && abort "match_template is required"
+
+match_template="$1"
+shift
+
+path="$1"
+[ -z $path ] && path="."
+shift
+
+# Just searching, no need to rewrite
+rewrite_template=""
+# Exclude common directory prefixes
+exclude_dir_prefixes=.,.git,node_modules
+
+comby -exclude-dir "$exclude_dir_prefixes" "$match_template" "$rewrite_template" -directory "$path" "$@"
