@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+_abort(){
+  exit 1
+}
+
+[ $# -eq 0 ] && _abort
+
+db_file=$(mktemp "${TMPDIR}.csvshell.XXXXXX")
+
+echo "Populating temporary database: $db_file"
+csvsql -I --db "sqlite:///$db_file" --insert "$@"
+
+echo "Starting sqlite3 console..."
+sqlite3 "$db_file"
+
+echo "Removing temporary file: $db_file"
+rm "$db_file"
