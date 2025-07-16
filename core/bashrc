@@ -1,0 +1,19 @@
+# Identify os to load system specific scripts
+os=$(uname | tr '[:upper:]' '[:lower:]')
+
+# Point DOTFILES_DIR to the root of the project if not already set
+if [ -z "$DOTFILES_DIR" ]; then
+  DOTFILES_DIR="$DOTFILES_ROOT"
+fi
+
+# Add common and os-specific bin paths to $PATH
+for bin_dir in $DOTFILES_DIR/modules/*/bin{,/$os}; do
+  [ -d "$bin_dir" ] || continue
+  PATH=$PATH:$bin_dir
+done
+
+# Load main and os-specific scripts
+for file in $DOTFILES_DIR/modules/*/bashrc.d/{,$os/}/*.sh; do
+  [ -r "$file" ] || continue
+  source "$file"
+done
