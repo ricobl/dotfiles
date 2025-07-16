@@ -1,4 +1,0 @@
-ipython
-flake8
-virtualenv
-virtualenvwrapper
