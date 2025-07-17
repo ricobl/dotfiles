@@ -7,13 +7,13 @@ if [ -z "$DOTFILES_DIR" ]; then
 fi
 
 # Add common and os-specific bin paths to $PATH
-for bin_dir in $DOTFILES_DIR/modules/*/bin{,/$os}; do
+for bin_dir in $DOTFILES_DIR/modules/*/bin{/$os,}; do
   [ -d "$bin_dir" ] || continue
   PATH=$PATH:$bin_dir
 done
 
 # Load main and os-specific scripts
-for file in $DOTFILES_DIR/modules/*/bashrc.d/{,$os/}/*.sh; do
+for file in $DOTFILES_DIR/modules/*/bashrc.d/{$os/,}/*.sh; do
   [ -r "$file" ] || continue
   source "$file"
 done
