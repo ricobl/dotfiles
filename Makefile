@@ -1,6 +1,5 @@
-# Start a bash shell with a clean environment
 start:
-	@env -i bash --noprofile --rcfile core/home/.bashrc
+	@./scripts/start.sh
 
 start-docker:
 	@./scripts/start_docker.sh
