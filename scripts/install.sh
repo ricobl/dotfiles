@@ -72,7 +72,7 @@ install_dotfiles() {
   dotfiles_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
   # Point DOTFILES_DIR to the root of the project if not already set
-  if [ -z "$DOTFILES_DIR" ]; then
+  if [ -z "${DOTFILES_DIR:-}" ]; then
     DOTFILES_DIR="$dotfiles_root"
   fi
 
