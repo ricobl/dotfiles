@@ -1,0 +1,89 @@
+[user]
+	name = Enrico
+	email = rico.bl@gmail.com
+	signingkey = ~/.ssh/id_rsa.pub
+[merge]
+	tool = vscode
+	conflictstyle = zdiff3
+[diff]
+  tool = vscode
+  algorithm = histogram
+[difftool "vscode"]
+  cmd = code --wait --diff --new-window $LOCAL $REMOTE
+[mergetool "vscode"]
+  cmd = code --wait $MERGED
+[mergetool]
+	keepBackup = false
+[core]
+  excludesfile = ~/.gitignore_global
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  # Works around wrong page size that omits the first few lines
+  pager = less -R
+
+  # Links seem to work without these now
+  features = line-numbers hyperlinks
+  hyperlinks-file-link-format = "cursor://file//{path}:{line}"
+
+  syntax-theme = zenburn
+[push]
+	default = tracking
+	autoSetupRemote = true
+	followTags = true
+[branch]
+	autosetupmerge = true
+	autosetuprebase = always
+	sort = -committerdate
+[color]
+	ui = true
+[alias]
+	st = status
+	ci = commit
+  sw = switch
+  re = restore
+	br = branch
+	lg = log --format='%C(green)%h %C(red)%cd %C(reset)%s %C(blue)%an/%C(cyan)%cn%C(yellow)%d%C(reset)' --date=relative
+	l = lg -10
+	ln = lg --name-only
+	seek = lg -G
+	fpush = push --force-with-lease
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[fetch]
+	prune = true
+	pruneTags = true
+	all = true
+[http]
+	postBuffer = 524288000
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.git_signers
+[commit]
+	gpgsign = true
+[tag]
+	sort = -version:refname
+[init]
+	defaultBranch = main
+[rerere]
+	enabled = true
+	autoupdate = true
+[pull]
+	rebase = true

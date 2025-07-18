@@ -1,17 +1,17 @@
 [submodule "dotfiles/.vim/bundle/tcomment"]
-	path = dotfiles/.vim/bundle/tcomment
+	path = modules/90-vim/home/.vim/bundle/tcomment
 	url = git@github.com:tomtom/tcomment_vim.git
 	ignore = untracked
 [submodule "dotfiles/.vim/bundle/surround"]
-	path = dotfiles/.vim/bundle/surround
+	path = modules/90-vim/home/.vim/bundle/surround
 	url = git@github.com:vim-scripts/surround.vim.git
 	ignore = untracked
 [submodule "dotfiles/.vim/bundle/repeat"]
-	path = dotfiles/.vim/bundle/repeat
+	path = modules/90-vim/home/.vim/bundle/repeat
 	url = git@github.com:vim-scripts/repeat.vim.git
 	ignore = untracked
 [submodule "dotfiles/.vim/bundle/indent-object"]
-	path = dotfiles/.vim/bundle/indent-object
+	path = modules/90-vim/home/.vim/bundle/indent-object
 	url = git@github.com:michaeljsmith/vim-indent-object.git
 	ignore = untracked
 [submodule "dotfiles/.vim/bundle/bufkill"]
@@ -19,48 +19,48 @@
 	url = git@github.com:vim-scripts/bufkill.vim.git
 	ignore = untracked
 [submodule "dotfiles/.vim/bundle/colors-solarized"]
-	path = dotfiles/.vim/bundle/colors-solarized
+	path = modules/90-vim/home/.vim/bundle/colors-solarized
 	url = git@github.com:altercation/vim-colors-solarized.git
 	ignore = untracked
 [submodule "dotfiles/.vim/bundle/ReplaceWithRegister"]
-	path = dotfiles/.vim/bundle/ReplaceWithRegister
+	path = modules/90-vim/home/.vim/bundle/ReplaceWithRegister
 	url = git@github.com:vim-scripts/ReplaceWithRegister.git
 	ignore = untracked
 [submodule "dotfiles/.vim/bundle/text-object-left-and-right"]
-	path = dotfiles/.vim/bundle/text-object-left-and-right
+	path = modules/90-vim/home/.vim/bundle/text-object-left-and-right
 	url = git@github.com:vim-scripts/text-object-left-and-right.git
 	ignore = untracked
 [submodule "dotfiles/.vim/bundle/template.vim"]
-	path = dotfiles/.vim/bundle/template.vim
+	path = modules/90-vim/home/.vim/bundle/template.vim
 	url = git@github.com:vim-scripts/template.vim.git
 	ignore = untracked
 [submodule "dotfiles/.vim/bundle/supertab"]
-	path = dotfiles/.vim/bundle/supertab
+	path = modules/90-vim/home/.vim/bundle/supertab
 	url = git@github.com:ervandew/supertab.git
 	ignore = untracked
 [submodule "dotfiles/.vim/bundle/rsi"]
-	path = dotfiles/.vim/bundle/rsi
+	path = modules/90-vim/home/.vim/bundle/rsi
 	url = git@github.com:tpope/vim-rsi.git
 [submodule "dotfiles/.vim/bundle/vim-argumentative"]
-	path = dotfiles/.vim/bundle/vim-argumentative
+	path = modules/90-vim/home/.vim/bundle/vim-argumentative
 	url = https://github.com/PeterRincker/vim-argumentative.git
 	ignore = untracked
 [submodule "dotfiles/.vim/bundle/vim-easydir"]
-	path = dotfiles/.vim/bundle/vim-easydir
+	path = modules/90-vim/home/.vim/bundle/vim-easydir
 	url = git@github.com:dockyard/vim-easydir.git
 	ignore = untracked
 [submodule "dotfiles/.vim/bundle/snipmate"]
-	path = dotfiles/.vim/bundle/snipmate
+	path = modules/90-vim/home/.vim/bundle/snipmate
 	url = git@github.com:garbas/vim-snipmate.git
 [submodule "dotfiles/.vim/bundle/vim-addon-mw-utils"]
-	path = dotfiles/.vim/bundle/vim-addon-mw-utils
+	path = modules/90-vim/home/.vim/bundle/vim-addon-mw-utils
 	url = git@github.com:MarcWeber/vim-addon-mw-utils.git
 [submodule "dotfiles/.vim/bundle/tlib_vim"]
-	path = dotfiles/.vim/bundle/tlib_vim
+	path = modules/90-vim/home/.vim/bundle/tlib_vim
 	url = git@github.com:tomtom/tlib_vim.git
 [submodule "dotfiles/.vim/bundle/editorconfig-vim"]
-	path = dotfiles/.vim/bundle/editorconfig-vim
+	path = modules/90-vim/home/.vim/bundle/editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim.git
 [submodule "dotfiles/.vim/bundle/fzf.vim"]
-	path = dotfiles/.vim/bundle/fzf.vim
+	path = modules/90-vim/home/.vim/bundle/fzf.vim
 	url = git@github.com:junegunn/fzf.vim.git
