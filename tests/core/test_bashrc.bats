@@ -35,3 +35,8 @@ load_dotfiles() {
     run load_dotfiles
     assert_line "dummy bashrc linux"
 }
+
+@test "different OS modules are not loaded" {
+    run load_dotfiles
+    refute_line "dummy bashrc darwin"
+}
