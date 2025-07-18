@@ -1,8 +1,0 @@
-#!/bin/bash
-
-_cddotfiles_completion(){
-    local cur="$2"
-    COMPREPLY=( $(cddotfiles && compgen -d -- "${cur}" ) )
-}
-
-complete -o nospace -F _cddotfiles_completion -S/ cddotfiles
