@@ -17,3 +17,5 @@ for file in $DOTFILES_DIR/modules/*/bashrc.d/{$os/,}/*.sh; do
   [ -r "$file" ] || continue
   source "$file"
 done
+
+source "$DOTFILES_ROOT/core/dotfiles-function.sh"

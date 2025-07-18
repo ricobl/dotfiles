@@ -7,6 +7,7 @@ setup() {
 
     # Set up test environment
     export TEST_DIR="$(mktemp -d)"
+    export DOTFILES_ROOT="$(pwd)"
     export DOTFILES_DIR="$(pwd)/tests"
 
     # Create a temporary home directory for testing
