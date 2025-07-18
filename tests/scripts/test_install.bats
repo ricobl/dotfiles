@@ -2,7 +2,7 @@
 
 # code: language=bash
 
-load 'helpers'
+load '../helpers'
 
 run_install() {
   run bash "scripts/install.sh"

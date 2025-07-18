@@ -2,7 +2,7 @@
 
 # code: language=bash
 
-load 'helpers'
+load '../helpers'
 
 
 load_dotfiles() {
