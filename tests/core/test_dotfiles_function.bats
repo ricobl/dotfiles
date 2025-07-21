@@ -15,3 +15,21 @@ source core/dotfiles-function.sh
   dotfiles cd scripts
   assert_equal "$(pwd)" "$DOTFILES_ROOT/scripts"
 }
+
+@test "dotfiles home lists all home directories" {
+  run dotfiles home
+  assert_output --partial "dummy/home"
+  assert_output --partial ".modulefile"
+}
+
+@test "dotfiles bin lists all bin directories" {
+  run dotfiles bin
+  assert_output --partial "dummy/bin"
+  assert_output --partial "dummy-script"
+}
+
+@test "dotfiles bin lists OS-specific bin directories" {
+  run dotfiles bin
+  assert_output --partial "dummy/bin/linux"
+  assert_output --partial "linux-script"
+}
