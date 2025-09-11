@@ -37,6 +37,18 @@ function aws_vault_session {
   fi
 }
 
+function python_venv {
+  # Check if we're in a Python virtual environment
+  if [ -n "$VIRTUAL_ENV" ]; then
+    # Extract just the environment name from the full path
+    local venv_name=$(basename "$VIRTUAL_ENV")
+    echo " venv:$venv_name"
+  elif [ -n "$CONDA_DEFAULT_ENV" ] && [ "$CONDA_DEFAULT_ENV" != "base" ]; then
+    # Check for conda environments (excluding base)
+    echo " conda:$CONDA_DEFAULT_ENV"
+  fi
+}
+
 function _prompt_command () {
   local exit_code=$?
 
@@ -45,6 +57,7 @@ function _prompt_command () {
   local c_branch=`color 1 32`
   local c_tag=`color 1 34`
   local c_aws=`color 1 31`
+  local c_venv=`color 1 36`
   local c_off=`color 0 00`
 
   # Show brackets in red when the last command has failed
@@ -58,6 +71,7 @@ function _prompt_command () {
   PS1+="${c_branch}\$(git_branch)"
   PS1+="${c_tag}\$(git_tag)"
   PS1+="${c_aws}\$(aws_vault_session)"
+  PS1+="${c_venv}\$(python_venv)"
   PS1+="${c_prompt}]${c_off} "
 }
 
