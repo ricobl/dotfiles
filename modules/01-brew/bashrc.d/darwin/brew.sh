@@ -1,4 +1,4 @@
-# Change paths as required for homebrew
-PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Disable analytics on homebrew
 export HOMEBREW_NO_ANALYTICS=1
