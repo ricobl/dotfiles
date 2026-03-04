@@ -19,3 +19,11 @@ for file in $DOTFILES_DIR/modules/*/bashrc.d/{$os/,}/*.sh; do
 done
 
 source "$DOTFILES_ROOT/core/dotfiles-function.sh"
+
+USER_DOTFILES_DIR=${USER_DOTFILES_DIR:-$HOME/.dotfiles}
+
+# Load user custom scripts
+for file in $USER_DOTFILES_DIR/bashrc.d/*.sh; do
+  [ -r "$file" ] || continue
+  source "$file"
+done
