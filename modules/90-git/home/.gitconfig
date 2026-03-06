@@ -1,7 +1,7 @@
 [user]
 	name = Enrico
 	email = rico.bl@gmail.com
-	signingkey = ~/.ssh/id_rsa.pub
+	signingkey = ~/.ssh/id_ed25519.signing.pub
 [merge]
 	tool = vscode
 	conflictstyle = zdiff3

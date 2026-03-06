@@ -1,10 +1,5 @@
 # vim: set filetype=ruby
 
-tap 'homebrew/cask'
-tap 'homebrew/bundle'
-tap 'homebrew/core'
-tap 'homebrew/services'
-
 brew 'ack'
 brew 'asdf'
 brew 'bash-completion'
@@ -23,13 +18,10 @@ brew 'ssh-copy-id'
 brew 'tree'
 brew 'wget'
 
-cask 'bitwarden'
-cask 'docker'
 cask 'dropbox'
 cask 'firefox'
 cask 'google-chrome'
 cask 'iterm2'
-cask 'java'
 cask 'maccy'
 cask 'rectangle'
 cask 'slack'
