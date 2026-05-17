@@ -2,6 +2,13 @@
 	name = Enrico
 	email = rico.bl@gmail.com
 	signingkey = ~/.ssh/id_ed25519.signing.pub
+
+# Overrides for personal / work config
+[includeIf "gitdir:~/projects/"]
+  path = ~/.gitconfig_personal
+[includeIf "gitdir:~/work/"]
+  path = ~/.gitconfig_work
+
 [merge]
 	tool = vscode
 	conflictstyle = zdiff3
