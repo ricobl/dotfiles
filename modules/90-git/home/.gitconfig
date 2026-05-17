@@ -25,7 +25,7 @@
 
   # Links seem to work without these now
   features = line-numbers hyperlinks
-  hyperlinks-file-link-format = "cursor://file//{path}:{line}"
+  # hyperlinks-file-link-format = "code://file//{path}:{line}"
 
   syntax-theme = zenburn
 [push]
