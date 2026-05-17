@@ -1,3 +1,8 @@
 # Enable bash completion if available
-_etc_completion=`brew --prefix`/etc/bash_completion
-[[ -f $_etc_completion ]] && . $_etc_completion
+# NOTE: relies on brew's bash-completion@2
+if type brew &>/dev/null; then
+  HOMEBREW_PREFIX="$(brew --prefix)"
+  if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
+    source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+  fi
+fi
