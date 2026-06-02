@@ -8,3 +8,6 @@
 # Personal notes (symlink or regular dir)
 _notes
 _notes/
+.claude/worktrees/
+
+**/.claude/settings.local.json
