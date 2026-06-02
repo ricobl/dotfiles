@@ -16,6 +16,13 @@ _complete_commands() {
   [[ -d $bin_dir ]] && cd "$bin_dir" && compgen -f -- "${cur}"
 }
 
+_complete_global_commands() {
+  local cur="$1"
+  local bin_dir=$(here --global-dir)
+
+  [[ -d $bin_dir ]] && cd "$bin_dir" && compgen -f -- "${cur}"
+}
+
 # In old bash versions it's impossible to customize the suffix for `compgen` suggestions.
 # The only way is to selectively append slashes to directories and spaces to everything else.
 # This is done by editing the COMPREPLY global array in-place.
@@ -46,15 +53,21 @@ _here_completion() {
   # `$ here <tab>`
   # Complete options or commands when on the first item
   if [[ $current_word_index == 1 ]]; then
-    # Combine commands and options and let them get filtered by current word
-    COMPREPLY=( $(_complete_commands "$cur") $(_complete_options "$cur") )
+    # Combine local commands, global commands, and options
+    COMPREPLY=( $(_complete_commands "$cur") $(_complete_global_commands "$cur") $(_complete_options "$cur") )
     _append_spaces_to_replies
 
   # `$ here --edit <tab>`
   # `$ here --show <tab>`
-  # Complete commands after the `--edit` or `--show` params
+  # Complete local commands after `--edit` or `--show`
   elif [[ $current_word_index == 2 && "$first_word" =~ ^--(edit|show)$ ]]; then
-    COMPREPLY=( $(_complete_commands "$cur") )
+    COMPREPLY=( $(_complete_commands "$cur") $(_complete_global_commands "$cur") )
+    _append_spaces_to_replies
+
+  # `$ here --global-edit <tab>`
+  # Complete global commands after `--global-edit`
+  elif [[ $current_word_index == 2 && "$first_word" == "--global-edit" ]]; then
+    COMPREPLY=( $(_complete_global_commands "$cur") )
     _append_spaces_to_replies
 
   # `$ here --<param> <tab>`
@@ -63,8 +76,9 @@ _here_completion() {
     COMPREPLY=()
 
   # `$ here --edit <command> <tab>`
-  # Don't complete after `--edit <command>`
-  elif [[ $current_word_index == 3 && "$first_word" == "--edit" ]]; then
+  # `$ here --global-edit <command> <tab>`
+  # Don't complete after `--edit <command>` or `--global-edit <command>`
+  elif [[ $current_word_index == 3 && "$first_word" =~ ^--(edit|global-edit)$ ]]; then
     COMPREPLY=()
 
   # `$ here <command> <tab> ... <tab-n>`

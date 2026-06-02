@@ -16,33 +16,25 @@ here_target_dir() {
   echo "$here_base_dir/$(here_serialize_pwd)"
 }
 
+here_global_dir() {
+  echo "$here_base_dir/_global"
+}
+
 here_create_file() {
-  filename="$(here_target_dir)/$1"
+  local dir="$1" name="$2" content="$3"
+  local filename="$dir/$name"
   [[ -f "$filename" ]] && _abort "File already exists: $filename"
-
-  content="$2"
-
-  here_create_dir
-
+  mkdir -p "$dir"
   echo "$content" > "$filename"
-
   $editor "$filename"
 }
 
 here_edit_file() {
-  filename="$(here_target_dir)/$1"
-
-  $editor "$filename"
+  $editor "$1/$2"
 }
 
 here_show_file() {
-  filename="$(here_target_dir)/$1"
-
-  hicat "$filename"
-}
-
-here_create_dir() {
-  mkdir -p "$(here_target_dir)"
+  hicat "$1/$2"
 }
 
 _error() {
@@ -78,13 +70,36 @@ show_target_dir() {
   echo "$(here_target_dir)"
 }
 
+show_global_target_dir() {
+  echo "$(here_global_dir)"
+}
+
 list_scripts() {
-  ls "$(here_target_dir)"
+  local local_dir global_dir has_local has_global
+  local_dir="$(here_target_dir)"
+  global_dir="$(here_global_dir)"
+
+  [[ -d "$local_dir" ]] && has_local=1 || has_local=
+  [[ -d "$global_dir" ]] && has_global=1 || has_global=
+
+  if [[ -n "$has_local" && -n "$has_global" ]]; then
+    echo "local:"
+    ls "$local_dir" | sed 's/^/  /'
+    echo ""
+    echo "global:"
+    ls "$global_dir" | sed 's/^/  /'
+  elif [[ -n "$has_local" ]]; then
+    ls "$local_dir"
+  elif [[ -n "$has_global" ]]; then
+    echo "global:"
+    ls "$global_dir" | sed 's/^/  /'
+  fi
 }
 
 create_script() {
-  content="${2-# exec ... \"\$@\" # Write your command here...}"
+  local content="${2-# exec ... \"\$@\" # Write your command here...}"
 
+  local template
   template=$(cat <<OUTPUT
 #!/usr/bin/env bash
 
@@ -92,25 +107,53 @@ $content
 OUTPUT
   )
 
-  here_create_file "$1" "$template"
-  filename="$(here_target_dir)/$1"
-  chmod +x "$filename"
+  here_create_file "$(here_target_dir)" "$1" "$template"
+  chmod +x "$(here_target_dir)/$1"
+}
+
+create_global_script() {
+  local content="${2-# exec ... \"\$@\" # Write your command here...}"
+
+  local template
+  template=$(cat <<OUTPUT
+#!/usr/bin/env bash
+
+$content
+OUTPUT
+  )
+
+  here_create_file "$(here_global_dir)" "$1" "$template"
+  chmod +x "$(here_global_dir)/$1"
 }
 
 edit_script() {
-  here_edit_file "$1"
+  here_edit_file "$(here_target_dir)" "$1"
+}
+
+edit_global_script() {
+  here_edit_file "$(here_global_dir)" "$1"
 }
 
 show_script() {
-  here_show_file "$1"
+  local dir
+  dir="$(here_target_dir)"
+  if [[ ! -f "$dir/$1" ]]; then
+    local gdir
+    gdir="$(here_global_dir)"
+    [[ -f "$gdir/$1" ]] && dir="$gdir" || _abort "Script does not exist: $dir/$1"
+  fi
+  here_show_file "$dir" "$1"
 }
 
 run_script(){
-  filename="$(here_target_dir)/$1"
-
-  [[ -f "$filename" ]] || _abort "Script does not exist: $filename"
-
-  exec "$(here_target_dir)/$@"
+  local dir
+  dir="$(here_target_dir)"
+  if [[ ! -f "$dir/$1" ]]; then
+    local gdir
+    gdir="$(here_global_dir)"
+    [[ -f "$gdir/$1" ]] && dir="$gdir" || _abort "Script does not exist: $dir/$1"
+  fi
+  exec "$dir/$@"
 }
 
 [[ $# -ge 1 ]] || usage
@@ -129,6 +172,12 @@ if [[ "$1" == "--"* ]]; then
         show_script "$@"; exit $?;;
     "--dir" )
         show_target_dir "$@"; exit $?;;
+    "--global-create" )
+        create_global_script "$@"; exit $?;;
+    "--global-edit" )
+        edit_global_script "$@"; exit $?;;
+    "--global-dir" )
+        show_global_target_dir "$@"; exit $?;;
     *) _abort "Invalid option: $@";;
   esac
 fi
