@@ -11,3 +11,4 @@ _notes/
 .claude/worktrees/
 
 **/.claude/settings.local.json
+.codegraph/
