@@ -23,7 +23,7 @@ dotfiles(){
   cmd=$1
   shift
 
-  [ -z "$cmd" ] && echo "dotfiles: missing command" && return
+  [ -z "$cmd" ] && __dotfiles_cd && return
 
   func="__dotfiles_$cmd"
 
