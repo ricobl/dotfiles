@@ -12,3 +12,5 @@ _notes/
 
 **/.claude/settings.local.json
 .codegraph/
+.mise.toml
+.bin/
