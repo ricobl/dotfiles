@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "$PATH" | sed "s/:/\n/g" | cat -n
