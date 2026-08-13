@@ -25,4 +25,5 @@ for a in "$@"; do
   [[ "$found_double_dash" = true ]] && patterns+=("$a") || args+=("$a")
 done
 
-git grep "${args[@]}" -- "${patterns[@]}"
+# -I ignores binary files
+git grep -I "${args[@]}" -- "${patterns[@]}"
