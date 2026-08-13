@@ -47,7 +47,7 @@ unless cwd.empty?
 end
 
 # ── Context bar ──
-BAR_WIDTH = 20
+BAR_WIDTH = 10
 
 def bar_color_at(pos)
   # Maps bar position (0–100) to an RGB color along a green -> yellow -> red gradient
@@ -62,15 +62,6 @@ end
 
 def blend(from, to, pct)
   (from + (to - from) * pct).round
-end
-
-def ctx_emoji(pct)
-  case pct
-  when 90.. then '🚨'
-  when 70.. then '🔥'
-  when 20.. then '⚡'
-  else '🟢'
-  end
 end
 
 def pct_ansi(pct)
@@ -90,19 +81,19 @@ def build_bar(used_int)
 end
 
 def context_bar(used)
-  return "🟢 #{DIM}#{'░' * BAR_WIDTH}#{RESET} --%" unless used
+  return "#{DIM}#{'░' * BAR_WIDTH}#{RESET} --%" unless used
 
   used_int = used.round
-  "#{ctx_emoji(used_int)}#{build_bar(used_int)} #{pct_ansi(used_int)}#{used_int}%#{RESET}"
+  "#{build_bar(used_int)} #{pct_ansi(used_int)}#{used_int}%#{RESET}"
 end
 
 ctx_part = context_bar(used)
 
 # ── Assemble output ──
 branch_part = branch.empty? ? '' : "#{BOLD}#{GREEN} #{branch}#{RESET}"
-repo_part   = repo.empty?   ? '' : "#{YELLOW}[#{BOLD}#{repo}#{branch_part}#{YELLOW}]#{RESET}"
+repo_part   = repo.empty?   ? '' : "#{YELLOW}/#{BOLD}#{repo}#{branch_part}#{RESET}"
 
-out = "🧠 #{repo_part}#{repo_part.empty? ? '' : ' '}#{ctx_part}"
+out = "#{repo_part}#{repo_part.empty? ? '' : ' '}#{ctx_part}"
 out += " #{CYAN}⏱️ #{used_5h}%#{RESET}"
 out += " #{CYAN}📆 #{used_7d}%#{RESET}"
 out += " #{BLUE}🤖 #{model}#{RESET}"
