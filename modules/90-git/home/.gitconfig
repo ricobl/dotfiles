@@ -49,8 +49,8 @@
 	st = status
 	ci = commit
   sw = switch
-  re = restore
 	br = branch
+  unstage = restore --staged
 	lg = log --format='%C(green)%h %C(red)%cd %C(reset)%s %C(blue)%an/%C(cyan)%cn%C(yellow)%d%C(reset)' --date=relative
 	l = lg -10
 	ln = lg --name-only
