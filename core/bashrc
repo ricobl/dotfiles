@@ -27,3 +27,6 @@ for file in $USER_DOTFILES_DIR/bashrc.d/*.sh; do
   [ -r "$file" ] || continue
   source "$file"
 done
+
+# Add custom user scripts to path
+PATH=$PATH:$USER_DOTFILES_DIR/bin
