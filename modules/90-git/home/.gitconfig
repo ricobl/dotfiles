@@ -36,7 +36,7 @@
 
   syntax-theme = zenburn
 [push]
-	default = tracking
+	default = simple
 	autoSetupRemote = true
 	followTags = true
 [branch]
