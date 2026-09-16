@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+# Program: slugify
+# Notes: Converts accents into regular characters and use kebab-case
+# Usage:
+#   $ echo -e "áéíóú" | slugify
+#   > "aeiou"
+
+def slugify(text)
+  text.to_s
+    .unicode_normalize(:nfd)      # Separate accents from letters
+    .gsub(/[\u0300-\u036f]/, '')  # Strip out the accents (diacritics)
+    .downcase                     # Convert to lowercase
+    .gsub(/[^a-z0-9\-_]+/, '-')   # Replace non-alphanumeric/hyphen/underscore with hyphens
+    .gsub(/-+/, '-')              # Collapse multiple hyphens
+    .gsub(/^-+|-+$/, '')          # Trim leading and trailing hyphens
+end
+
+ARGF.each do
+  puts slugify(_1)
+end
