@@ -59,15 +59,9 @@ _here_completion() {
 
   # `$ here --edit <tab>`
   # `$ here --show <tab>`
-  # Complete local commands after `--edit` or `--show`
+  # Complete local and global commands after `--edit` or `--show`
   elif [[ $current_word_index == 2 && "$first_word" =~ ^--(edit|show)$ ]]; then
     COMPREPLY=( $(_complete_commands "$cur") $(_complete_global_commands "$cur") )
-    _append_spaces_to_replies
-
-  # `$ here --global-edit <tab>`
-  # Complete global commands after `--global-edit`
-  elif [[ $current_word_index == 2 && "$first_word" == "--global-edit" ]]; then
-    COMPREPLY=( $(_complete_global_commands "$cur") )
     _append_spaces_to_replies
 
   # `$ here --<param> <tab>`
@@ -76,9 +70,8 @@ _here_completion() {
     COMPREPLY=()
 
   # `$ here --edit <command> <tab>`
-  # `$ here --global-edit <command> <tab>`
-  # Don't complete after `--edit <command>` or `--global-edit <command>`
-  elif [[ $current_word_index == 3 && "$first_word" =~ ^--(edit|global-edit)$ ]]; then
+  # Don't complete after `--edit <command>`
+  elif [[ $current_word_index == 3 && "$first_word" == "--edit" ]]; then
     COMPREPLY=()
 
   # `$ here <command> <tab> ... <tab-n>`

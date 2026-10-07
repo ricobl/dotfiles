@@ -126,33 +126,35 @@ OUTPUT
   chmod +x "$(here_global_dir)/$1"
 }
 
-edit_script() {
-  here_edit_file "$(here_target_dir)" "$1"
+# Prints the dir holding script $1: local first, then global
+here_script_dir() {
+  local dir gdir
+  dir="$(here_target_dir)"
+  gdir="$(here_global_dir)"
+  if [[ -f "$dir/$1" ]]; then
+    echo "$dir"
+  elif [[ -f "$gdir/$1" ]]; then
+    echo "$gdir"
+  else
+    _abort "Script does not exist: $dir/$1"
+  fi
 }
 
-edit_global_script() {
-  here_edit_file "$(here_global_dir)" "$1"
+edit_script() {
+  local dir
+  dir="$(here_script_dir "$1")"
+  here_edit_file "$dir" "$1"
 }
 
 show_script() {
   local dir
-  dir="$(here_target_dir)"
-  if [[ ! -f "$dir/$1" ]]; then
-    local gdir
-    gdir="$(here_global_dir)"
-    [[ -f "$gdir/$1" ]] && dir="$gdir" || _abort "Script does not exist: $dir/$1"
-  fi
+  dir="$(here_script_dir "$1")"
   here_show_file "$dir" "$1"
 }
 
 run_script(){
   local dir
-  dir="$(here_target_dir)"
-  if [[ ! -f "$dir/$1" ]]; then
-    local gdir
-    gdir="$(here_global_dir)"
-    [[ -f "$gdir/$1" ]] && dir="$gdir" || _abort "Script does not exist: $dir/$1"
-  fi
+  dir="$(here_script_dir "$1")"
   exec "$dir/$@"
 }
 
@@ -174,8 +176,6 @@ if [[ "$1" == "--"* ]]; then
         show_target_dir "$@"; exit $?;;
     "--global-create" )
         create_global_script "$@"; exit $?;;
-    "--global-edit" )
-        edit_global_script "$@"; exit $?;;
     "--global-dir" )
         show_global_target_dir "$@"; exit $?;;
     *) _abort "Invalid option: $@";;

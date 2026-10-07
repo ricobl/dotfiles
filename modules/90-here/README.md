@@ -40,12 +40,11 @@ When a script is not found in the current directory's storage, `here` falls back
 | Command                       | Description                                                             |
 | ----------------------------- | ----------------------------------------------------------------------- |
 | `here --create <name>`        | Create a local script and open it in `$EDITOR`                          |
-| `here --edit <name>`          | Open a local script in `$EDITOR`                                        |
+| `here --edit <name>`          | Open a script in `$EDITOR`; falls back to global                        |
 | `here --show <name>`          | Print a script with syntax highlighting (`hicat`); falls back to global |
 | `here --list`                 | List scripts for the current directory and global store                 |
 | `here --dir`                  | Print the local storage path for the current directory                  |
 | `here --global-create <name>` | Create a global script and open it in `$EDITOR`                         |
-| `here --global-edit <name>`   | Open a global script in `$EDITOR`                                       |
 | `here --global-dir`           | Print the global storage path                                           |
 
 ### Creating a script
@@ -88,9 +87,9 @@ global:
 
 ## Bash completion
 
-Tab completion is provided for both options and script names. After `here <tab>`, you'll see available options and any scripts that exist for the current directory or the global store. After `here --edit <tab>` or `here --show <tab>`, local script names are completed; after `here --global-edit <tab>`, global script names are completed.
+Tab completion is provided for both options and script names. After `here <tab>`, you'll see available options and any scripts that exist for the current directory or the global store. After `here --edit <tab>` or `here --show <tab>`, local and global script names are completed.
 
 ## Dependencies
 
 - `hicat` — required for `here --show` (syntax-highlighted output)
-- `$EDITOR` — used by `--create`, `--edit`, `--global-create`, and `--global-edit`; falls back to `code` if unset
+- `$EDITOR` — used by `--create`, `--edit`, and `--global-create`; falls back to `code` if unset
