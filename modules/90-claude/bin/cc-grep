@@ -1,0 +1,118 @@
+#!/usr/bin/env ruby
+#
+# Search Claude Code transcripts and print clickable iTerm2 links that resume
+# each matching session.
+#
+# Usage: cc-grep <pattern>
+
+require "erb"
+require "io/console"
+require "json"
+require "shellwords"
+
+PROJECTS_DIR = File.expand_path("~/.claude/projects/")
+# Project dirs are the cwd with every non-alphanumeric char turned into "-"
+HOME_PREFIX = "#{Dir.home.gsub(/[^a-zA-Z0-9]/, '-')}-"
+
+abort "Search pattern is required" unless ARGV.size == 1
+
+# OSC 8 hyperlink; iTerm2 runs the command when clicked
+def runnable_link(label, cmd)
+  "\e]8;;iterm2:/command?c=#{ERB::Util.url_encode(cmd)}\e\\\e[94m#{label}\e[0m\e]8;;\e\\"
+end
+
+# Subagent transcripts live under <session>/subagents/, so they resolve to the parent session
+def session_for_file(path)
+  project, session = path.delete_prefix("#{PROJECTS_DIR}/").split("/")
+  [project, session.delete_suffix(".jsonl")]
+end
+
+# Text of a typed prompt, or nil for tool results and injected meta messages.
+# Slash commands are stored as XML tags, so render them as "/name args".
+def prompt_text(record)
+  return if record["type"] != "user" || record["isMeta"]
+
+  content = record.dig("message", "content")
+  text = content.is_a?(String) ? content : Array(content).filter_map { |c| c["text"] }.join(" ")
+  if (name = text[%r{<command-name>(.*?)</command-name>}m, 1])
+    text = "#{name} #{text[%r{<command-args>(.*?)</command-args>}m, 1]}"
+  end
+  text = text.gsub(/<[^>]+>/, " ").squeeze(" \n").tr("\n", " ").strip
+  text unless text.empty?
+end
+
+def truncate(text, max)
+  text.size > max ? "#{text[0, max - 1]}…" : text
+end
+
+# Returns [cwd, title]. A /rename title beats the AI one (the latest of each wins),
+# and the first prompt stands in when the session has neither.
+def session_info(project, session)
+  cwd = custom = ai = prompt = nil
+  File.foreach("#{PROJECTS_DIR}/#{project}/#{session}.jsonl") do |line|
+    cwd ||= line[/"cwd":"([^"]*)"/, 1]
+    if line.include?('"type":"custom-title"')
+      custom = JSON.parse(line)["customTitle"]
+    elsif line.include?('"type":"ai-title"')
+      ai = JSON.parse(line)["aiTitle"]
+    elsif prompt.nil? && line.include?('"type":"user"')
+      prompt = prompt_text(JSON.parse(line))
+    end
+  end
+  [cwd, custom || ai || prompt]
+rescue Errno::ENOENT
+  [nil, nil]
+end
+
+def last_modified(project, session)
+  File.mtime("#{PROJECTS_DIR}/#{project}/#{session}.jsonl")
+rescue Errno::ENOENT
+  nil
+end
+
+TIME_UNITS = { "y" => 31_536_000, "mo" => 2_592_000, "wk" => 604_800,
+               "d" => 86_400, "h" => 3600, "min" => 60 }.freeze
+
+def time_ago(time)
+  seconds = Time.now - time
+  unit, size = TIME_UNITS.find { |_, s| seconds >= s }
+  return "just now" unless unit
+
+  count = (seconds / size).floor
+  "#{count}#{unit} ago"
+end
+
+# claude --resume only finds sessions from the directory they were started in
+def resume_command(cwd, session)
+  return "claude --resume #{session}" if cwd.nil? || cwd == Dir.pwd
+
+  "cd #{Shellwords.escape(cwd)} && claude --resume #{session}"
+end
+
+files = IO.popen(["grep", "-rliE", "--", ARGV[0], "#{PROJECTS_DIR}/"], &:readlines).map(&:chomp)
+
+# Project dirs also hold non-session files (memory/, .session-aliases) that can't be resumed
+sessions = files.map { |f| session_for_file(f) }.uniq.select { |_, s| s.match?(/\A\h{8}-\h{4}-/) }
+
+# Most recently active first; the transcript is appended to on every message
+sessions = sessions.map { |project, session| [project, session, last_modified(project, session)] }
+                   .sort_by { |*, mtime| -mtime.to_f }
+
+rows = sessions.map do |project, session, mtime|
+  cwd, title = session_info(project, session)
+  name = project.delete_prefix(HOME_PREFIX).sub(/--claude-worktrees-.*/, "")
+  date = mtime && "#{mtime.strftime('%Y-%m-%d %H:%M')} (#{time_ago(mtime)})"
+  [session, runnable_link(session, resume_command(cwd, session)), title.to_s, date.to_s, name]
+end
+
+# Each session takes two lines: link and title, then date and project dimmed below them.
+# The link is padded by hand: its invisible escape bytes would throw off ljust.
+# Title and project get cut to the terminal width; uncut when there's no terminal.
+width = rows.flat_map { |session, _, _, date| [session.size, date.size] }.max.to_i
+columns = IO.console&.winsize&.last
+room = columns ? [columns - width - 2, 1].max : Float::INFINITY
+rows.each_with_index do |(session, link, title, date, project), i|
+  puts if i.positive?
+  puts "#{link}#{' ' * (width - session.size)}  #{truncate(title, room)}"
+  puts "\e[2m#{date.ljust(width)}  #{truncate(project, room)}\e[0m"
+end
